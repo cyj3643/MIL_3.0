@@ -15,8 +15,4 @@ public class FindUserRes extends BaseResponse {
 		this.name = user.getName();
 		this.address = user.getAddress();
 	}
-
-	public FindUserRes(String msg, Integer status) {
-		super(msg, status);
-	}
 }

@@ -13,8 +13,11 @@
 
 ## 올바른 커밋 가이드
 
-## 프로젝트
+## 추가 설정
+1. 로그인 Auth
+2. Redis를 활용한 토큰관리
 
 ### 데이터베이스 연결 (MySQL)
 1. application.yml 파일에서 적당한 서버주소, 포트, 비밀번호, 아이디를 설정한다.
 2. ddl에 관련한 정보는 [링크](https://dev-coco.tistory.com/85) 를 참조
+3. database는 test이다.

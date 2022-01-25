@@ -37,9 +37,10 @@ public class UserController {
 		User user = userService.createUser(userReq);
 
 		if (user == null) {
-			return ResponseEntity.status(404).
+			return ResponseEntity.status(404).body(new FindUserRes("존재하는 아이디입니다.", 404));
 		}
 
+		return ResponseEntity.status(201).body(new FindUserRes(201, "유저를 생성했습니다.", user));
 	}
 
 }

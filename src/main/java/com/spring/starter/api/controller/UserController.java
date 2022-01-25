@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.starter.api.request.index.AddUserReq;
 import com.spring.starter.api.response.index.FindUserRes;
 import com.spring.starter.api.service.UserService;
+import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.User;
 
 import lombok.RequiredArgsConstructor;
@@ -33,11 +34,11 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<FindUserRes> signupUser(@RequestBody AddUserReq userReq) {
+	public ResponseEntity<? extends BaseResponse> signupUser(@RequestBody AddUserReq userReq) {
 		User user = userService.createUser(userReq);
 
 		if (user == null) {
-			return ResponseEntity.status(404).body(new FindUserRes("존재하는 아이디입니다.", 404));
+			return ResponseEntity.status(404).body(new BaseResponse("존재하는 아이디입니다.", 404));
 		}
 
 		return ResponseEntity.status(201).body(new FindUserRes(201, "유저를 생성했습니다.", user));

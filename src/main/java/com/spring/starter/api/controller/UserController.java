@@ -1,5 +1,7 @@
 package com.spring.starter.api.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +36,7 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<? extends BaseResponse> signupUser(@RequestBody AddUserReq userReq) {
+	public ResponseEntity<? extends BaseResponse> signupUser(@Valid @RequestBody AddUserReq userReq) {
 		User user = userService.createUser(userReq);
 
 		if (user == null) {

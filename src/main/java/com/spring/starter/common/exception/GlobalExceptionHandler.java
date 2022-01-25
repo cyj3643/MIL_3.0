@@ -1,4 +1,4 @@
-package com.spring.starter.api.controller;
+package com.spring.starter.common.exception;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

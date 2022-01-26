@@ -14,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 		log.info("Method : {} Req URL : {}", request.getMethod(), request.getRequestURL());
-
 		return true;
 	}
 }

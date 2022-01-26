@@ -12,14 +12,14 @@ import com.spring.starter.common.model.BaseResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+@Slf4j(topic = "ERROR_FILE_LOGGER")
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	protected ResponseEntity<BaseResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-		log.error("handleMethodArgumentNotValidException : ", e);
 		String defaultMessage = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
+		log.error("handleMethodArgumentNotValidException : ", defaultMessage);
 		return ResponseEntity.status(500).body(new BaseResponse(defaultMessage, 500));
 	}
 

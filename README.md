@@ -32,3 +32,7 @@
 1. application.yml 파일에서 적당한 서버주소, 포트, 비밀번호, 아이디를 설정한다.
 2. ddl에 관련한 정보는 [링크](https://dev-coco.tistory.com/85) 를 참조
 3. database는 test이다.
+
+
+### 추가내용
+인터셉터와 로깅

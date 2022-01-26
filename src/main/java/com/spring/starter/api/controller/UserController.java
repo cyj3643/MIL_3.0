@@ -25,12 +25,10 @@ public class UserController {
 
 	@GetMapping
 	public ResponseEntity<String> displayUserInfo(@RequestParam String name, @RequestParam String address) {
-		StringBuilder sb = new StringBuilder();
-		String userInfo = sb.append(name)
-			.append("님의 주소는 ")
-			.append(address)
-			.append("입니다.")
-			.toString();
+		String userInfo = name
+			+ "님의 주소는 "
+			+ address
+			+ "입니다.";
 
 		return ResponseEntity.status(200).body(userInfo);
 	}

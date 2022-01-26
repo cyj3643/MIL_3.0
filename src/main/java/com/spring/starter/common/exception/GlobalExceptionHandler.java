@@ -25,7 +25,8 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value = Exception.class)
 	public ResponseEntity<BaseResponse> handleException(Exception e) {
-		log.error(Arrays.toString(e.getStackTrace()));
+		log.error("Internal Error Trace : {} ",Arrays.toString(e.getStackTrace()));
+		log.error("Error Message : {}",e.getMessage());
 		return ResponseEntity.status(500).body(new BaseResponse(e.getMessage(), 500));
 	}
 

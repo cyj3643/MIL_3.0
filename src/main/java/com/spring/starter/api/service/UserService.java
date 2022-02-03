@@ -20,7 +20,7 @@ public class UserService {
 			return null;
 		}
 
-		User newUser = User.builder().name(userReq.getName()).address(userReq.getAddress()).build();
+		User newUser = User.builder().name(userReq.getName()).build();
 		return userRepository.save(newUser);
 	}
 

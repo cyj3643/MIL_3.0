@@ -35,7 +35,7 @@ public class UserController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signupUser(@Valid @RequestBody AddUserReq userReq) {
-		User user = userService.createUser(userReq);
+		User user = userReq.createUser();
 
 		if (user == null) {
 			return ResponseEntity.status(400).body(new BaseResponse("존재하는 아이디입니다.", 400));

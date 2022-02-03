@@ -37,7 +37,7 @@ class UserControllerTest extends BaseTest {
 	@DisplayName("유저 회원가입 (성공)")
 	void signupUser() throws Exception {
 		//Givne
-		AddUserReq addUserReq = new AddUserReq("효택", "경기도 어딘가");
+		AddUserReq addUserReq = new AddUserReq("효택", "gyxor8582@naver.com", "a123", 201721070, 1);
 
 		//When
 		ResultActions perform = this.mockMvc.perform(

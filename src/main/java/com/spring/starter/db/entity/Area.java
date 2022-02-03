@@ -1,8 +1,6 @@
 package com.spring.starter.db.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -18,23 +16,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity {
+public class Area extends BaseEntity{
 	@NotNull
 	String name;
 
-	@NotNull
-	String email;
+	@OneToOne(mappedBy = "area")
+	User user;
 
-	@NotNull
-	String password;
-
-	@NotNull
-	Integer student_id;
-
-	@NotNull
-	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
-
-	@OneToOne
-	@JoinColumn
-	Area area;
 }

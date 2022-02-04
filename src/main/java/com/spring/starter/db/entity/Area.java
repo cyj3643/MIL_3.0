@@ -3,9 +3,11 @@ package com.spring.starter.db.entity;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +29,7 @@ public class Area extends BaseEntity{
 	@OneToOne(mappedBy = "area")
 	User user;
 
-	@OneToMany(mappedBy = "area")
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
 	List<AreaSubject> areaSubjectList;
 
 	public void addAreaSubject(AreaSubject areaSubject) {
@@ -36,5 +38,10 @@ public class Area extends BaseEntity{
 		}
 		this.areaSubjectList.add(areaSubject);
 		areaSubject.setArea(this);
+	}
+
+	@PreRemove
+	void setUserNull() {
+		this.user.setArea(null);
 	}
 }

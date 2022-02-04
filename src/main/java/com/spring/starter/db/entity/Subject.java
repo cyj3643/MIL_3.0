@@ -3,6 +3,7 @@ package com.spring.starter.db.entity;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -24,7 +25,7 @@ public class Subject extends BaseEntity{
 
 	// TO-DO 에임즈 보고 수정
 
-	@OneToMany(mappedBy = "subject")
+	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 	List<AreaSubject> areaSubjectList;
 
 	public void addAreaSubject(AreaSubject areaSubject) {

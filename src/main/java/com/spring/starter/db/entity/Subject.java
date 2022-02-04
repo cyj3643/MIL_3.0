@@ -27,13 +27,22 @@ public class Subject extends BaseEntity{
 
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 	List<AreaSubject> areaSubjectList;
-
 	public void addAreaSubject(AreaSubject areaSubject) {
 		if (this.areaSubjectList == null) {
 			this.areaSubjectList = new LinkedList<>();
 		}
 		this.areaSubjectList.add(areaSubject);
 		areaSubject.setSubject(this);
+	}
+
+	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+	List<JobsSubject> jobsSubjectList;
+	public void addJobsSubject(JobsSubject jobsSubject) {
+		if (this.jobsSubjectList == null) {
+			this.jobsSubjectList = new LinkedList<>();
+		}
+		this.jobsSubjectList.add(jobsSubject);
+		jobsSubject.setSubject(this);
 	}
 
 }

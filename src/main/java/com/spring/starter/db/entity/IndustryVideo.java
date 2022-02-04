@@ -17,14 +17,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobsSubject extends BaseEntity{
+public class IndustryVideo extends BaseEntity{
 	@NotNull
 	@ManyToOne
 	@JoinColumn
-	Subject subject;
+	Jobs jobs;
 
 	@NotNull
-	@ManyToOne
-	@JoinColumn
-	Area area;
+	String title;
+
+	@NotNull
+	String thumbnail; // s3 url
+
+	@NotNull
+	String link; // youtube url
+
 }

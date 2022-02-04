@@ -3,6 +3,7 @@ package com.spring.starter.db.entity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,10 +18,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AreaSubject extends BaseEntity{
+	@NotNull
 	@ManyToOne
 	@JoinColumn
 	Subject subject;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn
 	Area area;

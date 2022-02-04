@@ -1,5 +1,9 @@
 package com.spring.starter.db.entity;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -37,4 +41,14 @@ public class User extends BaseEntity {
 	@OneToOne
 	@JoinColumn
 	Area area;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	List<AMAM> amamList;
+	public void addAMAM(AMAM amam) {
+		if (this.amamList == null) {
+			this.amamList = new LinkedList<>();
+		}
+		this.amamList.add(amam);
+		amam.setUser(this);
+	}
 }

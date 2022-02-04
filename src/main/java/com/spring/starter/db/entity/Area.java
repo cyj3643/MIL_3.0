@@ -39,7 +39,7 @@ public class Area extends BaseEntity{
 		areaSubject.setArea(this);
 	}
 
-	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
 	List<JobsSubject> jobsSubjectList;
 	public void addJobsSubject(JobsSubject jobsSubject) {
 		if (this.jobsSubjectList == null) {
@@ -47,6 +47,16 @@ public class Area extends BaseEntity{
 		}
 		this.jobsSubjectList.add(jobsSubject);
 		jobsSubject.setArea(this);
+	}
+
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
+	List<AMAM> amamList;
+	public void addAMAM(AMAM amam) {
+		if (this.amamList == null) {
+			this.amamList = new LinkedList<>();
+		}
+		this.amamList.add(amam);
+		amam.setArea(this);
 	}
 
 	@PreRemove

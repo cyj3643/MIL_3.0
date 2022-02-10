@@ -35,6 +35,9 @@ public class AMAM extends BaseEntity{
 	Date createdAt;
 
 	@NotNull
+	String content;
+
+	@NotNull
 	@ManyToOne
 	@JoinColumn
 	Area area;

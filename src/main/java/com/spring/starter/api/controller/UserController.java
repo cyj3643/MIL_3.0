@@ -42,7 +42,9 @@ public class UserController {
 
 		}
 
+		// ToDo Id field add
 		// ToDo 비밀번호 암호화
+		// ToDo 학생 Area -> 자동화
 		userService.save(singUpUserReq.toUserEntity(area));
 
 		return ResponseEntity.status(201).body("회원가입에 성공하였습니다.");

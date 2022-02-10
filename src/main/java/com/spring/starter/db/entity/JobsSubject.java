@@ -27,4 +27,7 @@ public class JobsSubject extends BaseEntity{
 	@ManyToOne
 	@JoinColumn
 	Jobs jobs;
+
+	// SubjectConstants 참조
+	Integer state;
 }

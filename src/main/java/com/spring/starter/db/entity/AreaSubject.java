@@ -27,4 +27,7 @@ public class AreaSubject extends BaseEntity{
 	@ManyToOne
 	@JoinColumn
 	Area area;
+
+	// SubjectConstants 참조
+	Integer state;
 }

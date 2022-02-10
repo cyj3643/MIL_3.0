@@ -30,9 +30,9 @@ public class SingUpUserReq {
 	@NotNull
 	Integer state;
 
-	Integer area_id;
+	String area;
 
-	User toEntity(Area area) {
+	public User toUserEntity(Area area) {
 		return User.builder()
 			.name(name)
 			.email(email)

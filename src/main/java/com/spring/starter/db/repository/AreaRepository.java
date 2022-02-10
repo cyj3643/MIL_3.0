@@ -5,11 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.spring.starter.db.entity.User;
+import com.spring.starter.db.entity.Area;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-	Optional<User> findByName(String name);
-
-	Optional<User> findByEmail(String email);
+public interface AreaRepository extends JpaRepository<Area, Long> {
+	Optional<Area> findByName(String name);
 }

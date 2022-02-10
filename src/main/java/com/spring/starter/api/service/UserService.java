@@ -14,18 +14,12 @@ public class UserService {
 
 	private final UserRepository userRepository;
 
-	public User createUser(AddUserReq userReq) {
-		User check = userRepository.findByName(userReq.getName()).orElse(null);
-		if (check != null) {
-			return null;
-		}
-
-		User newUser = User.builder().name(userReq.getName()).build();
-		return userRepository.save(newUser);
+	public boolean isExistEmail(String email) {
+		User byEmail = userRepository.findByEmail(email).orElse(null);
+		return byEmail != null;
 	}
 
-	public boolean isExistEmail(String email) {
-		User byEmail = userRepository.findByEmail(email);
-		return byEmail != null;
+	public void save(User toUserEntity) {
+		userRepository.save(toUserEntity);
 	}
 }

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.starter.api.request.index.AddUserReq;
 import com.spring.starter.api.request.user.SingUpUserReq;
 import com.spring.starter.api.response.index.FindUserRes;
+import com.spring.starter.api.service.AreaService;
 import com.spring.starter.api.service.UserService;
 import com.spring.starter.common.model.BaseResponse;
+import com.spring.starter.db.entity.Area;
 import com.spring.starter.db.entity.User;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 
 	private final UserService userService;
-	// private final AreaService areaService;
+	private final AreaService areaService;
 
 	@PostMapping
 	public ResponseEntity<String> signUpUser(@Valid @RequestBody SingUpUserReq singUpUserReq) {
@@ -32,7 +34,12 @@ public class UserController {
 			return ResponseEntity.status(400).body("이미 존재하는 이메일입니다.");
 		}
 
-		// if (singUpUserReq.getArea_id() != null)
+		Area area = null;
+		if (singUpUserReq.getArea() != null) {
+			area = areaService.nameToArea(singUpUserReq.getArea());
+		}
+
+		userService.save(singUpUserReq.toUserEntity(area));
 
 		return ResponseEntity.status(201).body("회원가입에 성공하였습니다.");
 	}

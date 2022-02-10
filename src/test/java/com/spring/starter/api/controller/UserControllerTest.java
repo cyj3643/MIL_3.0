@@ -8,11 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.ResultMatcher;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.spring.starter.BaseTest;
-import com.spring.starter.api.request.index.AddUserReq;
+import com.spring.starter.api.request.user.SingUpUserReq;
 
 @DisplayName("User Controller Test")
 class UserControllerTest extends BaseTest {
@@ -21,15 +20,15 @@ class UserControllerTest extends BaseTest {
 	@DisplayName("유저 회원가입 (성공)")
 	void signupUser() throws Exception {
 		//Givne
-		AddUserReq addUserReq = new AddUserReq("효택", "gyxor8582@naver.com", "a123", 201721070, 1);
+		SingUpUserReq singUpUserReq = new SingUpUserReq("test@ajou.ac.kr", "testPwd", "testName", 201721070, 1, "game");
 
 		//When
 		ResultActions perform = this.mockMvc.perform(
-			post("/signup").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
-				.content(this.objectMapper.writeValueAsString(addUserReq)));
+			post("/user/signup").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
+				.content(this.objectMapper.writeValueAsString(singUpUserReq)));
 
 		//Then
-		perform.andExpect(status().isCreated())
-			.andExpect(jsonPath("msg").value("유저를 생성했습니다."));
+		perform.andExpect(status().isCreated());
 	}
+
 }

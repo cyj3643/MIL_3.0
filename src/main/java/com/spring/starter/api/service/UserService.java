@@ -2,7 +2,6 @@ package com.spring.starter.api.service;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.starter.api.request.index.AddUserReq;
 import com.spring.starter.db.entity.User;
 import com.spring.starter.db.repository.UserRepository;
 

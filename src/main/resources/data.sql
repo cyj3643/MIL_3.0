@@ -1,5 +1,5 @@
-INSERT INTO area (name) VALUES ('game') where not exists(select * from area where name = 'game');
-INSERT INTO area (name) VALUES ('design') where not exists(select * from area where name = 'design');
-INSERT INTO area (name) VALUES ('digital') where not exists(select * from area where name = 'digital');
-INSERT INTO area (name) VALUES ('visual') where not exists(select * from area where name = 'visual');
-INSERT INTO area (name) VALUES ('data') where not exists(select * from area where name = 'data');
+INSERT INTO area (name) SELECT ('game') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'game');
+INSERT INTO area (name) SELECT ('design') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'design');
+INSERT INTO area (name) SELECT ('digital') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'digital');
+INSERT INTO area (name) SELECT ('visual') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'visual');
+INSERT INTO area (name) SELECT ('data') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'data');

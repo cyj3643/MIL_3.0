@@ -19,7 +19,7 @@ class UserControllerTest extends BaseTest {
 	@Test
 	@DisplayName("유저 회원가입 (성공)")
 	void signupUser() throws Exception {
-		//Givne
+		//Given
 		SingUpUserReq singUpUserReq = new SingUpUserReq("test@ajou.ac.kr", "testPwd", "testName", 201721070, 1, "game");
 
 		//When

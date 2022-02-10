@@ -10,4 +10,6 @@ import com.spring.starter.db.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByName(String name);
+
+	User findByEmail(String email);
 }

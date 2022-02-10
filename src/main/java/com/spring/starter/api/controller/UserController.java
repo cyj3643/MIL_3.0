@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.starter.api.request.index.AddUserReq;
+import com.spring.starter.api.request.user.SingUpUserReq;
 import com.spring.starter.api.response.index.FindUserRes;
 import com.spring.starter.api.service.UserService;
 import com.spring.starter.common.model.BaseResponse;
@@ -22,16 +23,20 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 
 	private final UserService userService;
+	// private final AreaService areaService;
 
-	@GetMapping
-	public ResponseEntity<String> displayUserInfo(@RequestParam String name, @RequestParam String address) {
-		String userInfo = name
-			+ "님의 주소는 "
-			+ address
-			+ "입니다.";
+	@PostMapping
+	public ResponseEntity<String> signUpUser(@Valid @RequestBody SingUpUserReq singUpUserReq) {
+		// ToDo 1. 아이디 중복 확인
+		if (userService.isExistEmail(singUpUserReq.getEmail())) {
+			return ResponseEntity.status(400).body("이미 존재하는 이메일입니다.");
+		}
 
-		return ResponseEntity.status(200).body(userInfo);
+		// if (singUpUserReq.getArea_id() != null)
+
+		return ResponseEntity.status(201).body("회원가입에 성공하였습니다.");
 	}
+
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signupUser(@Valid @RequestBody AddUserReq userReq) {

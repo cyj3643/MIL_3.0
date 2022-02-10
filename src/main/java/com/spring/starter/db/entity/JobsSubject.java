@@ -26,5 +26,5 @@ public class JobsSubject extends BaseEntity{
 	@NotNull
 	@ManyToOne
 	@JoinColumn
-	Area area;
+	Jobs jobs;
 }

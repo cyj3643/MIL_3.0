@@ -14,6 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SingUpUserReq {
+	@NotNull
+	String userId;
+
 	@Email
 	@NotNull
 	String email;
@@ -25,21 +28,22 @@ public class SingUpUserReq {
 	String name;
 
 	@NotNull
-	Integer student_id;
+	Integer studentId;
 
 	@NotNull
 	Integer state;
 
 	String area;
 
-	public User toUserEntity(Area area) {
+	public User toUserEntity(Area area, String encode) {
 		return User.builder()
 			.name(name)
 			.email(email)
-			.password(password)
+			.password(encode)
 			.state(state)
-			.student_id(student_id)
+			.studentId(studentId)
 			.area(area)
+			.userId(userId)
 			.build();
 	}
 }

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -24,16 +25,21 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User extends BaseEntity {
 	@NotNull
+	@Column(unique = true)
+	String userId;
+
+	@NotNull
 	String name;
 
 	@NotNull
+	@Column(unique = true)
 	String email;
 
 	@NotNull
 	String password;
 
 	@NotNull
-	Integer student_id;
+	Integer studentId;
 
 	@NotNull
 	Integer state; // 0: 관리자, 1: 학생, 2: 멘토

@@ -28,8 +28,9 @@ public class UserController {
 	@PostMapping("/signup")
 	public ResponseEntity<String> signUpUser(@Valid @RequestBody SingUpUserReq singUpUserReq) {
 		if (userService.isExistEmail(singUpUserReq.getEmail()))
-			return ResponseEntity.status(400).body("이미 존재하는 이메일입니다.");
-
+			return ResponseEntity.status(409).body("이미 존재하는 이메일입니다.");
+		if (userService.isExistUserId(singUpUserReq.getUserId()))
+			return ResponseEntity.status(409).body("이미 존재하는 아이디입니다.");
 
 		Area area = null;
 		if (singUpUserReq.getArea() != null) {
@@ -38,7 +39,6 @@ public class UserController {
 				return ResponseEntity.status(400).body("Area의 값이 잘못됐습니다.");
 		}
 
-		// ToDo 비밀번호 암호화
 		// ToDo(천천히) 학생 Area -> 자동화
 		String encode = passwordEncoder.encode(singUpUserReq.getPassword());
 		userService.save(singUpUserReq.toUserEntity(area, encode));

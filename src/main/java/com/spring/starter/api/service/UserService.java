@@ -21,4 +21,9 @@ public class UserService {
 	public void save(User toUserEntity) {
 		userRepository.save(toUserEntity);
 	}
+
+	public boolean isExistUserId(String userId) {
+		User byUserId = userRepository.findByUserId(userId).orElse(null);
+		return byUserId != null;
+	}
 }

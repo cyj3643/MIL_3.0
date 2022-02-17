@@ -17,18 +17,11 @@ import com.spring.starter.api.request.user.SingUpUserReq;
 @DisplayName("User Controller Test")
 class UserControllerTest extends BaseTest {
 
-	private final PasswordEncoder passwordEncoder;
-
-	public UserControllerTest(PasswordEncoder passwordEncoder) {
-		this.passwordEncoder = passwordEncoder;
-	}
-
 	@Test
 	@DisplayName("유저 회원가입 (성공)")
 	void signupUser() throws Exception {
 		//Given
-		String testPwd = passwordEncoder.encode("testPwd");
-		SingUpUserReq singUpUserReq = new SingUpUserReq("testUserId","test@ajou.ac.kr", testPwd, "testName", 201721070, 1, "game");
+		SingUpUserReq singUpUserReq = new SingUpUserReq("testUserId","test@ajou.ac.kr", "testPwd", "testName", 201721070, 1, "game");
 
 		//When
 		ResultActions perform = this.mockMvc.perform(

@@ -10,7 +10,7 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     defer-datasource-initialization: true
 
   sql:
@@ -30,7 +30,3 @@ spring:
   config:
     activate:
       on-profile: "prod"
-
-server.ssl.key-store: keystore.p12
-server.ssl.key-store-password: ENC(0bK1+y9RglKiVtVsGYjTnKWrnWqSr/Ke)
-server.ssl.keyStoreType: PKCS12

@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.SingUpUserReq;
 import com.spring.starter.api.service.AreaService;
 import com.spring.starter.api.service.UserService;
+import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Area;
 
 import lombok.RequiredArgsConstructor;
@@ -44,6 +46,12 @@ public class UserController {
 		userService.save(singUpUserReq.toUserEntity(area, encode));
 
 		return ResponseEntity.status(201).body("회원가입에 성공하였습니다.");
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<? extends BaseResponse> login(@Valid @RequestBody LoginReq loginReq) {
+		System.out.println(loginReq);
+		return null;
 	}
 
 }

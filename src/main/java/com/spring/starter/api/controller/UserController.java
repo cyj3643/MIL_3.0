@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.SingUpUserReq;
 import com.spring.starter.api.service.AreaService;
+import com.spring.starter.api.service.JwtService;
 import com.spring.starter.api.service.UserService;
 import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Area;
@@ -27,6 +28,7 @@ public class UserController {
 	private final UserService userService;
 	private final AreaService areaService;
 	private final PasswordEncoder passwordEncoder;
+	private final JwtService jwtService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signUpUser(@Valid @RequestBody SingUpUserReq singUpUserReq) {
@@ -52,9 +54,15 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<? extends BaseResponse> login(@Valid @RequestBody LoginReq loginReq) {
 		User byId = userService.findById(loginReq.getUserId());
+
+		if (byId == null) {
+			return ResponseEntity.status(400).body(new BaseResponse("존재하지 않는 아이디입니다.", 400));
+		}
+
 		if (!passwordEncoder.matches(loginReq.getPassword(), byId.getPassword())) {
 			return ResponseEntity.status(400).body(new BaseResponse("비밀번호가 일치하지 않습니다.", 400));
 		}
+
 		return null;
 	}
 

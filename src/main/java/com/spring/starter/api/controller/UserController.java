@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.SingUpUserReq;
+import com.spring.starter.api.response.index.LoginRes;
 import com.spring.starter.api.service.AreaService;
 import com.spring.starter.api.service.JwtService;
 import com.spring.starter.api.service.UserService;
@@ -63,7 +64,10 @@ public class UserController {
 			return ResponseEntity.status(400).body(new BaseResponse("비밀번호가 일치하지 않습니다.", 400));
 		}
 
-		return null;
+		// ToDo Auth 테이블과 인터셉터 관리
+		String accessToken = jwtService.generateJwtToken(byId);
+		String refreshToken = jwtService.saveRefreshToken(byId);
+		return ResponseEntity.status(201).body(new LoginRes("로그인을 성공적으로 했습니다.", 201, accessToken, refreshToken));
 	}
 
 }

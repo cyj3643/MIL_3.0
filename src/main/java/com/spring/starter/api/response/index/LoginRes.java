@@ -2,8 +2,9 @@ package com.spring.starter.api.response.index;
 
 import com.spring.starter.common.model.BaseResponse;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 public class LoginRes extends BaseResponse {
 	String accessToken;
 	String refreshToken;

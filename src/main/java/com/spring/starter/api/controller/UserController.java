@@ -71,6 +71,10 @@ public class UserController {
 			return ResponseEntity.status(400).body(new BaseResponse("비밀번호가 일치하지 않습니다.", 400));
 		}
 
+		/*
+		변경
+		 */
+
 		// ToDo Auth 테이블과 인터셉터 관리
 		String accessToken = jwtService.generateJwtToken(byId);
 		String refreshToken = jwtService.saveRefreshToken(byId);

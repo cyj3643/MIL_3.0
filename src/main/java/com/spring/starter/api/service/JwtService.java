@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spring.starter.db.entity.User;
@@ -22,8 +23,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtService {
 
 	//ToDo application.yml로 빼기
-	private final String SECRET_KEY = "secretKey";
-	private final String REFRESH_KEY = "refreshKey";
+	// 세션과 jwt의 차이점을 알면 좋다!
+	@Value("${secretKey}")
+	private String SECRET_KEY;
+	@Value("${secretKey}")
+	private String REFRESH_KEY;
 	private final String DATA_KEY = "userId";
 
 	public String generateJwtToken(User usersEntity) {

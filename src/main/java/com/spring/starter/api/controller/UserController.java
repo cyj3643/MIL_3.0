@@ -1,9 +1,15 @@
 package com.spring.starter.api.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +27,7 @@ import com.spring.starter.db.entity.User;
 
 import lombok.RequiredArgsConstructor;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserController {
@@ -34,6 +40,7 @@ public class UserController {
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signUpUser(@Valid @RequestBody SingUpUserReq singUpUserReq) {
 		if (userService.isExistEmail(singUpUserReq.getEmail()))
+			// 200, 201, 400, 401, 403, 409, 500
 			return ResponseEntity.status(409).body(new BaseResponse("이미 존재하는 이메일입니다.", 409));
 		if (userService.isExistUserId(singUpUserReq.getUserId()))
 			return ResponseEntity.status(409).body(new BaseResponse("이미 존재하는 아이디입니다.", 409));

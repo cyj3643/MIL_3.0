@@ -24,6 +24,9 @@ logging:
         web:
           filter: DEBUG
 
+refreshKey: sdfhajks1u8924371389
+secretKey: sdjhfklashjf8927431892jnjksdah
+
 ---
 
 spring:

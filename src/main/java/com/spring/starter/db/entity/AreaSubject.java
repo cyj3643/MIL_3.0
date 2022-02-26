@@ -1,6 +1,7 @@
 package com.spring.starter.db.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -19,12 +20,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AreaSubject extends BaseEntity{
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	Subject subject;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	Area area;
 

@@ -1,6 +1,7 @@
 package com.spring.starter.db.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ public class ProjectFile extends BaseEntity{
 	@NotNull
 	private Integer division;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Project project;
 

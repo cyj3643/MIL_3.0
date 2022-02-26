@@ -29,13 +29,12 @@ logging:
         web:
           filter: DEBUG
 
+refreshKey: sdfhajks1u8924371389
+secretKey: sdjhfklashjf8927431892jnjksdah
+
 ---
 
 spring:
   config:
     activate:
       on-profile: "prod"
-
-server.ssl.key-store: keystore.p12
-server.ssl.key-store-password: ENC(0bK1+y9RglKiVtVsGYjTnKWrnWqSr/Ke)
-server.ssl.keyStoreType: PKCS12

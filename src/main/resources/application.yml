@@ -21,6 +21,17 @@ spring:
   sql:
     init:
       mode: always
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ajouwithme.gmail.com
+    password: dxxxtbwbprqnhywq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 logging:
   level:
@@ -31,6 +42,7 @@ logging:
 
 refreshKey: sdfhajks1u8924371389
 secretKey: sdjhfklashjf8927431892jnjksdah
+
 
 ---
 

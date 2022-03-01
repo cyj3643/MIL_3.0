@@ -26,8 +26,15 @@ public class Area extends BaseEntity{
 	@NotNull
 	String name;
 
-	@OneToOne(mappedBy = "area")
-	User user;
+	@OneToMany(mappedBy = "area", cascade = CascadeType.PERSIST)
+	List<User> userList;
+	public void addUser(User user) {
+		if (this.userList == null) {
+			this.userList = new LinkedList<>();
+		}
+		this.userList.add(user);
+		user.setArea(this);
+	}
 
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
 	List<AreaSubject> areaSubjectList;
@@ -49,8 +56,4 @@ public class Area extends BaseEntity{
 		amam.setArea(this);
 	}
 
-	@PreRemove
-	void setUserNull() {
-		this.user.setArea(null);
-	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -44,7 +45,7 @@ public class User extends BaseEntity {
 	@NotNull
 	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn
 	Area area;
 
@@ -57,4 +58,7 @@ public class User extends BaseEntity {
 		this.amamList.add(amam);
 		amam.setUser(this);
 	}
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	FindPwd findPwd;
 }

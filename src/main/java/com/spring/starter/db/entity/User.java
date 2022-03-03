@@ -3,6 +3,7 @@ package com.spring.starter.db.entity;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,8 +43,11 @@ public class User extends BaseEntity {
 	@NotNull
 	Integer studentId;
 
-	@NotNull
-	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
+	//	@NotNull
+//	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
+	@Column(name = "user_role")
+	@Enumerated(EnumType.STRING)
+	private Authority authority;
 
 	@ManyToOne
 	@JoinColumn

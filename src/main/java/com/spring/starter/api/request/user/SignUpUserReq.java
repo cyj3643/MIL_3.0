@@ -1,9 +1,12 @@
 package com.spring.starter.api.request.user;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.spring.starter.db.entity.Area;
+import com.spring.starter.db.entity.Authority;
 import com.spring.starter.db.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SingUpUserReq {
+public class SignUpUserReq {
 	@NotNull
 	String userId;
 
@@ -30,8 +33,10 @@ public class SingUpUserReq {
 	@NotNull
 	Integer studentId;
 
-	@NotNull
-	Integer state;
+//	@NotNull
+//	Integer state;
+	@Enumerated(EnumType.STRING)
+	private Authority authority;
 
 	String area;
 
@@ -40,7 +45,7 @@ public class SingUpUserReq {
 			.name(name)
 			.email(email)
 			.password(encode)
-			.state(state)
+			.authority(authority)
 			.studentId(studentId)
 			.area(area)
 			.userId(userId)

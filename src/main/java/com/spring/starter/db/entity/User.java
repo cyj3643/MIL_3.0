@@ -38,6 +38,7 @@ public class User extends BaseEntity {
 
 	//	@NotNull
 //	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
+	@Column(name = "user_role")
 	@Enumerated(EnumType.STRING)
 	private Authority authority;
 

@@ -1,14 +1,14 @@
 spring:
   datasource:
 #    #TODO 운영에선 mysql
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    password: 1234
-#    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-#    username: root
-    driver-class-name: org.mariadb.jdbc.Driver
-    password: kjy8644@
-    url: jdbc:mariadb://localhost:3306/ajou_test?characterEncoding=UTF-8&serverTimezone=UTC
-    username: myadmin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 1234
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    password: kjy8644@
+#    url: jdbc:mariadb://localhost:3306/ajou_test?characterEncoding=UTF-8&serverTimezone=UTC
+#    username: myadmin
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -21,6 +21,17 @@ spring:
   sql:
     init:
       mode: always
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ajouwithme@gmail.com
+    password: ENC(vtQWfKf0nw1YGMvjUcLctu9uuUmZYp8fLC1FdbEqOho=)
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 logging:
   level:
@@ -29,8 +40,12 @@ logging:
         web:
           filter: DEBUG
 
-refreshKey: sdfhajks1u8924371389
-secretKey: sdjhfklashjf8927431892jnjksdah
+refreshKey: ENC(b9WjPe3twebSpmOd8WIv8I8QqORGLWfbBP8v5mgkdPk=)
+secretKey: ENC(wd+V9s5PRz1bDmHTDwBNLKvRfCAXHa/QmoBJeWImZd/Hdkd3e/Ysbw==)
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
 
 ---
 

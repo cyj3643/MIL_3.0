@@ -1,6 +1,5 @@
 package com.spring.starter.config.security;
 
-import org.apache.catalina.security.SecurityUtil;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;

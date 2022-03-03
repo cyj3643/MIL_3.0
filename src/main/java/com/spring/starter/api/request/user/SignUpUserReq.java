@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SingUpUserReq {
+public class SignUpUserReq {
 	@NotNull
 	String userId;
 

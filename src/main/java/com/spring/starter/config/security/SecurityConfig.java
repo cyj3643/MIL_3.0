@@ -1,18 +1,13 @@
 package com.spring.starter.config.security;
 
 import com.spring.starter.config.jwt.TokenProvider;
-import com.spring.starter.filter.CustomAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -47,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// 로그인, 회원가입 API 는 토큰이 없는 상태에서 요청이 들어오기 때문에 permitAll 설정
 				.and()
 				.authorizeRequests()
-				.antMatchers("/user/login", "/user/signup").permitAll()
+				.antMatchers("/user/login","/user/signup","/user/reissue").permitAll()
 				.anyRequest().authenticated() // 나머지 API 는 전부 인증 필요
 
 				// JwtFilter 를 addFilterBefore 로 등록했던 JwtSecurityConfig 클래스 적용

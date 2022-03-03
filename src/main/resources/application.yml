@@ -17,6 +17,9 @@ spring:
     hibernate:
       ddl-auto: update
     defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
 
   sql:
     init:
@@ -28,11 +31,12 @@ logging:
       springframework:
         web:
           filter: DEBUG
+      hibernate.type: trace
 
 #refreshKey: sdfhajks1u8924371389
 #secretKey: sdjhfklashjf8927431892jnjksdah
 jwt:
-  secret: qwerzxcv
+  secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK
 
 ---
 

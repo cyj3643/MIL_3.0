@@ -8,6 +8,7 @@ import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
 import com.spring.starter.db.entity.RefreshToken;
 import com.spring.starter.db.repository.RefreshTokenRepository;
+import io.jsonwebtoken.JwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -80,7 +81,7 @@ public class UserService {
 	public TokenDto reissue(TokenRequestDto tokenRequestDto) {
 		// 1. Refresh Token 검증
 		if (!tokenProvider.validateToken(tokenRequestDto.getRefreshToken())) {
-			throw new RuntimeException("Refresh Token 이 유효하지 않습니다.");
+			throw new JwtException("Refresh Token 이 유효하지 않습니다.");
 		}
 
 		// 2. Access Token 에서 User Id 가져오기
@@ -88,11 +89,11 @@ public class UserService {
 
 		// 3. 저장소에서 User Id 를 기반으로 Refresh Token 값 가져옴
 		RefreshToken refreshToken = refreshTokenRepository.findByRefreshKey(authentication.getName())
-				.orElseThrow(() -> new RuntimeException("로그아웃 된 사용자입니다."));
+				.orElseThrow(() -> new JwtException("로그아웃 된 사용자입니다."));
 
 		// 4. Refresh Token 일치하는지 검사
 		if (!refreshToken.getRefreshValue().equals(tokenRequestDto.getRefreshToken())) {
-			throw new RuntimeException("토큰의 유저 정보가 일치하지 않습니다.");
+			throw new JwtException("토큰의 유저 정보가 일치하지 않습니다.");
 		}
 
 		// 5. 새로운 토큰 생성

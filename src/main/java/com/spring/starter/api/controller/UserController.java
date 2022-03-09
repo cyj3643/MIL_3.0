@@ -34,7 +34,6 @@ public class UserController {
 	private final UserService userService;
 	private final AreaService areaService;
 	private final PasswordEncoder passwordEncoder;
-//	private final JwtService jwtService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signUpUser(@Valid @RequestBody SignUpUserReq singUpUserReq) {
@@ -69,11 +68,6 @@ public class UserController {
 		if (!passwordEncoder.matches(loginReq.getPassword(), byId.getPassword())) {
 			return ResponseEntity.status(400).body(new BaseResponse("비밀번호가 일치하지 않습니다.", 400));
 		}
-
-
-//		// ToDo Auth 테이블과 인터셉터 관리
-//		String accessToken = jwtService.generateJwtToken(byId);
-//		String refreshToken = jwtService.saveRefreshToken(byId);
 
 		TokenDto tokenDto = userService.createToken(loginReq);
 		return ResponseEntity.status(201).body(new LoginRes("로그인을 성공적으로 했습니다.", 201, tokenDto.getAccessToken(), tokenDto.getRefreshToken()));

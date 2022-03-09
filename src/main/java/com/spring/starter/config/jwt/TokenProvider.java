@@ -25,8 +25,11 @@ public class TokenProvider {
 
     private static final String AUTHORITIES_KEY = "auth";
     private static final String BEARER_TYPE = "Bearer";
-    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 10;// 10분
-    private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24;  // 1일
+    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 30 * 1;// 30초
+//    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 10;// 10분
+    private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 1;  // 1분
+//    private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24;  // 1일
+    public static Integer exception;
 
     private final Key key;
 
@@ -93,12 +96,16 @@ public class TokenProvider {
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             log.info("잘못된 JWT 서명입니다.");
+            exception = 0;
         } catch (ExpiredJwtException e) {
             log.info("만료된 JWT 토큰입니다.");
+            exception = 1;
         } catch (UnsupportedJwtException e) {
             log.info("지원되지 않는 JWT 토큰입니다.");
+            exception = 2;
         } catch (IllegalArgumentException e) {
             log.info("JWT 토큰이 잘못되었습니다.");
+            exception = 3;
         }
         return false;
     }

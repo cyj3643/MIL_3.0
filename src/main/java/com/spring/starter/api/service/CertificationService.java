@@ -27,4 +27,11 @@ public class CertificationService {
 		return code;
 	}
 
+	public boolean matchCode(String email, String code) {
+		Certification byEmail = certificationRepository.findByEmail(email);
+		if (byEmail == null || !byEmail.getCode().equals(code))
+			return false;
+		return true;
+	}
+
 }

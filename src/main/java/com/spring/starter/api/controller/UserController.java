@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import com.spring.starter.api.request.user.CertificationReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
+import com.spring.starter.api.request.user.VerifyCodeReq;
 import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.api.response.index.TokenResponseDto;
 import com.spring.starter.api.service.CertificationService;
@@ -103,4 +104,11 @@ public class UserController {
 		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
 	}
 
+	@PostMapping("/verification")
+	public ResponseEntity<? extends BaseResponse> verifyCertification(@RequestBody VerifyCodeReq verifyCodeReq) {
+		if (certificationService.matchCode(verifyCodeReq.getEmail(), verifyCodeReq.getCode())) {
+			return ResponseEntity.status(200).body(new BaseResponse("인증을 성공했습니다.", 200));
+		}
+		return ResponseEntity.status(200).body(new BaseResponse("인증을 실패했습니다.", 400));
+	}
 }

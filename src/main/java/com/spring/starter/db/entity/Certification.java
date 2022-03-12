@@ -4,9 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 // 비밀번호 찾기를 위한 엔티티
 @Entity
-public class FindPwd extends BaseEntity{
+@AllArgsConstructor
+@NoArgsConstructor
+public class Certification extends BaseEntity{
 	String code;
 
 	@OneToOne

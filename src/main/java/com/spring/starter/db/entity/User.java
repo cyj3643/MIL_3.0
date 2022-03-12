@@ -64,5 +64,5 @@ public class User extends BaseEntity {
 	}
 
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-	FindPwd findPwd;
+	Certification certification;
 }

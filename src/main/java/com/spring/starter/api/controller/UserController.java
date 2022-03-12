@@ -9,6 +9,7 @@ import com.spring.starter.api.request.user.CertificationReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.api.response.index.TokenResponseDto;
+import com.spring.starter.api.service.CertificationService;
 import com.spring.starter.api.service.MailService;
 import com.spring.starter.common.util.RandomCodeUtil;
 import com.spring.starter.config.jwt.TokenDto;
@@ -41,6 +42,7 @@ public class UserController {
 	private final AreaService areaService;
 	private final PasswordEncoder passwordEncoder;
 	private final MailService mailService;
+	private final CertificationService certificationService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signUpUser(@Valid @RequestBody SignUpUserReq singUpUserReq) {
@@ -96,7 +98,7 @@ public class UserController {
 	@PostMapping("/certification")
 	public ResponseEntity<? extends BaseResponse> sendEmailCertification(@RequestBody CertificationReq certificationReq) throws
 		MessagingException {
-		String code = RandomCodeUtil.makeRandomCode(7);
+		String code = certificationService.saveCertification(certificationReq.getEmail());
 		mailService.sendCertificationMail(certificationReq.getEmail(), code);
 		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
 	}

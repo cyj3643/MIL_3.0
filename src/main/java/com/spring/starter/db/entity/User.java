@@ -62,7 +62,4 @@ public class User extends BaseEntity {
 		this.amamList.add(amam);
 		amam.setUser(this);
 	}
-
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-	Certification certification;
 }

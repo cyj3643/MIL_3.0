@@ -1,7 +1,10 @@
 package com.spring.starter.api.controller;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
+import com.spring.starter.api.request.user.CertificationReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.api.response.index.TokenResponseDto;
@@ -84,6 +87,13 @@ public class UserController {
 
 		TokenDto newToken = userService.reissue(tokenRequestDto);
 		return ResponseEntity.status(201).body(new TokenResponseDto(newToken.getAccessToken(), newToken.getRefreshToken()));
+	}
+
+	@PostMapping("/certification")
+	public ResponseEntity<? extends BaseResponse> sendEmailCertification(@RequestBody CertificationReq certificationReq) {
+		// int start = (int) (Math.random() * 27);
+		// String code = UUID.randomUUID().toString().replace("-", "").substring(start, start + 6);
+		return null;
 	}
 
 }

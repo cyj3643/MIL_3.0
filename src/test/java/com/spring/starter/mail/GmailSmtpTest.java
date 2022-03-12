@@ -15,9 +15,9 @@ public class GmailSmtpTest extends BaseTest {
 		this.mailService = mailService;
 	}
 
-	@Test
-	@DisplayName("SMTP 테스트 - 발송 테스트")
-	void sendMail() {
-		mailService.sendMail();
-	}
+	// @Test
+	// @DisplayName("SMTP 테스트 - 발송 테스트")
+	// void sendMail() {
+	// 	// mailService.sendMail();
+	// }
 }

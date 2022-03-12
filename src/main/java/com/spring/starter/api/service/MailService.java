@@ -1,10 +1,17 @@
 package com.spring.starter.api.service;
 
 import java.util.ArrayList;
+import java.util.UUID;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import com.spring.starter.common.util.mail.MailForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,18 +21,19 @@ public class MailService {
 
 	private final JavaMailSender javaMailSender;
 
-	//ToDo 현재 테스트 코드용으로 수신자를 고정했음 -> 비지니스 로직에 맞춰서 수정
-	public void sendMail() {
-		ArrayList<String> toUserList = new ArrayList<>();
-		toUserList.add("gyxor8582@ajou.ac.kr");
+	public void sendCertificationMail(String email, String code) throws MessagingException {
+		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+		MailForm mailForm = new MailForm();
+		String mailContent = mailForm.getCertificationCodeMail(code);
 
-		simpleMailMessage.setTo(toUserList.toArray(new String[0]));
-		simpleMailMessage.setSubject("test mail");
-		simpleMailMessage.setText("test content");
+		helper.setFrom("MIL"); //보내는사람
+		helper.setTo(email); //받는사람
+		helper.setSubject("[MIL] MIL 회원가입 이메일 인증코드입니다."); //메일제목
+		helper.setText(mailContent, true); //ture넣을경우 html
 
-		javaMailSender.send(simpleMailMessage);
+		javaMailSender.send(mimeMessage);
 	}
 
 }

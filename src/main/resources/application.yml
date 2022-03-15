@@ -68,6 +68,8 @@ cloud:
     stack:
       auto: false
 
+aws:
+  url: ENC(QMJHMtd99HzShOywqzyzDE1MlC+avhqYkkNboHbJv7luNojIFgIkJItQxu+P0shxnZCs4tAG+uFShIgor+Q+hw==)
 
 ---
 

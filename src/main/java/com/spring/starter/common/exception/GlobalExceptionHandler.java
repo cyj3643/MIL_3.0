@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.spring.starter.common.model.BaseResponse;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @Slf4j
 @RestControllerAdvice
@@ -34,6 +35,11 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = JwtException.class)
 	public ResponseEntity<BaseResponse> handleJwtException(Exception e) {
 		return ResponseEntity.status(401).body(new BaseResponse(e.getMessage(), 401));
+	}
+
+	@ExceptionHandler(value = MaxUploadSizeExceededException.class)
+	public ResponseEntity<BaseResponse> handleSizeExceededException(Exception e) {
+		return ResponseEntity.status(400).body(new BaseResponse("용량은 10MB 까지 가능합니다!", 400));
 	}
 }
 

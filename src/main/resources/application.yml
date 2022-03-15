@@ -21,6 +21,11 @@ spring:
       hibernate:
         format_sql: true
 
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
   sql:
     init:
       mode: always
@@ -44,16 +49,25 @@ logging:
           filter: DEBUG
       hibernate.type: trace
 
-#refreshKey: sdfhajks1u8924371389
-#secretKey: sdjhfklashjf8927431892jnjksdah
 jwt:
-  secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK
-refreshKey: ENC(b9WjPe3twebSpmOd8WIv8I8QqORGLWfbBP8v5mgkdPk=)
-secretKey: ENC(wd+V9s5PRz1bDmHTDwBNLKvRfCAXHa/QmoBJeWImZd/Hdkd3e/Ysbw==)
+  secret: ENC(ZDLPHyvd1oCQRuos3ITfyhXrM8SmFiFiXCrYj0y3jSIAafMLCSW5RfCAT1xhrq/73tWvWyEIDNT6TVkaDKDI2nc30GUTA1fjnPDjCwelhQAANthObehUXQx7nb21q7gNo1gvKIkQo+4x5LQfJOm5zg==)
 
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+
+cloud:
+  aws:
+    credentials:
+      access-key: ENC(Swj3haOS9jcyB08HXkM3unIunc3JBPK4hjFC3lLQq1U=)
+      secret-key: ENC(D2Tbkf6wQUvg9ipCy5h98AbsGADv3aGGmFJNtd8HjYYtgrxv+fGmZKxJwlTrbCFxDjaNtVzINck=)
+    s3:
+      bucket: ENC(jCRxzrwjPMv73k/XzDO0zmI+fexLqKvC)
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
 
 ---
 

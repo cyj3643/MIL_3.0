@@ -54,7 +54,8 @@ public class S3Service {
         metadata.setContentType(file.getContentType());
         S3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), metadata)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
-        return S3Client.getUrl(bucket, fileName).toString();
+        String substring = fileName.substring(fileName.lastIndexOf("/") + 1);
+        return substring;
     }
 
 

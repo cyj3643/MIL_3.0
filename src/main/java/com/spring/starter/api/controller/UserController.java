@@ -6,6 +6,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import com.spring.starter.api.request.user.CertificationReq;
+import com.spring.starter.api.request.user.ChangePwdReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.request.user.VerifyCodeReq;
 import com.spring.starter.api.response.index.InfoDto;
@@ -118,5 +119,11 @@ public class UserController {
 		String code = certificationService.saveCertification(certificationReq.getEmail());
 		mailService.sendChangePwdCertificationMail(certificationReq.getEmail(), code);
 		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
+	}
+
+	@PostMapping("change/pwd")
+	public ResponseEntity<? extends BaseResponse> changePwd(@RequestBody ChangePwdReq changePwdReq) {
+		userService.changePassword(changePwdReq.getUserId(), changePwdReq.getPassword());
+		return ResponseEntity.status(201).body(new BaseResponse("비밀번호 변경을 완료했습니다.", 201));
 	}
 }

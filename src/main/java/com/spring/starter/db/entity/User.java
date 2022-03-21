@@ -61,4 +61,8 @@ public class User extends BaseEntity {
 		this.amamList.add(amam);
 		amam.setUser(this);
 	}
+
+	public void updatePassword(String password) {
+		this.password = password;
+	}
 }

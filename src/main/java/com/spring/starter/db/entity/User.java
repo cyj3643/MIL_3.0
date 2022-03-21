@@ -43,8 +43,7 @@ public class User extends BaseEntity {
 	@NotNull
 	Integer studentId;
 
-	//	@NotNull
-//	Integer state; // 0: 관리자, 1: 학생, 2: 멘토
+//	ROLE_USER, ROLE_MENTOR, ROLE_ADMIN
 	@Column(name = "user_role")
 	@Enumerated(EnumType.STRING)
 	private Authority authority;

@@ -96,11 +96,11 @@ public class UserController {
 		return ResponseEntity.status(201).body(new TokenResponseDto(newToken.getAccessToken(), newToken.getRefreshToken()));
 	}
 
-	@PostMapping("/certification")
+	@PostMapping("/certification/signup")
 	public ResponseEntity<? extends BaseResponse> sendEmailCertification(@RequestBody CertificationReq certificationReq) throws
 		MessagingException {
 		String code = certificationService.saveCertification(certificationReq.getEmail());
-		mailService.sendCertificationMail(certificationReq.getEmail(), code);
+		mailService.sendSignUpCertificationMail(certificationReq.getEmail(), code);
 		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
 	}
 
@@ -110,5 +110,13 @@ public class UserController {
 			return ResponseEntity.status(200).body(new BaseResponse("인증을 성공했습니다.", 200));
 		}
 		return ResponseEntity.status(200).body(new BaseResponse("인증을 실패했습니다.", 400));
+	}
+
+	@PostMapping("/certification/change-pwd")
+	public ResponseEntity<? extends BaseResponse> sendEmailChangePwdCertification(@RequestBody CertificationReq certificationReq) throws
+		MessagingException {
+		String code = certificationService.saveCertification(certificationReq.getEmail());
+		mailService.sendChangePwdCertificationMail(certificationReq.getEmail(), code);
+		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
 	}
 }

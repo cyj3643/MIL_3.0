@@ -121,7 +121,7 @@ public class UserController {
 		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
 	}
 
-	@PostMapping("change/pwd")
+	@PostMapping("change/password")
 	public ResponseEntity<? extends BaseResponse> changePwd(@RequestBody ChangePwdReq changePwdReq) {
 		userService.changePassword(changePwdReq.getUserId(), changePwdReq.getPassword());
 		return ResponseEntity.status(201).body(new BaseResponse("비밀번호 변경을 완료했습니다.", 201));

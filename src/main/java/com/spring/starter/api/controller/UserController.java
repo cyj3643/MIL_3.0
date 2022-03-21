@@ -1,10 +1,18 @@
 package com.spring.starter.api.controller;
 
+import java.util.UUID;
+
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
+import com.spring.starter.api.request.user.CertificationReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
+import com.spring.starter.api.request.user.VerifyCodeReq;
 import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.api.response.index.TokenResponseDto;
+import com.spring.starter.api.service.CertificationService;
+import com.spring.starter.api.service.MailService;
+import com.spring.starter.common.util.RandomCodeUtil;
 import com.spring.starter.config.jwt.TokenDto;
 import com.spring.starter.config.security.SecurityUtil;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +42,8 @@ public class UserController {
 	private final UserService userService;
 	private final AreaService areaService;
 	private final PasswordEncoder passwordEncoder;
+	private final MailService mailService;
+	private final CertificationService certificationService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<? extends BaseResponse> signUpUser(@Valid @RequestBody SignUpUserReq singUpUserReq) {
@@ -86,4 +96,19 @@ public class UserController {
 		return ResponseEntity.status(201).body(new TokenResponseDto(newToken.getAccessToken(), newToken.getRefreshToken()));
 	}
 
+	@PostMapping("/certification")
+	public ResponseEntity<? extends BaseResponse> sendEmailCertification(@RequestBody CertificationReq certificationReq) throws
+		MessagingException {
+		String code = certificationService.saveCertification(certificationReq.getEmail());
+		mailService.sendCertificationMail(certificationReq.getEmail(), code);
+		return ResponseEntity.status(201).body(new BaseResponse("인증코드 발송을 완료했습니다.", 201));
+	}
+
+	@PostMapping("/verification")
+	public ResponseEntity<? extends BaseResponse> verifyCertification(@RequestBody VerifyCodeReq verifyCodeReq) {
+		if (certificationService.matchCode(verifyCodeReq.getEmail(), verifyCodeReq.getCode())) {
+			return ResponseEntity.status(200).body(new BaseResponse("인증을 성공했습니다.", 200));
+		}
+		return ResponseEntity.status(200).body(new BaseResponse("인증을 실패했습니다.", 400));
+	}
 }

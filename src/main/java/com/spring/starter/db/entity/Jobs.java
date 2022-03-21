@@ -1,5 +1,6 @@
 package com.spring.starter.db.entity;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,5 +33,16 @@ public class Jobs extends BaseEntity{
 		}
 		this.jobsSubjectList.add(jobsSubject);
 		jobsSubject.setJobs(this);
+	}
+
+	@OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
+	List<Project> projectList;
+
+	public void addProjectList(Project project) {
+		if (this.projectList == null) {
+			this.projectList = new ArrayList<>();
+		}
+		this.projectList.add(project);
+		project.setJobs(this);
 	}
 }

@@ -1,13 +1,9 @@
 package com.spring.starter.db.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.spring.starter.api.response.index.AMAMBoardDto;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;

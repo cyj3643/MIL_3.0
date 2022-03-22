@@ -45,14 +45,14 @@ public class Subject extends BaseEntity{
 		jobsSubject.setSubject(this);
 	}
 
-	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
-	List<Project> projectList;
-	public void addProject(Project project) {
-		if (this.projectList == null) {
-			this.projectList = new LinkedList<>();
-		}
-		this.projectList.add(project);
-		project.setSubject(this);
-	}
+//	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+//	List<Project> projectList;
+//	public void addProject(Project project) {
+//		if (this.projectList == null) {
+//			this.projectList = new LinkedList<>();
+//		}
+//		this.projectList.add(project);
+//		project.setSubject(this);
+//	}
 
 }

@@ -6,10 +6,12 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import lombok.Setter;
+import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 @Entity
 @Setter
+@Getter
 public class Project extends BaseEntity{
 	// 작품명
 	@NotNull
@@ -25,13 +27,19 @@ public class Project extends BaseEntity{
 	@NotNull
 	private String description;
 
-	// 연관 과목
+//	// 연관 과목
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn
+//	private Subject subject;
+
+	// 연관 직업
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
-	private Subject subject;
+	private Jobs jobs;
 
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	List<ProjectFile> projectFileList;
+
 	public void addProjectFile(ProjectFile projectFile) {
 		if (this.projectFileList == null) {
 			this.projectFileList = new LinkedList<>();

@@ -1,6 +1,7 @@
 package com.spring.starter.api.controller;
 
 import com.spring.starter.api.request.user.PostamamReq;
+import com.spring.starter.api.request.user.ModifyamamReq;
 import com.spring.starter.api.service.AMAMService;
 import com.spring.starter.common.model.BaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +27,17 @@ public class AMAMController {
     }
 
     @GetMapping("/board")
-    public ResponseEntity GetAllAMAM(@Valid Pageable pageable){
+    public ResponseEntity AMAMList(@Valid Pageable pageable){
         return ResponseEntity.status(201).body(amamService.get_all(pageable));
     }
 
     @GetMapping("/board/{title}")
-    public ResponseEntity GetAMAM(@Valid @PathVariable(value = "title") String title){
+    public ResponseEntity AMAMDetatils(@Valid @PathVariable(value = "title") String title){
         return ResponseEntity.status(201).body(amamService.get_content(title));
     }
 
     @GetMapping("/board/area/{areaname}")
-    public ResponseEntity GetAreaAMAM(@Valid Pageable pageable, @PathVariable (value = "areaname")String areaName){
+    public ResponseEntity AMAMAreaList(@Valid Pageable pageable, @PathVariable (value = "areaname")String areaName){
         return ResponseEntity.status(201).body(amamService.getarea_all(areaName,pageable));
     }
 

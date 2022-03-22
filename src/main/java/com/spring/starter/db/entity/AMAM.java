@@ -60,4 +60,10 @@ public class AMAM extends BaseEntity{
 		this.viewCount++;
 	}
 
+	public void modifyAMAM(String title, Area area, String content){
+		this.title = title;
+		this.createdAt = new Date();
+		this.content = content;
+		this.area = area;
+	}
 }

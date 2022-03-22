@@ -45,4 +45,14 @@ public class AMAMController {
                                            @RequestParam (value = "keyword") String keyword){
         return ResponseEntity.status(201).body(amamService.getAMAMByKeword(pageable,section,keyword));
     }
+
+    @PutMapping("/board/{title}")
+    public ResponseEntity<? extends BaseResponse> AMAMModify(@Valid @RequestHeader(value = "AccessToken") String accessToken,
+                                                             @PathVariable (value = "title") String title,
+                                                             @RequestBody ModifyamamReq modifyamamReq){
+        if(!amamService.authCheck(accessToken, title))
+            return ResponseEntity.status(401).body(new BaseResponse("수정 권한이 없습니다.",401));
+        amamService.updateAMAM(modifyamamReq, title);
+        return ResponseEntity.status(201).body(new BaseResponse("수정 성공.",201));
+    }
 }

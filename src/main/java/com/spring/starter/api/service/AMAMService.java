@@ -79,4 +79,18 @@ public class AMAMService {
                 return null;
         }
     }
+
+    @Transactional
+    public boolean authCheck(String accessToken, String title){
+        String id = amamRepository.findByTitle(title).orElseThrow(()->new RuntimeException()).getUser().getId().toString();
+        return id.equals(tokenProvider.getAuthentication(accessToken).getName());
+    }
+
+    @Transactional
+    public void updateAMAM(ModifyamamReq modifyamamReq, String title){
+        Area area = areaRepository.findByName(modifyamamReq.getArea()).orElse(null);
+        AMAM amam = amamRepository.findByTitle(title).orElse(null);
+        amam.modifyAMAM(modifyamamReq.getTitle(),area,modifyamamReq.getContent());
+        amamRepository.save(amam);
+    }
 }

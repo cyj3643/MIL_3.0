@@ -4,6 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 1234
     url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+#    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
 #    driver-class-name: org.mariadb.jdbc.Driver
 #    password: kjy8644@

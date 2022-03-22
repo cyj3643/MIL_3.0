@@ -5,6 +5,7 @@ import com.spring.starter.api.request.user.ModifyamamReq;
 import com.spring.starter.api.response.index.AMAMBoardDto;
 import com.spring.starter.api.response.index.AMAMDto;
 import com.spring.starter.config.jwt.TokenProvider;
+import com.spring.starter.config.security.SecurityUtil;
 import com.spring.starter.db.entity.AMAM;
 import com.spring.starter.db.entity.Area;
 import com.spring.starter.db.entity.User;
@@ -83,9 +84,9 @@ public class AMAMService {
     }
 
     @Transactional
-    public boolean authCheck(String accessToken, String title){
-        String id = amamRepository.findByTitle(title).orElseThrow(()->new RuntimeException()).getUser().getId().toString();
-        return id.equals(tokenProvider.getAuthentication(accessToken).getName());
+    public boolean authCheck(String title){
+        Long id = amamRepository.findByTitle(title).orElseThrow(()->new RuntimeException()).getUser().getId();
+        return id.equals(SecurityUtil.getCurrentUserId());
     }
 
     @Transactional

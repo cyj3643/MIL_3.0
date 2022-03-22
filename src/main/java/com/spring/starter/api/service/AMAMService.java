@@ -52,4 +52,31 @@ public class AMAMService {
                 .map(AMAMDto::new)
                 .orElseThrow(() -> new RuntimeException("게시글이 존재하지 않습니다."));
     }
+
+    @Transactional
+    public List<AMAMBoardDto> getAMAMByKeword(Pageable pageable, String section, String keyword) {
+        switch (section) {
+            case "user":
+                User user = userRepository.findByName(keyword).orElse(null);
+                return amamRepository.findByUser(pageable, user)
+                        .toList()
+                        .stream()
+                        .map(s -> new AMAMBoardDto(s))
+                        .collect(Collectors.toList());
+            case "title":
+                return amamRepository.findByTitleContaining(pageable, keyword)
+                        .toList()
+                        .stream()
+                        .map(s -> new AMAMBoardDto(s))
+                        .collect(Collectors.toList());
+            case "content":
+                return amamRepository.findByContentContaining(pageable, keyword)
+                        .toList()
+                        .stream()
+                        .map(s -> new AMAMBoardDto(s))
+                        .collect(Collectors.toList());
+            default:
+                return null;
+        }
+    }
 }

@@ -40,4 +40,9 @@ public class AMAMController {
         return ResponseEntity.status(201).body(amamService.getarea_all(areaName,pageable));
     }
 
+    @GetMapping("/board/search")
+    public ResponseEntity AMAMKeywordList(@Valid Pageable pageable, @RequestParam (value = "section") String section,
+                                           @RequestParam (value = "keyword") String keyword){
+        return ResponseEntity.status(201).body(amamService.getAMAMByKeword(pageable,section,keyword));
+    }
 }

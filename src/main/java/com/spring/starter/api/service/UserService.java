@@ -1,9 +1,7 @@
 package com.spring.starter.api.service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
-import com.amazonaws.services.kms.model.NotFoundException;
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.response.index.InfoDto;
@@ -113,11 +111,10 @@ public class UserService {
 		return tokenDto;
 	}
 
-	public User changePassword(String userId, String password) {
+	public void changePassword(String userId, String password) {
 		User byUserId = userRepository.findByUserId(userId)
 			.orElseThrow(() -> new NoSuchElementException("존재하지 않는 아이디입니다."));
 		byUserId.updatePassword(passwordEncoder.encode(password));
 		userRepository.save(byUserId);
-		return byUserId;
 	}
 }

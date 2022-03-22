@@ -93,4 +93,8 @@ public class AMAMService {
         amam.modifyAMAM(modifyamamReq.getTitle(),area,modifyamamReq.getContent());
         amamRepository.save(amam);
     }
+    @Transactional
+    public void deleteAMAM(String title){
+        amamRepository.deleteByTitle(title);
+    }
 }

@@ -1,5 +1,7 @@
 package com.spring.starter.api.service;
 
+import java.util.NoSuchElementException;
+
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.response.index.InfoDto;
@@ -13,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.starter.db.entity.User;
@@ -29,6 +32,7 @@ public class UserService {
 	private final AuthenticationManagerBuilder authenticationManagerBuilder;
 	private final TokenProvider tokenProvider;
 	private final RefreshTokenRepository refreshTokenRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	public boolean isExistEmail(String email) {
 		User byEmail = userRepository.findByEmail(email).orElse(null);
@@ -105,5 +109,12 @@ public class UserService {
 
 		// 토큰 발금
 		return tokenDto;
+	}
+
+	public void changePassword(String userId, String password) {
+		User byUserId = userRepository.findByUserId(userId)
+			.orElseThrow(() -> new NoSuchElementException("존재하지 않는 아이디입니다."));
+		byUserId.updatePassword(passwordEncoder.encode(password));
+		userRepository.save(byUserId);
 	}
 }

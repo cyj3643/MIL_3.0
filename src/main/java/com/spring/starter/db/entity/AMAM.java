@@ -1,13 +1,9 @@
 package com.spring.starter.db.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.spring.starter.api.response.index.AMAMBoardDto;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -60,4 +56,10 @@ public class AMAM extends BaseEntity{
 		this.viewCount++;
 	}
 
+	public void modifyAMAM(String title, Area area, String content){
+		this.title = title;
+		this.createdAt = new Date();
+		this.content = content;
+		this.area = area;
+	}
 }

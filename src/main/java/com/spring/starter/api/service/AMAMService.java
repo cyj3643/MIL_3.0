@@ -116,4 +116,13 @@ public class AMAMService {
     public void deleteAMAM(String title){
         amamRepository.deleteByTitle(title);
     }
+
+    @Transactional
+    public void addReplyContent(String title, String mentor, PostamamReplyReq postamamReplyReq){
+        AMAM amam = amamRepository.findByTitle(title).orElse(null);
+        User user = userRepository.findByUserId(mentor).orElse(null);
+        Area area = amam.getArea();
+        String replyTitle = "Re:"+title;
+        amamReplyRepository.save(postamamReplyReq.toEntity(replyTitle,user,area,amam));
+    }
 }

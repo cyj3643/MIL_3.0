@@ -74,4 +74,16 @@ public class AMAMController {
         amamService.deleteAMAM(title);
         return ResponseEntity.status(200).body(new BaseResponse("삭제 성공",201));
     }
+
+    @PostMapping("/board/{title}/reply/{mentor}")
+    public ResponseEntity <? extends BaseResponse> AMAMReplyadd(@Valid @PathVariable(value = "title") String title,
+                                            @PathVariable(value= "mentor") String mentor,
+                                            @RequestBody PostamamReplyReq postamamReplyReq){
+        if(certificationService.matchCodeById(mentor, postamamReplyReq.getCode())) {
+            amamService.addReplyContent(title, mentor, postamamReplyReq);
+            return ResponseEntity.status(201).body(new BaseResponse("답글 작성이 완료되었습니다.", 201));
+        }
+        else
+            return ResponseEntity.status(401).body(new BaseResponse("답글 작성 권한이 없습니다.",401));
+    }
 }

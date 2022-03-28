@@ -8,4 +8,5 @@ import com.spring.starter.db.entity.Certification;
 @Repository
 public interface CertificationRepository extends JpaRepository<Certification, Long> {
 	Certification findByEmail(String email);
+	Certification findByCode(String code);
 }

@@ -1,5 +1,7 @@
 package com.spring.starter.api.service;
 
+import com.spring.starter.api.request.user.MentorVerfiyDto;
+import com.spring.starter.api.request.user.PostamamReplyReq;
 import com.spring.starter.api.request.user.PostamamReq;
 import com.spring.starter.api.request.user.ModifyamamReq;
 import com.spring.starter.api.response.index.AMAMBoardDto;
@@ -8,7 +10,9 @@ import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
 import com.spring.starter.db.entity.AMAM;
 import com.spring.starter.db.entity.Area;
+import com.spring.starter.db.entity.Authority;
 import com.spring.starter.db.entity.User;
+import com.spring.starter.db.repository.AMAMReplyRepository;
 import com.spring.starter.db.repository.AMAMRepository;
 import com.spring.starter.db.repository.AreaRepository;
 import com.spring.starter.db.repository.UserRepository;
@@ -18,7 +22,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,29 +34,39 @@ public class AMAMService {
     private final AMAMRepository amamRepository;
     private final UserRepository userRepository;
     private final AreaRepository areaRepository;
-    private final TokenProvider tokenProvider;
+    private final AMAMReplyRepository amamReplyRepository;
 
-    public void save(PostamamReq postamamReq) {
+    public List<MentorVerfiyDto> addAMAMAndfindMentor(PostamamReq postamamReq) {
         User user = userRepository.findByName(postamamReq.getUser()).orElse(null);
         Area area = areaRepository.findByName(postamamReq.getArea()).orElse(null);
-        amamRepository.save(postamamReq.toEntity(user, area, amamRepository.count()));
+        amamRepository.save(postamamReq.toEntity(user, area));
+
+        List<User> userList = userRepository.findByAreaAndAuthority(area, Authority.ROLE_MENTOR);
+        List<MentorVerfiyDto> mentorVerfiyDtoList = new ArrayList<>();
+        for(User mentorUser : userList){
+            mentorVerfiyDtoList.add(MentorVerfiyDto.builder()
+                    .email(mentorUser.getEmail())
+                    .url("media-jobs.ajou.ac.kr/amam/board/"+postamamReq.getTitle()+"/reply/"+mentorUser.getUserId())
+                    .build());
+        }
+        return mentorVerfiyDtoList;
     }
 
     @Transactional
-    public List<AMAMBoardDto> get_all(Pageable pageable) {
+    public List<AMAMBoardDto> getAll(Pageable pageable) {
         Page<AMAM> tmp_list = amamRepository.findAll(pageable);
         return tmp_list.toList().stream().map(s -> new AMAMBoardDto(s)).collect(Collectors.toList());
     }
 
     @Transactional
-    public List<AMAMBoardDto> getarea_all(String areaName, Pageable pageable) {
+    public List<AMAMBoardDto> getAreaAll(String areaName, Pageable pageable) {
         Area area = areaRepository.findByName(areaName).orElse(null);
         Page<AMAM> tmp_list = amamRepository.findByArea(area, pageable);
         return tmp_list.toList().stream().map(s -> new AMAMBoardDto(s)).collect(Collectors.toList());
     }
 
     @Transactional
-    public AMAMDto get_content(String title) {
+    public AMAMDto getContent(String title) {
         return amamRepository.findByTitle(title)
                 .map(AMAMDto::new)
                 .orElseThrow(() -> new RuntimeException("게시글이 존재하지 않습니다."));

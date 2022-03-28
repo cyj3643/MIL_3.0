@@ -1,8 +1,12 @@
 package com.spring.starter.api.controller;
 
+import com.spring.starter.api.request.user.MentorVerfiyDto;
+import com.spring.starter.api.request.user.PostamamReplyReq;
 import com.spring.starter.api.request.user.PostamamReq;
 import com.spring.starter.api.request.user.ModifyamamReq;
 import com.spring.starter.api.service.AMAMService;
+import com.spring.starter.api.service.CertificationService;
+import com.spring.starter.api.service.MailService;
 import com.spring.starter.common.model.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -19,26 +25,31 @@ import javax.validation.Valid;
 @RequestMapping("/amam")
 public class AMAMController {
     private final AMAMService amamService;
+    private final CertificationService certificationService;
+    private final MailService mailService;
 
     @PostMapping("/board")
-    public ResponseEntity<? extends BaseResponse> PostAMAM(@Valid @RequestBody PostamamReq postamamReq){
-        amamService.save(postamamReq);
+    public ResponseEntity<? extends BaseResponse> PostAMAM(@Valid @RequestBody PostamamReq postamamReq)
+            throws MessagingException {
+        List<MentorVerfiyDto> mentorUserEmailList = amamService.addAMAMAndfindMentor(postamamReq);
+        mentorUserEmailList = certificationService.saveCertificationByList(mentorUserEmailList);
+        mailService.sendAMAMReplyRequestMail(mentorUserEmailList);
         return ResponseEntity.status(201).body(new BaseResponse("글 작성 완료.", 201));
     }
 
     @GetMapping("/board")
     public ResponseEntity AMAMList(@Valid Pageable pageable){
-        return ResponseEntity.status(200).body(amamService.get_all(pageable));
+        return ResponseEntity.status(200).body(amamService.getAll(pageable));
     }
 
     @GetMapping("/board/{title}")
     public ResponseEntity AMAMDetatils(@Valid @PathVariable(value = "title") String title){
-        return ResponseEntity.status(200).body(amamService.get_content(title));
+        return ResponseEntity.status(200).body(amamService.getContent(title));
     }
 
     @GetMapping("/board/area/{areaname}")
     public ResponseEntity AMAMAreaList(@Valid Pageable pageable, @PathVariable (value = "areaname")String areaName){
-        return ResponseEntity.status(200).body(amamService.getarea_all(areaName,pageable));
+        return ResponseEntity.status(200).body(amamService.getAreaAll(areaName,pageable));
     }
 
     @GetMapping("/board/search")

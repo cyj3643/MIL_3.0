@@ -10,7 +10,6 @@ import java.util.Date;
 public class AMAMBoardDto {
     String title;
     Date createdAt;
-    Long no;
     String area;
     String user;
     Long viewCount;
@@ -18,7 +17,6 @@ public class AMAMBoardDto {
     public AMAMBoardDto (AMAM amam){
         this.title=amam.getTitle();
         this.createdAt=amam.getCreatedAt();
-        this.no=amam.getNo();
         this.area=amam.getArea().getName();
         this.user=amam.getUser().getName();
         this.viewCount=amam.getViewCount();

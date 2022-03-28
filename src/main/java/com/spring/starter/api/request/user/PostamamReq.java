@@ -21,15 +21,13 @@ public class PostamamReq {
 
     @NotNull
     String content;
-    public AMAM toEntity(User user, Area area, Long number){
+    public AMAM toEntity(User user, Area area){
         AMAM amam = AMAM.builder()
                 .title(this.title)
                 .content(this.content)
-                .createdAt(new Date())
                 .area(area)
                 .user(user)
                 .viewCount(0L)
-                .no(number+1L)
                 .build();
         return amam;
     }

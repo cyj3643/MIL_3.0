@@ -31,9 +31,6 @@ public class AMAM extends BaseEntity{
 	String content;
 
 	@NotNull
-	Long no;
-
-	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	Area area;

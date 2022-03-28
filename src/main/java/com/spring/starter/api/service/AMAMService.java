@@ -6,7 +6,6 @@ import com.spring.starter.api.request.user.PostamamReq;
 import com.spring.starter.api.request.user.ModifyamamReq;
 import com.spring.starter.api.response.index.AMAMBoardDto;
 import com.spring.starter.api.response.index.AMAMDto;
-import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
 import com.spring.starter.db.entity.AMAM;
 import com.spring.starter.db.entity.Area;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;

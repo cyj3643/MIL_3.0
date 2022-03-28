@@ -4,6 +4,8 @@ import com.spring.starter.api.request.user.MentorVerfiyDto;
 import com.spring.starter.api.request.user.PostamamReplyReq;
 import com.spring.starter.api.request.user.PostamamReq;
 import com.spring.starter.api.request.user.ModifyamamReq;
+import com.spring.starter.api.response.index.AMAMBoardRes;
+import com.spring.starter.api.response.index.AMAMRes;
 import com.spring.starter.api.service.AMAMService;
 import com.spring.starter.api.service.CertificationService;
 import com.spring.starter.api.service.MailService;
@@ -38,24 +40,24 @@ public class AMAMController {
     }
 
     @GetMapping("/board")
-    public ResponseEntity AMAMList(@Valid Pageable pageable){
-        return ResponseEntity.status(200).body(amamService.getAll(pageable));
+    public ResponseEntity<? extends BaseResponse> AMAMList(@Valid Pageable pageable){
+        return ResponseEntity.status(200).body(new AMAMBoardRes("글 목록 조회 완료",200,amamService.getAll(pageable)));
     }
 
     @GetMapping("/board/{title}")
-    public ResponseEntity AMAMDetatils(@Valid @PathVariable(value = "title") String title){
-        return ResponseEntity.status(200).body(amamService.getContent(title));
+    public ResponseEntity<? extends BaseResponse> AMAMDetatils(@Valid @PathVariable(value = "title") String title){
+        return ResponseEntity.status(200).body(new AMAMRes("글 조회 완료",200,amamService.getContent(title)));
     }
 
     @GetMapping("/board/area/{areaname}")
-    public ResponseEntity AMAMAreaList(@Valid Pageable pageable, @PathVariable (value = "areaname")String areaName){
-        return ResponseEntity.status(200).body(amamService.getAreaAll(areaName,pageable));
+    public ResponseEntity<? extends BaseResponse> AMAMAreaList(@Valid Pageable pageable, @PathVariable (value = "areaname")String areaName){
+        return ResponseEntity.status(200).body(new AMAMBoardRes("글 목록 조회 완료",200,amamService.getAreaAll(areaName,pageable)));
     }
 
     @GetMapping("/board/search")
-    public ResponseEntity AMAMKeywordList(@Valid Pageable pageable, @RequestParam (value = "section") String section,
+    public ResponseEntity<? extends BaseResponse> AMAMKeywordList(@Valid Pageable pageable, @RequestParam (value = "section") String section,
                                            @RequestParam (value = "keyword") String keyword){
-        return ResponseEntity.status(200).body(amamService.getAMAMByKeword(pageable,section,keyword));
+        return ResponseEntity.status(200).body(new AMAMBoardRes("글 목록 조회 완료",200,amamService.getAMAMByKeword(pageable,section,keyword)));
     }
 
     @PutMapping("/board/{title}")

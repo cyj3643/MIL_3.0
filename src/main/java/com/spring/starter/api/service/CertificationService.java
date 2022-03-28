@@ -1,5 +1,7 @@
 package com.spring.starter.api.service;
 
+import com.spring.starter.api.request.user.MentorVerfiyDto;
+import com.spring.starter.db.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,12 +11,18 @@ import com.spring.starter.db.repository.CertificationRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CertificationService {
 
 	private final CertificationRepository certificationRepository;
+	private final UserRepository userRepository;
 
 	public String saveCertification(String email) {
 		Certification byEmail = certificationRepository.findByEmail(email);
@@ -34,4 +42,24 @@ public class CertificationService {
 		return true;
 	}
 
+	public List<MentorVerfiyDto> saveCertificationByList(List<MentorVerfiyDto> mentorVerfiyDtoList){
+		for(MentorVerfiyDto list : mentorVerfiyDtoList){
+			String code = RandomCodeUtil.makeRandomCode(6);
+			certificationRepository.save(Certification.builder()
+					.email(list.getEmail())
+					.code(code)
+					.build());
+			list.setCode(code);
+		}
+		return mentorVerfiyDtoList;
+	}
+
+	public boolean matchCodeById(String userId, String code){
+		Certification byId = certificationRepository.findByCode(code);
+		if (byId == null || !byId.getCode().equals(code))
+			return false;
+		else if (!byId.getEmail().equals(userRepository.findByUserId(userId).orElse(null).getEmail()))
+			return false;
+		return true;
+	}
 }

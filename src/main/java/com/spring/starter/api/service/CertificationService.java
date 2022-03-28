@@ -1,6 +1,8 @@
 package com.spring.starter.api.service;
 
 import com.spring.starter.api.request.user.MentorVerfiyDto;
+import com.spring.starter.db.entity.ReplyCertification;
+import com.spring.starter.db.repository.ReplyCertificationRepository;
 import com.spring.starter.db.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,7 @@ import java.util.Map;
 public class CertificationService {
 
 	private final CertificationRepository certificationRepository;
+	private final ReplyCertificationRepository replyCertificationRepository;
 	private final UserRepository userRepository;
 
 	public String saveCertification(String email) {
@@ -45,7 +48,7 @@ public class CertificationService {
 	public List<MentorVerfiyDto> saveCertificationByList(List<MentorVerfiyDto> mentorVerfiyDtoList){
 		for(MentorVerfiyDto list : mentorVerfiyDtoList){
 			String code = RandomCodeUtil.makeRandomCode(6);
-			certificationRepository.save(Certification.builder()
+			replyCertificationRepository.save(ReplyCertification.builder()
 					.email(list.getEmail())
 					.code(code)
 					.build());
@@ -55,7 +58,7 @@ public class CertificationService {
 	}
 
 	public boolean matchCodeById(String userId, String code){
-		Certification byId = certificationRepository.findByCode(code);
+		ReplyCertification byId = replyCertificationRepository.findByCode(code);
 		if (byId == null || !byId.getCode().equals(code))
 			return false;
 		else if (!byId.getEmail().equals(userRepository.findByUserId(userId).orElse(null).getEmail()))

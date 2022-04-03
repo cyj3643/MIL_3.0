@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ProjectDto {
 
-    private Long id;
-
     @NotNull
     private String name;
 

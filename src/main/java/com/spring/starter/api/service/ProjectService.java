@@ -42,7 +42,6 @@ public class ProjectService {
         project.addProjectFile(projectFile);
         BeanUtils.copyProperties(projectDto, project, "jobs");
         Project saveProject = projectRepository.save(project);
-        projectFileRepository.save(projectFile);
         return saveProject.getId();
     }
 

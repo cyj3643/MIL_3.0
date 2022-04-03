@@ -33,8 +33,7 @@ public class SignUpUserReq {
 	@NotNull
 	Integer studentId;
 
-//	@NotNull
-//	Integer state;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Authority authority;
 

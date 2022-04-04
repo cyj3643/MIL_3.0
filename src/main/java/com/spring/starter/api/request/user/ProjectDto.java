@@ -1,19 +1,13 @@
 package com.spring.starter.api.request.user;
 
-import com.spring.starter.db.entity.Jobs;
-import com.spring.starter.db.entity.Project;
-import com.spring.starter.db.entity.ProjectFile;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class ProjectDto {
-
-    private Long id;
 
     @NotNull
     private String name;
@@ -27,6 +21,9 @@ public class ProjectDto {
     @NotNull
     private String description;
 
+    @NotNull
     private String jobs;
 
+    @NotNull
+    private String thumbnailLink;
 }

@@ -1,18 +1,20 @@
 package com.spring.starter.api.response.index;
 
-import com.spring.starter.db.entity.Project;
+import com.spring.starter.api.response.ProjectResDto;
+import com.spring.starter.common.model.BaseResponse;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-public class ProjectRes {
+public class ProjectRes extends BaseResponse {
 
-    private String file;
-    private String name;
+    private List<ProjectResDto> projectDtoList;
 
-    public ProjectRes(Project project, String awsUrl) {
-        this.file = awsUrl + project.getProjectFileList().get(0).getFile();
-        this.name = project.getName();
+    public ProjectRes(String msg, Integer status, List<ProjectResDto> projectDtoList) {
+        super(msg, status);
+        this.projectDtoList = projectDtoList;
     }
 }

@@ -49,6 +49,7 @@ public class CertificationService {
 		for(MentorVerfiyDto list : mentorVerfiyDtoList){
 			String code = RandomCodeUtil.makeRandomCode(6);
 			replyCertificationRepository.save(ReplyCertification.builder()
+					.title(list.getTitle())
 					.email(list.getEmail())
 					.code(code)
 					.build());
@@ -57,11 +58,13 @@ public class CertificationService {
 		return mentorVerfiyDtoList;
 	}
 
-	public boolean matchCodeById(String userId, String code){
+	public boolean matchCodeById(String title, String userId, String code){
 		ReplyCertification byId = replyCertificationRepository.findByCode(code);
 		if (byId == null || !byId.getCode().equals(code))
 			return false;
-		else if (!byId.getEmail().equals(userRepository.findByUserId(userId).orElse(null).getEmail()))
+		if (!title.equals(replyCertificationRepository.findByCode(code).getTitle()))
+			return false;
+		if (!byId.getEmail().equals(userRepository.findByUserId(userId).orElse(null).getEmail()))
 			return false;
 		return true;
 	}

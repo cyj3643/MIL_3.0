@@ -62,7 +62,7 @@ public class MailForm {
 			"</html>";
 	}
 
-	public String getAMAMReplyMail(String code, String amamReplyUrl) {
+	public String getAMAMReplyMail(String code, String amamReplyUrl, String title) {
 
 		return "<!DOCTYPE html>" +
 				"<html>" +
@@ -78,6 +78,7 @@ public class MailForm {
 				"	<p style=\"font-size: 16px; line-height: 26px; margin-top: 50px; padding: 0 5px;\">" +
 				"		안녕하세요.<br />" +
 				"		MIL-AMAM에 새 글이 등록되었습니다.<br />" +
+				"		글제목 ["+title+"]<br />" +
 				"		<a href = "+amamReplyUrl+">   답글 달기   </a>\n" +
 				"\n" +
 				"		해당 링크에 접속하신 후<br />"+

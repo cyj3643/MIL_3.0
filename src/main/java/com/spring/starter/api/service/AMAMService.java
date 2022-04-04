@@ -43,6 +43,7 @@ public class AMAMService {
         List<MentorVerfiyDto> mentorVerfiyDtoList = new ArrayList<>();
         for(User mentorUser : userList){
             mentorVerfiyDtoList.add(MentorVerfiyDto.builder()
+                    .title(postamamReq.getTitle())
                     .email(mentorUser.getEmail())
                     .url("media-jobs.ajou.ac.kr/amam/board/"+postamamReq.getTitle()+"/reply/"+mentorUser.getUserId())
                     .build());

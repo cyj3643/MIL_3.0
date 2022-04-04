@@ -81,7 +81,7 @@ public class AMAMController {
     public ResponseEntity <? extends BaseResponse> AMAMReplyadd(@Valid @PathVariable(value = "title") String title,
                                             @PathVariable(value= "mentor") String mentor,
                                             @RequestBody PostamamReplyReq postamamReplyReq){
-        if(certificationService.matchCodeById(mentor, postamamReplyReq.getCode())) {
+        if(certificationService.matchCodeById(title, mentor, postamamReplyReq.getCode())) {
             amamService.addReplyContent(title, mentor, postamamReplyReq);
             return ResponseEntity.status(201).body(new BaseResponse("답글 작성이 완료되었습니다.", 201));
         }

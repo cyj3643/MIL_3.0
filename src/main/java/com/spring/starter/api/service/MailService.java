@@ -61,7 +61,7 @@ public class MailService {
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
 			MailForm mailForm = new MailForm();
-			String mailContent = mailForm.getAMAMReplyMail(list.getCode(),list.getUrl());
+			String mailContent = mailForm.getAMAMReplyMail(list.getCode(),list.getUrl(),list.getTitle());
 
 			helper.setFrom("MIL"); //보내는사람
 			helper.setTo(list.getEmail()); //받는사람

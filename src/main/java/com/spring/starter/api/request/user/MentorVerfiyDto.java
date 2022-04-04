@@ -8,6 +8,8 @@ import lombok.*;
 @Builder
 @Setter
 public class MentorVerfiyDto {
+    String title;
+
     String email;
 
     String code;

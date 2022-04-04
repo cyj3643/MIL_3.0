@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 @Getter
 @Builder
 public class ReplyCertification extends BaseEntity{
+    String title;
     String code;
     String email;
 }

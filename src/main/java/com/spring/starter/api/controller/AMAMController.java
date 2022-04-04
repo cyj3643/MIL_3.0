@@ -77,8 +77,8 @@ public class AMAMController {
         return ResponseEntity.status(200).body(new BaseResponse("삭제 성공",201));
     }
 
-    @PostMapping("/board/{title}/reply/{mentor}")
-    public ResponseEntity <? extends BaseResponse> AMAMReplyadd(@Valid @PathVariable(value = "title") String title,
+    @PostMapping("/board/{title}/reply/{mentor}/email")
+    public ResponseEntity <? extends BaseResponse> AMAMReplyAddByEmail(@Valid @PathVariable(value = "title") String title,
                                             @PathVariable(value= "mentor") String mentor,
                                             @RequestBody PostamamReplyReq postamamReplyReq){
         if(certificationService.matchCodeById(title, mentor, postamamReplyReq.getCode())) {

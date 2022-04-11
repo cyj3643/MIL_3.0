@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 import static com.spring.starter.common.util.constants.ProjectFileConstant.IMAGE_FILE;
@@ -45,13 +44,8 @@ public class ProjectService {
         return saveProject.getId();
     }
 
-//    public void saveProjectFile(String upload, Long id) {
-//
-//        Project project = projectRepository.findById(id).orElse(null);
-//        ProjectFile projectFile = new ProjectFile(upload, IMAGE_FILE, project);
-//        if (project == null) {
-//            throw new EntityNotFoundException("존재하지 않는 프로젝트 입니다.");
-//        }
-//        projectFileRepository.save(projectFile);
-//    }
+    public Project findProject(Long id) {
+        Project project = projectRepository.findById(id).orElse(null);
+        return project;
+    }
 }

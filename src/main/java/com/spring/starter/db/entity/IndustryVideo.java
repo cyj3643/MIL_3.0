@@ -33,4 +33,10 @@ public class IndustryVideo extends BaseEntity{
 	@NotNull
 	String link; // youtube url
 
+	public void change(String title, Jobs findJob, String link, String thumbnail) {
+		this.title = title;
+		this.jobs = findJob;
+		this.link = link;
+		this.thumbnail = thumbnail;
+	}
 }

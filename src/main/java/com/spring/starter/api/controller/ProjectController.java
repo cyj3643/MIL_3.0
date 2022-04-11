@@ -7,6 +7,7 @@ import com.spring.starter.api.service.ProjectService;
 import com.spring.starter.api.service.S3Service;
 import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Jobs;
+import com.spring.starter.db.entity.Project;
 import com.spring.starter.db.repository.JobsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +37,7 @@ public class ProjectController {
         for (ProjectResDto projectResDto : projectResDtoList) {
             projectResDto.setFile(awsUrl + projectResDto.getFile());
         }
-        return ResponseEntity.status(201).body(new ProjectRes("모든 프로젝트를 가져왔습니다.", 201, projectResDtoList));
+        return ResponseEntity.status(200).body(new ProjectRes("모든 프로젝트를 가져왔습니다.", 201, projectResDtoList));
     }
 
     @GetMapping("/{job}")
@@ -46,13 +47,18 @@ public class ProjectController {
         for (ProjectResDto projectResDto : projectResDtoListByJob) {
             projectResDto.setFile(awsUrl + projectResDto.getFile());
         }
-        return ResponseEntity.status(201).body(new ProjectRes("직업에 해당하는 프로젝트를 가져왔습니다.", 201, projectResDtoListByJob));
+        return ResponseEntity.status(200).body(new ProjectRes("직업에 해당하는 프로젝트를 가져왔습니다.", 201, projectResDtoListByJob));
     }
 
-    @PostMapping("/thumbnail")
-    public ResponseEntity<? extends BaseResponse> thumbnail(@RequestParam("images") MultipartFile multipartFile) throws IOException {
+//    @GetMapping("/{id}")
+//    public ResponseEntity<? extends BaseResponse> getProject(@PathVariable String projectId) {
+//
+//    }
+
+    @PostMapping(value = {"/thumbnail", "/thumbnail/{projectId}"})
+    public ResponseEntity<? extends BaseResponse> thumbnail(@PathVariable(required = false) Long projectId,@RequestParam("images") MultipartFile multipartFile) throws IOException {
         // base url 떼고 file path
-        String upload = s3Service.upload(multipartFile);
+        String upload = s3Service.uploadProject(projectId, multipartFile);
         return ResponseEntity.status(201).body(new BaseResponse(upload, 201));
     }
 

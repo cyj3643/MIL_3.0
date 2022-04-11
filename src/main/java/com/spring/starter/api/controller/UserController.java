@@ -84,12 +84,6 @@ public class UserController {
 		return ResponseEntity.status(201).body(new LoginRes("로그인을 성공적으로 했습니다.", 201, tokenDto.getAccessToken(), tokenDto.getRefreshToken()));
 	}
 
-	@GetMapping("/info")
-	public ResponseEntity getMyInfo() {
-
-		return ResponseEntity.status(201).body(userService.getMyInfo());
-	}
-
 	@PostMapping("/reissue")
 	public ResponseEntity reissue(@RequestBody TokenRequestDto tokenRequestDto) {
 

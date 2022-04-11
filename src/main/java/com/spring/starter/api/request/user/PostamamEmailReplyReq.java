@@ -9,26 +9,22 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 
 @Getter
-public class PostamamReplyReq {
-
-    @NotNull
-    String user;
+public class PostamamEmailReplyReq {
 
     @NotNull
     String content;
 
     @NotNull
-    String amam;
+    String code;
 
     public AMAMReply toEntity(String title, User user, Area area, AMAM amam){
-        AMAMReply amamReply = AMAMReply.builder()
+        return AMAMReply.builder()
                 .title(title)
                 .content(this.content)
                 .area(area)
                 .user(user)
-                .amam(amam)
                 .viewCount(0L)
+                .amam(amam)
                 .build();
-        return amamReply;
     }
 }

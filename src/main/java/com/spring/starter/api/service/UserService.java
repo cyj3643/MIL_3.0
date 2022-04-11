@@ -8,6 +8,7 @@ import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.config.jwt.TokenDto;
 import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
+import com.spring.starter.db.entity.Authority;
 import com.spring.starter.db.entity.RefreshToken;
 import com.spring.starter.db.repository.RefreshTokenRepository;
 import io.jsonwebtoken.JwtException;
@@ -23,6 +24,8 @@ import com.spring.starter.db.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -37,6 +40,12 @@ public class UserService {
 	public boolean isExistEmail(String email) {
 		User byEmail = userRepository.findByEmail(email).orElse(null);
 		return byEmail != null;
+	}
+
+	public boolean isMentor(){
+		User user = userRepository.findById(SecurityUtil.getCurrentUserId()).orElse(null);
+		Authority auth = user.getAuthority();
+		return auth != Authority.ROLE_MENTOR;
 	}
 
 	public void save(User toUserEntity) {

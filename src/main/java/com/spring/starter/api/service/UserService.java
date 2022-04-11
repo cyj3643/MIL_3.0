@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
-import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.config.jwt.TokenDto;
 import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
@@ -52,10 +51,9 @@ public class UserService {
 		return userRepository.findByUserId(userId).orElse(null);
 	}
 
-	public InfoDto getMyInfo() {
+	public User getMyInfo() {
 
 		return userRepository.findById(SecurityUtil.getCurrentUserId())
-				.map(InfoDto::new)
 				.orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
 	}
 

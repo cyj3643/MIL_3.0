@@ -1,6 +1,12 @@
 spring:
   datasource:
 #    #TODO 운영에선 mysql
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://ENC(Hj3aMW7CL/1bIal3pPsM6zbI0MfqktAub+Vzgm9p9PdLWfUkSibDqKEatwWH2TjIjlWqhennABLnEetj8oDSBLoENaTooq2H):3306/test?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: root
+#    password: ENC(DWvuHafIMKngMp5WmlLGhWG7z2TLhzdr)
+#    #TODO
+#    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 1234
 #    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul

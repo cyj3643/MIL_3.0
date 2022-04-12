@@ -10,7 +10,6 @@ import java.util.Date;
 public class AMAMDto {
     String title;
     Date createdAt;
-    Long no;
     String content;
     String area;
     String user;
@@ -19,7 +18,6 @@ public class AMAMDto {
     public AMAMDto(AMAM amam){
         this.title=amam.getTitle();
         this.createdAt=amam.getCreatedAt();
-        this.no=amam.getNo();
         this.area=amam.getArea().getName();
         this.user=amam.getUser().getName();
         this.viewCount=amam.getViewCount();

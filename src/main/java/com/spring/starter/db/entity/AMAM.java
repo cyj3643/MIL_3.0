@@ -1,6 +1,7 @@
 package com.spring.starter.db.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -31,9 +32,6 @@ public class AMAM extends BaseEntity{
 	String content;
 
 	@NotNull
-	Long no;
-
-	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	Area area;
@@ -45,6 +43,9 @@ public class AMAM extends BaseEntity{
 
 	@NotNull
 	Long viewCount;
+
+	@OneToMany(mappedBy = "amam", cascade = CascadeType.ALL)
+	List<AMAMReply> amamReply;
 
 	@PrePersist
 	public void prePersist() {

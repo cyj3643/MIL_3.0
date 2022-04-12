@@ -1,34 +1,34 @@
 package com.spring.starter.api.request.user;
 
 import com.spring.starter.db.entity.AMAM;
+import com.spring.starter.db.entity.AMAMReply;
 import com.spring.starter.db.entity.Area;
 import com.spring.starter.db.entity.User;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Getter
-public class PostamamReq {
-    @NotNull
-    String title;
-
-    @NotNull
-    String area;
+public class PostamamReplyReq {
 
     @NotNull
     String user;
 
     @NotNull
     String content;
-    public AMAM toEntity(User user, Area area){
-        AMAM amam = AMAM.builder()
-                .title(this.title)
+
+    @NotNull
+    String amam;
+
+    public AMAMReply toEntity(String title, User user, Area area, AMAM amam){
+        AMAMReply amamReply = AMAMReply.builder()
+                .title(title)
                 .content(this.content)
                 .area(area)
                 .user(user)
+                .amam(amam)
                 .viewCount(0L)
                 .build();
-        return amam;
+        return amamReply;
     }
 }

@@ -2,7 +2,7 @@ spring:
   datasource:
 #    #TODO AWS RDS
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://ENC(Hj3aMW7CL/1bIal3pPsM6zbI0MfqktAub+Vzgm9p9PdLWfUkSibDqKEatwWH2TjIjlWqhennABLnEetj8oDSBLoENaTooq2H):3306/test?serverTimezone=UTC&characterEncoding=UTF-8
+    url: ENC(KbTJMBF/Fqb8EUZ3w1n1OM6KlfqhfVj0D0QM6gYu/Sku47OBotwXRfKlC83IxfyCrNj1Po8zANg5YRd0yd0E26pAev+jixwgKErSC62eOSHGtfmOCSxiNul6thnuxcZ1lgJ6vZUo969aFspXkTWDJzCb/Os38ydgp79hjwvJwv1bD4mvimX+jQ==)
     username: root
     password: ENC(DWvuHafIMKngMp5WmlLGhWG7z2TLhzdr)
 

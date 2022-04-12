@@ -1,4 +1,4 @@
-package com.spring.starter.api.admin.Service;
+package com.spring.starter.api.admin.service;
 
 import com.spring.starter.api.request.user.IndustryVideoReq;
 import com.spring.starter.db.entity.IndustryVideo;

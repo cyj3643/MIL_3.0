@@ -1,6 +1,6 @@
-package com.spring.starter.api.admin.Controller;
+package com.spring.starter.api.admin.controller;
 
-import com.spring.starter.api.admin.Service.IndustryVideoAdminService;
+import com.spring.starter.api.admin.service.IndustryVideoAdminService;
 import com.spring.starter.api.request.user.IndustryVideoReq;
 import com.spring.starter.api.service.S3Service;
 import com.spring.starter.common.model.BaseResponse;

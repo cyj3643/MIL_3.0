@@ -40,4 +40,11 @@ public class AMAMReply extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     AMAM amam;
+
+    public void modifyAMAMReply(String title, Area area, String content){
+        this.title = title;
+        this.createdAt = new Date();
+        this.content = content;
+        this.area = area;
+    }
 }

@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.spring.starter.api.request.user.UpdateInfoReq;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -64,5 +65,13 @@ public class User extends BaseEntity {
 
 	public void updatePassword(String password) {
 		this.password = password;
+	}
+
+	public void setInfo(UpdateInfoReq updateInfoReq, Area area) {
+		this.name = updateInfoReq.getName();
+		this.password = updateInfoReq.getPassword();
+		this.studentId = updateInfoReq.getStudentId();
+		this.email = updateInfoReq.getEmail();
+		this.area = area;
 	}
 }

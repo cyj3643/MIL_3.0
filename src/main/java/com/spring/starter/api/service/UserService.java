@@ -4,11 +4,14 @@ import java.util.NoSuchElementException;
 
 import com.spring.starter.api.request.user.LoginReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
+import com.spring.starter.api.request.user.UpdateInfoReq;
 import com.spring.starter.config.jwt.TokenDto;
 import com.spring.starter.config.jwt.TokenProvider;
 import com.spring.starter.config.security.SecurityUtil;
+import com.spring.starter.db.entity.Area;
 import com.spring.starter.db.entity.Authority;
 import com.spring.starter.db.entity.RefreshToken;
+import com.spring.starter.db.repository.AreaRepository;
 import com.spring.starter.db.repository.RefreshTokenRepository;
 import io.jsonwebtoken.JwtException;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +38,7 @@ public class UserService {
 	private final TokenProvider tokenProvider;
 	private final RefreshTokenRepository refreshTokenRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final AreaRepository areaRepository;
 
 	public boolean isExistEmail(String email) {
 		User byEmail = userRepository.findByEmail(email).orElse(null);
@@ -64,6 +68,14 @@ public class UserService {
 
 		return userRepository.findById(SecurityUtil.getCurrentUserId())
 				.orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+	}
+
+	@Transactional
+	public void changeInfo(UpdateInfoReq updateInfoReq) {
+		User findUser = userRepository.findById(SecurityUtil.getCurrentUserId()).orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+		Area findArea = areaRepository.findByName(updateInfoReq.getArea()).orElse(null);
+		updateInfoReq.setPassword(passwordEncoder.encode(updateInfoReq.getPassword()));
+		findUser.setInfo(updateInfoReq, findArea);
 	}
 
 	public TokenDto createToken(LoginReq loginReq) {

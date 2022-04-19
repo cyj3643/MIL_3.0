@@ -76,7 +76,7 @@ public class AMAMController {
         if(!amamService.authCheck(title))
             return ResponseEntity.status(401).body(new BaseResponse("삭제 권한이 없습니다.",401));
         amamService.deleteAMAM(title);
-        return ResponseEntity.status(200).body(new BaseResponse("삭제 성공",201));
+        return ResponseEntity.status(200).body(new BaseResponse("삭제 성공",200));
     }
 
     //AMAMReply

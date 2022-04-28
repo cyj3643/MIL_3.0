@@ -33,10 +33,6 @@ public class SignUpUserReq {
 	@NotNull
 	Integer studentId;
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Authority authority;
-
 	String area;
 
 	public User toUserEntity(Area area, String encode) {
@@ -44,7 +40,7 @@ public class SignUpUserReq {
 			.name(name)
 			.email(email)
 			.password(encode)
-			.authority(authority)
+			.authority(Authority.ROLE_USER)
 			.studentId(studentId)
 			.area(area)
 			.userId(userId)

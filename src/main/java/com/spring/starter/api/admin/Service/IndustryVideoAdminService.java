@@ -10,6 +10,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class IndustryVideoAdminService {
@@ -41,5 +43,9 @@ public class IndustryVideoAdminService {
     @Transactional
     public void deleteVideo(long videoId) {
         industryVideoRepository.deleteById(videoId);
+    }
+
+    public List<IndustryVideo> getAll() {
+        return industryVideoRepository.findAll();
     }
 }

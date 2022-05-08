@@ -4,9 +4,4 @@ INSERT INTO area (name) SELECT ('digital') FROM DUAL WHERE NOT EXISTS (SELECT * 
 INSERT INTO area (name) SELECT ('visual') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'visual');
 INSERT INTO area (name) SELECT ('data') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'data');
 
--- Jobs
-INSERT INTO jobs (name) SELECT ("게임기획자") FROM DUAL WHERE NOT EXISTS (SELECT * FROM jobs WHERE NAME = "게임기획자");
-INSERT INTO jobs (name) SELECT ("시각디자이너") FROM DUAL WHERE NOT EXISTS (SELECT * FROM jobs WHERE NAME = "시각디자이너");
-INSERT INTO jobs (name) SELECT ("영상연출가") FROM DUAL WHERE NOT EXISTS (SELECT * FROM jobs WHERE NAME = "영상연출가");
-INSERT INTO jobs (name) SELECT ("3D컴퓨터그래픽스") FROM DUAL WHERE NOT EXISTS (SELECT * FROM jobs WHERE NAME = "3D컴퓨터그래픽스");
-INSERT INTO jobs (name) SELECT ("데이터사이언티스트") FROM DUAL WHERE NOT EXISTS (SELECT * FROM jobs WHERE NAME = "데이터사이언티스트");
+

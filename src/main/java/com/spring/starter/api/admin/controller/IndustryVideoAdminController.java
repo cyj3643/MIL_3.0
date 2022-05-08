@@ -27,8 +27,6 @@ public class IndustryVideoAdminController {
 
     private final S3Service s3Service;
     private final IndustryVideoAdminService industryVideoAdminService;
-    @Value("${aws.url}")
-    private String awsURL;
 
     @GetMapping("")
     public ResponseEntity<? extends BaseResponse> getAllVideo() {
@@ -45,8 +43,9 @@ public class IndustryVideoAdminController {
 
     @PostMapping(value = {"/thumbnail", "/thumbnail/{videoId}"})
     public ResponseEntity<? extends BaseResponse> postS3Url(@PathVariable(required = false) Long videoId, @RequestParam("images") MultipartFile multipartFile) throws IOException {
-        String upload = s3Service.uploadIndustry(videoId, multipartFile);
-        return ResponseEntity.status(201).body(new BaseResponse(upload, 201));
+        String thumbnail = industryVideoAdminService.saveThumbnail(videoId, multipartFile);
+//        String upload = s3Service.uploadIndustry(videoId, multipartFile);
+        return ResponseEntity.status(201).body(new BaseResponse(thumbnail, 201));
     }
 
     @PostMapping("")
@@ -64,7 +63,8 @@ public class IndustryVideoAdminController {
     @DeleteMapping("/{videoId}")
     public ResponseEntity<? extends BaseResponse> deleteVideo(@PathVariable Long videoId) {
         IndustryVideo video = industryVideoAdminService.findVideo(videoId);
-        s3Service.deleteFile(video.getThumbnail());
+        industryVideoAdminService.deleteThumbnail(video.getThumbnail());
+//        s3Service.deleteFile(video.getThumbnail());
         industryVideoAdminService.deleteVideo(videoId);
         return ResponseEntity.status(200).body(new BaseResponse("삭제가 완료되었습니다.", 201));
     }

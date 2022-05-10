@@ -1,7 +1,0 @@
-INSERT INTO area (name) SELECT ('game') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'game');
-INSERT INTO area (name) SELECT ('design') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'design');
-INSERT INTO area (name) SELECT ('digital') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'digital');
-INSERT INTO area (name) SELECT ('visual') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'visual');
-INSERT INTO area (name) SELECT ('data') FROM DUAL WHERE NOT EXISTS (SELECT * FROM area WHERE NAME = 'data');
-
-

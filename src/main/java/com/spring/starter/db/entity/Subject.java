@@ -45,6 +45,10 @@ public class Subject extends BaseEntity{
 		jobsSubject.setSubject(this);
 	}
 
+	private String rowId;
+
+	private String columnId;
+
 //	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 //	List<Project> projectList;
 //	public void addProject(Project project) {

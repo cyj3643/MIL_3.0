@@ -31,4 +31,9 @@ public class AreaSubject extends BaseEntity{
 
 	// SubjectConstants 참조
 	Integer state;
+
+	private String borderColor;
+
+	private String backgroundColor;
+
 }

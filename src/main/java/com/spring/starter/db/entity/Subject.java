@@ -49,6 +49,16 @@ public class Subject extends BaseEntity{
 
 	private String columnId;
 
+	private String keyWord;
+
+	private String details;
+
+	private String tools;
+
+	private String prerequisiteCourses;
+
+	private String relatedCourses;
+
 //	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 //	List<Project> projectList;
 //	public void addProject(Project project) {

@@ -1,16 +1,11 @@
 package com.spring.starter.api.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import com.spring.starter.api.request.user.MentorVerfiyDto;
-import com.spring.starter.db.entity.User;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;

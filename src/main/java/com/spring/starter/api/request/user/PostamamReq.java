@@ -6,7 +6,6 @@ import com.spring.starter.db.entity.User;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Getter
 public class PostamamReq {

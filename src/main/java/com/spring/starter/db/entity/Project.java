@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
 
 @Entity
 @Setter

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("cil")
+@RequestMapping("/cil")
 public class SubjectController {
 
     private final SubjectService subjectService;

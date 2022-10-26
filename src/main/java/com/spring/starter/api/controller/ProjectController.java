@@ -7,7 +7,6 @@ import com.spring.starter.api.service.ProjectService;
 import com.spring.starter.api.service.S3Service;
 import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Jobs;
-import com.spring.starter.db.entity.Project;
 import com.spring.starter.db.repository.JobsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

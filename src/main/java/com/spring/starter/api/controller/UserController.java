@@ -1,7 +1,5 @@
 package com.spring.starter.api.controller;
 
-import java.util.UUID;
-
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
@@ -9,17 +7,13 @@ import com.spring.starter.api.request.user.CertificationReq;
 import com.spring.starter.api.request.user.ChangePwdReq;
 import com.spring.starter.api.request.user.TokenRequestDto;
 import com.spring.starter.api.request.user.VerifyCodeReq;
-import com.spring.starter.api.response.index.InfoDto;
 import com.spring.starter.api.response.index.TokenResponseDto;
 import com.spring.starter.api.service.CertificationService;
 import com.spring.starter.api.service.MailService;
-import com.spring.starter.common.util.RandomCodeUtil;
 import com.spring.starter.config.jwt.TokenDto;
-import com.spring.starter.config.security.SecurityUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

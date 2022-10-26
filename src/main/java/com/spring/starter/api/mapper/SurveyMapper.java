@@ -10,9 +10,5 @@ import java.util.List;
 
 @Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface SurveyMapper {
-    Survey surveyDtoToEntity(SurveyDto surveyDto);
-
-    SurveyDto surveyEntityToDto(Survey survey);
-
     List<SurveyDto> surveyListToDto(List<Survey> surveyList);
 }

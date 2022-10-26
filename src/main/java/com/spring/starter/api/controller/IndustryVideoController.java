@@ -7,14 +7,12 @@ import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Jobs;
 import com.spring.starter.db.repository.JobsRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.spring.starter.common.util.constants.UploadConstant.Industry_BASE_URL;
 
 @RestController
 @RequiredArgsConstructor

@@ -11,7 +11,6 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.spring.starter.db.entity.IndustryVideo;
 import com.spring.starter.db.repository.IndustryVideoRepository;
 import com.spring.starter.db.repository.ProjectFileRepository;
-import com.spring.starter.db.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

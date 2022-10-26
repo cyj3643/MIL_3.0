@@ -1,6 +1,5 @@
 package com.spring.starter.api.response.index;
 
-import com.spring.starter.db.entity.AMAM;
 import com.spring.starter.db.entity.AMAMReply;
 import lombok.Getter;
 

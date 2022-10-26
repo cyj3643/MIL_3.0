@@ -1,8 +1,6 @@
 package com.spring.starter.db.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 import lombok.*;
 

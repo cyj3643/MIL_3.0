@@ -1,4 +1,4 @@
-package com.spring.starter;
+/*package com.spring.starter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,4 +19,4 @@ public class BaseTest {
 	protected MockMvc mockMvc;
 	@Autowired
 	protected ObjectMapper objectMapper;
-}
+}*/

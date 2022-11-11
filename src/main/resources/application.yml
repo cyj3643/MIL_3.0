@@ -5,6 +5,10 @@ spring:
     url: ENC(8ZMawoCJ2aEvm35do6woaH9AdGuQobST7j679PsTjb2t2oJu7PuV8wYcd7S379wOio/HmQGOSwIB0UZoHPII/s1Q7a3TATPt+hs9jb1daRta8y/Yi14hfA==)
     username: admin
     password: ENC(J1fdVjJ60H/S9zv7FxbNWqJHcT8MJZtX)
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
 
 #    #TODO 효택 태석
 #    password: 1234

@@ -32,4 +32,10 @@ public class SubjectController {
     public ResponseEntity<? extends BaseResponse> getDetails(@PathVariable Long subjectId) {
         return ResponseEntity.status(200).body(new SubjectDetailsRes("과목 상세정보를 불러왔습니다.", 200, subjectService.getSubjectDetails(subjectId)));
     }
+
+    @RequestMapping("/test")
+    public String testIndex() throws Exception {
+        System.out.println("errrrror");
+        return "index";
+    }
 }

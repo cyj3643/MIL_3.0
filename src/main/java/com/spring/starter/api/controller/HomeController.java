@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/test")
+    @RequestMapping("/")
     public String main() throws Exception {
         System.out.println("errrrror");
-        return "index";
+        return "home";
     }
 }

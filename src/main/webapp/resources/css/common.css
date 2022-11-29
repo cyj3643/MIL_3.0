@@ -1,0 +1,262 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+*{
+	font-family: 'Pretendard-Regular';
+}
+
+#header_nav:visited,#header_nav:link,#header_nav:active{
+    color:#FFFFFF;
+    text-decoration:none;
+}
+
+#header_nav:hover{
+    color:#08FEB9;
+    cursor:pointer;
+}
+header{
+    width:100%;
+    height:8%;
+}
+
+.header_wrap{
+    height:100%;
+    width:100%;
+    min-width:1400px;
+    background-color:#3462DC;
+    display:flex;
+    flex-direction:row;
+}
+
+.title_wrap{
+    padding-left:40px;
+    padding-top:0px;
+}
+
+.title_wrap img{
+    margin-top:8px;
+    padding-left:40px;
+    padding-top:0px;
+}
+
+.title p{
+	color: #ffffff;
+	font-size:20pt;
+	font-weight:bold;
+	margin-top:12px;
+}
+
+.admin_but_wrap{
+    margin-top:25px;
+    margin-left:50px;
+}
+
+.curriculum_but{
+    background-color: #ffd447;
+    width:100px;
+    height:30px;
+    font-weight:bold;
+    border-radius:4px;
+    border:0;
+}
+
+.curriculum_but:hover {
+    cursor: pointer;
+}
+
+/*.nav_wrap{
+    height:10%;
+    position:absolute;
+    right:0;
+    margin-right:30px;
+    margin-top:6px;
+}
+
+ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+li{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: 0;
+    float: left;
+    color:#ebebeb;
+    padding-left:12px;
+}
+
+.nav{
+    padding-right:0;
+    margin-top:15px;
+}
+
+.subnav {
+	opacity:0;
+	visibility:hidden;
+}
+
+.subnav > li{
+	display: block;
+}
+
+.nav > li:hover .subnav {
+	opacity:1;
+	visibility:visible;
+}*/
+
+/* ul li태그에 리스트 스타일을 없앰 */
+	ul li{
+		list-style: none;
+	}
+/* a태그에 텍스트 밑줄을 없애고 색상을 #333 */
+	a {
+		text-decoration: none;
+	}
+/* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
+menu박스 가운데정렬, 글자가운데 정렬 */
+	#menu {
+		height:20%;
+	    position: absolute;
+	    right:0;
+	    margin-right:30px;
+		font:bold 16px;
+		text-align: center;
+	}
+
+/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+	#menu > ul > li {
+		margin: 0 0 0 0;
+	    padding: 0px 5px 0 0;
+	    border: 0;
+	    float: left;
+	    color: #ffffff;
+	    padding-left:12px;
+	    position:relative;
+		height:50px;
+	}
+	#menu > ul > li > ul {
+		width:260px;
+		display:none;
+		position: absolute;
+		font-size:14px;
+		background: #ffffff;
+		color:#292929;
+		border-radius:4px;
+		text-align: center;
+		padding:0;
+		left:-90px;
+		top:40px;
+	}
+
+	#menu > ul > li:hover > ul {
+		display:block;
+	}
+	
+	#menu > ul > li > ul > li {
+		width:100%;
+		text-align:center;
+		margin: 0;
+		padding: 4px 4px;
+		border-radius:4px;
+	}
+	
+	#menu > ul > li > ul > li:hover {
+		background-color: orange;
+		border-radius:4px;
+		color:#ffffff;
+		cursor:pointer;
+	}
+
+	
+/*
+    side section
+*/
+.area_section,
+.jobs_section{
+	min-height:400px;
+	height:100%;
+    margin:0px;
+    padding-top:0px;
+    width:210px;
+    background-color : #252525;
+    display:flex;
+    justify-content: center;
+}
+.area_section table, 
+.jobs_section table{
+    text-align:center;
+    margin-top:0px;
+    border-collapse:collapse;
+    margin-top:0px;
+}
+.area_section table th,
+.jobs_section table th
+{
+    text-align : center;
+    font-size : 13px;
+    padding : 6px 10px;
+    border-right:none;
+    background-color: #252525;
+    height:50px;
+    color:#f1f1f1;
+}
+.area_section table th span,
+.jobs_section table th span
+{
+    height : 25px;
+    width : 110px;
+    border-radius: 4px;
+    background: #3462DC
+}
+
+.area_section table td
+{
+    height:70px;
+}
+
+.jobs_section table td
+{
+    height:30px;
+    padding-top:12px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.jobs_section table td:hover
+{
+    cursor:pointer;
+}
+
+.area_table img{
+    width:130px;
+}
+
+.area_table img:hover{
+    cursor:pointer;
+}
+
+.gi_jobs{
+    color:#4da345;
+}
+
+.cd_jobs{
+    color:#db8a3f;
+}
+
+.de_jobs{
+    color:rgb(191, 122, 231);
+}
+
+.vc_jobs{
+    color:#a1e1f5;
+}
+
+.md_jobs{
+    color:#ff8888;
+}

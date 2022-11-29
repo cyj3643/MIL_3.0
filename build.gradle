@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'war'
 }
 
 group = 'com.spring'
@@ -46,8 +45,6 @@ dependencies {
 //    jsp 사용
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // 추가
     implementation 'javax.servlet:jstl:1.2' // 추가
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 test {

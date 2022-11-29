@@ -1,4 +1,4 @@
-/*package com.spring.starter;
+package com.spring.starter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class StarterApplicationTests {
 	void contextLoads() {
 	}
 
-}*/
+}

@@ -19,23 +19,22 @@ import java.util.stream.Collectors;
 @Controller
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cil")
 public class SubjectController {
 
     private final SubjectService subjectService;
 
-    @GetMapping("/subject")
+    @GetMapping("/cil/subject")
     public ResponseEntity<? extends BaseResponse> getAll() {
         List<SubjectDto> collect = subjectService.getAllSubject().stream().map(subject -> new SubjectDto(subject)).collect(Collectors.toList());
         return ResponseEntity.status(200).body(new SubjectRes("모든 과목을 불러왔습니다", 200, collect));
     }
 
-    @GetMapping("/subject/{subjectId}")
+    @GetMapping("/cil/subject/{subjectId}")
     public ResponseEntity<? extends BaseResponse> getDetails(@PathVariable Long subjectId) {
         return ResponseEntity.status(200).body(new SubjectDetailsRes("과목 상세정보를 불러왔습니다.", 200, subjectService.getSubjectDetails(subjectId)));
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/cil/test")
     public String callView() throws Exception {
         System.out.println("test");
         return "home";

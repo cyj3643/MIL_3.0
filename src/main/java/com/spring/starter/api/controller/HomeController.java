@@ -14,4 +14,16 @@ public class HomeController {
         System.out.println("errrrror");
         return "home";
     }
+
+    @RequestMapping("/cil/")
+    public String cilView() throws Exception {
+        System.out.println("errrrror");
+        return "cil";
+    }
+
+    @RequestMapping("/aam/")
+    public String aamView() throws Exception {
+        System.out.println("errrrror");
+        return "industry";
+    }
 }

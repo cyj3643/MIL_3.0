@@ -24,10 +24,10 @@
     </div>-->
     <div id="menu">
 		<ul>
-			<li class="cil_menu"><a id="header_nav" onclick="location.href='cil'">CIL</a></li>
+			<li class="cil_menu"><a id="header_nav" onclick="location.href='cil/'">CIL</a></li>
 			<!-- <li class="ii_menu"><a id="header_nav"  onclick="location.href='industry'">INDUSTRY-INSIGHT</li> -->
-			<li class="amam_menu"><a id="header_nav" onclick="location.href='industry'">AAM</a></li>
-            <li><a class="log_info"><a id="header_nav" onclick="location.href='login'">LOGIN</a></li>
+			<li class="amam_menu"><a id="header_nav" onclick="location.href='aam/'">AAM</a></li>
+            <li><a class="log_info"><a id="header_nav" onclick="location.href='login/'">LOGIN</a></li>
 		</ul>
 	</div>
 </div>

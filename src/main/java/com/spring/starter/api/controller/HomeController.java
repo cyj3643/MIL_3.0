@@ -15,13 +15,13 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/cil/")
+    @RequestMapping("cil/")
     public String cilView() throws Exception {
         System.out.println("errrrror");
         return "cil";
     }
 
-    @RequestMapping("/aam/")
+    @RequestMapping("aam/")
     public String aamView() throws Exception {
         System.out.println("errrrror");
         return "industry";

@@ -17,7 +17,7 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <body>
-    <header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+    <header><jsp:include page="include/header.jsp" /></header>
     <section class="main_contents">
         <div class="area_section">
             <table class="area_table">
@@ -168,7 +168,7 @@
                 </table>
             </div>
     </section>
-    <jsp:include page="/WEB-INF/views/modal/subjectDetail.jsp" />
+    <jsp:include page="modal/subjectDetail.jsp" />
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
 <script>

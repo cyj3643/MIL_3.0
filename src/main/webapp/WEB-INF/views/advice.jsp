@@ -14,7 +14,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/amam.js"></script>
 </head>
 <body>
-<header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+<header><jsp:include page="include/header.jsp" /></header>
 
 <head>
 

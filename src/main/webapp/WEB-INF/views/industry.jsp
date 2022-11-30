@@ -20,7 +20,7 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <body>
-    <header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+    <header><jsp:include page="include/header.jsp" /></header>
         <div class="main_contents">
             <div id="mentor-videos">
 			    <span><h3 class="aam_sub_title" style="display:inline">VIDEO</h3><span>- 선택한 직무에 관한 직무 정의 영상</span></span>

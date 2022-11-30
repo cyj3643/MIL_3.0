@@ -15,7 +15,7 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>
-<header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+<header><jsp:include page="include/header.jsp" /></header>
 <div class="amam_side"></div>
 <div class="amam_main_cont">
 	<div class="search_wrap">

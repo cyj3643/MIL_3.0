@@ -14,7 +14,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/amam.js"></script>
 </head>
 <body>
-<header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+<header><jsp:include page="include/header.jsp" /></header>
 <div class="amam_tab_wrap">
 	<div class="qna_tab">
 		<h3>재학생이 묻고 졸업생이 답한다</h3>

@@ -7,6 +7,7 @@ import com.spring.starter.api.service.SubjectService;
 import com.spring.starter.common.model.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Controller
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cil")
@@ -34,8 +36,8 @@ public class SubjectController {
     }
 
     @RequestMapping("/test")
-    public String testIndex() throws Exception {
-        System.out.println("errrrror");
-        return "index";
+    public String callView() throws Exception {
+        System.out.println("test");
+        return "home";
     }
 }

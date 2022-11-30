@@ -15,7 +15,7 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <body>
-    <header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+    <header><jsp:include page="include/header.jsp" /></header>
     <section class="main_contents">
         <div class="login_form">
         	<span>

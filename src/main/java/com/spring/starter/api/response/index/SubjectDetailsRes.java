@@ -1,6 +1,7 @@
 package com.spring.starter.api.response.index;
 
 import com.spring.starter.common.model.BaseResponse;
+import com.spring.starter.db.entity.MilSubject;
 import com.spring.starter.db.entity.Subject;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,14 +17,14 @@ public class SubjectDetailsRes extends BaseResponse {
     private String prerequisiteCourses;
     private String relatedCourses;
 
-    public SubjectDetailsRes(String msg, Integer status, Subject subject) {
+    public SubjectDetailsRes(String msg, Integer status, MilSubject subject) {
         super(msg, status);
         this.course = subject.getName();
-        this.keyWord = subject.getKeyWord();
-        this.details = subject.getDetails();
-        this.tools = subject.getTools();
+        this.keyWord = subject.getKeyword();
+        this.details = subject.getDetail();
+        this.tools = subject.getTool();
         this.prerequisiteCourses = subject.getPrerequisiteCourses();
-        this.relatedCourses = subject.getRelatedCourses();
+        this.relatedCourses = subject.getRelateSubject();
     }
 }
 

@@ -1,4 +1,4 @@
-package com.spring.starter.api.controller;
+/*package com.spring.starter.api.controller;
 
 import com.spring.starter.api.request.user.SurveyDto;
 import com.spring.starter.api.response.index.SurveyListRes;
@@ -31,4 +31,4 @@ public class SurveyController {
     public ResponseEntity<? extends BaseResponse> surveyList(@Valid Pageable pageable){
         return ResponseEntity.status(200).body(new SurveyListRes("설문 목록 조회가 완료되었습니다.",200,surveyService.getSurveyList(pageable)));
     }
-}
+}*/

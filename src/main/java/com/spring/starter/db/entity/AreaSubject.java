@@ -22,7 +22,7 @@ public class AreaSubject extends BaseEntity{
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
-	Subject subject;
+	MilSubject subject;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -32,7 +32,7 @@ public class Subject extends BaseEntity{
 			this.areaSubjectList = new LinkedList<>();
 		}
 		this.areaSubjectList.add(areaSubject);
-		areaSubject.setSubject(this);
+		//areaSubject.setSubject(this);
 	}
 
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
@@ -42,7 +42,7 @@ public class Subject extends BaseEntity{
 			this.jobsSubjectList = new LinkedList<>();
 		}
 		this.jobsSubjectList.add(jobsSubject);
-		jobsSubject.setSubject(this);
+		//jobsSubject.setSubject(this);
 	}
 
 	private String rowId;

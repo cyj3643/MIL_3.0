@@ -2,17 +2,18 @@ spring:
   datasource:
     #    TODO AWS RDS
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ENC(8ZMawoCJ2aEvm35do6woaH9AdGuQobST7j679PsTjb2t2oJu7PuV8wYcd7S379wOio/HmQGOSwIB0UZoHPII/s1Q7a3TATPt+hs9jb1daRta8y/Yi14hfA==)
+    jdbc-url: ENC(8ZMawoCJ2aEvm35do6woaH9AdGuQobST7j679PsTjb2t2oJu7PuV8wYcd7S379wOio/HmQGOSwIB0UZoHPII/s1Q7a3TATPt+hs9jb1daRta8y/Yi14hfA==)
+
     username: admin
     password: ENC(J1fdVjJ60H/S9zv7FxbNWqJHcT8MJZtX)
+    mapper-locations: classpath*:mapper/*.xml
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
 
-
-#    #TODO 효택 태석
+  #    #TODO 효택 태석
 #    password: 1234
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    password: 1234
@@ -82,7 +83,8 @@ cloud:
       static: ap-northeast-2
     stack:
       auto: false
-
+mybatis:
+  mapper-locations: classpath*:**/mapper/*.xml
 aws:
   url: ENC(QMJHMtd99HzShOywqzyzDE1MlC+avhqYkkNboHbJv7luNojIFgIkJItQxu+P0shxnZCs4tAG+uFShIgor+Q+hw==)
 

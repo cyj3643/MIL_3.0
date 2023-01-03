@@ -5,15 +5,19 @@ import com.spring.starter.api.response.index.SubjectDetailsRes;
 import com.spring.starter.api.response.index.SubjectRes;
 import com.spring.starter.api.service.SubjectService;
 import com.spring.starter.common.model.BaseResponse;
+import com.spring.starter.dao.cilDAO;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,6 +27,19 @@ public class SubjectController {
 
     private final SubjectService subjectService;
 
+    @Autowired
+    private SqlSession sqlSession;
+
+    @ResponseBody
+    @RequestMapping(value="/cil/detail",method= RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map subjectDetail(Model model, String subject)
+    {
+        System.out.println("in"+subject);
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("subjectDetailList",dao.subjectDetailList(subject));
+        return result;
+    }
     @GetMapping("/cil/subject")
     public ResponseEntity<? extends BaseResponse> getAll() {
         List<SubjectDto> collect = subjectService.getAllSubject().stream().map(subject -> new SubjectDto(subject)).collect(Collectors.toList());
@@ -39,4 +56,9 @@ public class SubjectController {
         System.out.println("test");
         return "home";
     }
+/*
+    @GetMapping("cil")
+    public List<Board> boardList(HttpServletRequest request, @ModelAttribute Board board) throws Exception {
+        return this.boardService.selectBoardList(request, board);
+    }*/
 }

@@ -1,6 +1,6 @@
 package com.spring.starter.api.service;
 
-import com.spring.starter.db.entity.Subject;
+import com.spring.starter.db.entity.MilSubject;
 import com.spring.starter.db.repository.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,11 @@ public class SubjectService {
 
     private final SubjectRepository subjectRepository;
 
-    public List<Subject> getAllSubject() {
+    public List<MilSubject> getAllSubject() {
         return subjectRepository.findAll();
     }
 
-    public Subject getSubjectDetails(Long subjectId) {
+    public MilSubject getSubjectDetails(Long subjectId) {
         return subjectRepository.findById(subjectId).orElse(null);
     }
 }

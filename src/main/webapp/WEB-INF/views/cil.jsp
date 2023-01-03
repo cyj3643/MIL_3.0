@@ -22,7 +22,15 @@
         <div class="area_section">
             <table class="area_table">
                 <tr>
-                    <th class="area_title"><span>AREA</span></th>
+                    <th class="area_title">
+
+                        <select class="area_select" name="area">
+                            <option value="심화전공">전공</option>
+                            <option value="마이크로">마이크로</option>
+                            <option value="복수전공">복수전공</option>
+                            <option value="부전공">부전공</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
                     <td class="gi_wrap">
@@ -188,6 +196,23 @@
     $('#md_but').on('click',function(){
     	trackClick(132);
 	});
+
+    $(document).ready(function(){
+        /*$.ajax({ url: "/cil/subject",
+            context: document.body,
+            success: (data) => {console.log(data);}
+        });*/
+        $.ajax({
+            type:"get",
+            url:"subjects",
+            success:function(productList){
+                $("#listView").empty();
+                $.each(productList,function(i,product){
+                    $("#listView").append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>").css("background","pink");
+                });
+            }
+        });//ajax
+    });
 </script>
 
 </html>

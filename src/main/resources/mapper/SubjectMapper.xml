@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.starter.dao.cilDAO">
+
+    <select id="subjectList" resultType="com.spring.starter.model.cilDTO">
+				select cp.*,ms.name,ms.is_mandatory
+				  from mil_db.cil_position cp
+		    inner join mil_db.mil_subject ms
+				    on cp.subject = ms.code
+			  order by cp.row_id, cp.col_id;
+		</select>
+
+	<select id="subjectDetailList" resultType="com.spring.starter.model.cilDetailDTO" parameterType="map">
+		select cp.*,ms.*
+		from mil_db.cil_position cp
+		inner join mil_db.mil_subject ms
+		on cp.subject = ms.code
+		<where>
+			<if test="value != null">AND cp.subject = #{subject} </if>
+		</where>
+	</select>
+</mapper>

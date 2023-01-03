@@ -45,6 +45,9 @@ dependencies {
 //    jsp 사용
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // 추가
     implementation 'javax.servlet:jstl:1.2' // 추가
+    // MyBatis 라이브러리 의존성 추가
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    //runtimeOnly 'mysql:mysql-connector-java:8.0.25'
 }
 
 test {

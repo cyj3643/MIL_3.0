@@ -1,4 +1,4 @@
-package com.spring.starter.api.service;
+/*package com.spring.starter.api.service;
 
 import com.spring.starter.api.mapper.SurveyMapper;
 import com.spring.starter.api.request.user.SurveyDto;
@@ -26,4 +26,4 @@ public class SurveyService {
         List<SurveyDto> surveyDtoList = surveyMapper.surveyListToDto(surveyList);
         return surveyDtoList;
     }
-}
+}*/

@@ -138,4 +138,9 @@ span{
     z-index: 1;
 }
 
+.area_select{
+    width:150px;
+    height: 25px;
+    text-align:center;
+}
 

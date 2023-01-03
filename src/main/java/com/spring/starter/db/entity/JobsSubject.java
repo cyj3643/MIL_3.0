@@ -23,7 +23,7 @@ public class JobsSubject extends BaseEntity{
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
-	Subject subject;
+	MilSubject subject;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -57,10 +57,19 @@ function reset_color(){
             		ch_td.style.background = "#f5f5f5";
 			}else{
 			}
+
+            //alert(subjects[i]);
+            console.log(document.querySelector('#cs_'.concat(str)));
+            var cs = document.querySelector('#cs_'.concat(str));
+            //var cs = document.querySelector('#cs_tr8td8');
+
+            if (cs!=null && cs.classList.contains('show')) {
+                cs.classList.remove('show');
+            }
         }
     }
 }
-function trackClick(page_id){
+function trackClick(page_id,job_id){
     var ch_td;
 	var core = new Array();
     var support = new Array();
@@ -111,23 +120,40 @@ function trackClick(page_id){
 
 			}			
 		});
+
 }
 
 function giClick(core,support)
 {
 	reset_color();
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "#59bb4f";
+    s_mark.style.background = "#c1dfbf";
+
     if(gi_flag>0)
     {
         for(i=0;i<core.length;i++)
         {
             ch_td = document.getElementById(core[i]);
             ch_td.style.background = "#59bb4f";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#59bb4f";
+            cs_text.innerText="C";
         }
 
         for(i=0;i<support.length;i++)
         {
             ch_td = document.getElementById(support[i]);
             ch_td.style.background = "#c1dfbf";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            //document.getElementsByClassName('show').style.display = "block";
+            cs.style.background = "#c1dfbf";
+            cs_text.innerText="S";
         }
     }
     if(gi_flag<0)
@@ -143,18 +169,34 @@ function giClick(core,support)
 }
 function cdClick(core,support){
 	reset_color();
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "#f19a48";
+    s_mark.style.background = "#ecb887";
+
     if(cd_flag>0)
     {
         for(i=0;i<core.length;i++)
         {
             ch_td = document.getElementById(core[i]);
             ch_td.style.background = "#f19a48";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#f19a48";
+            cs_text.innerText="C";
         }
 
         for(i=0;i<support.length;i++)
         {
             ch_td = document.getElementById(support[i]);
             ch_td.style.background = "#ecb887";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            //document.getElementsByClassName('show').style.display = "block";
+            cs.style.background = "#ecb887";
+            cs_text.innerText="S";
         }
     }
     if(cd_flag<0)
@@ -171,18 +213,35 @@ function cdClick(core,support){
 
 function deClick(core,support){
 	reset_color();
+
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "rgb(191, 122, 231)";
+    s_mark.style.background = "rgb(240, 213, 255)";
+
     if(de_flag>0)
     {
         for(i=0;i<core.length;i++)
         {
             ch_td = document.getElementById(core[i]);
             ch_td.style.background = "rgb(191, 122, 231)";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "rgb(191, 122, 231)";
+            cs_text.innerText="C";
         }
 
         for(i=0;i<support.length;i++)
         {
             ch_td = document.getElementById(support[i]);
             ch_td.style.background = "rgb(240, 213, 255)";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            //document.getElementsByClassName('show').style.display = "block";
+            cs.style.background = "rgb(240, 213, 255)";
+            cs_text.innerText="S";
         }
     }
     if(de_flag<0)
@@ -199,18 +258,35 @@ function deClick(core,support){
 
 function vcClick(core,support){
 	reset_color();
+
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "#3bd1ff";
+    s_mark.style.background = "#caeff0";
+
     if(vc_flag>0)
     {
         for(i=0;i<core.length;i++)
         {
             ch_td = document.getElementById(core[i]);
             ch_td.style.background = "#3bd1ff";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#3bd1ff";
+            cs_text.innerText="C";
         }
 
         for(i=0;i<support.length;i++)
         {
             ch_td = document.getElementById(support[i]);
             ch_td.style.background = "#caeff0";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            //document.getElementsByClassName('show').style.display = "block";
+            cs.style.background = "#caeff0";
+            cs_text.innerText="S";
         }
     }
     if(vc_flag<0)
@@ -227,18 +303,35 @@ function vcClick(core,support){
 
 function mdClick(core,support){
 	reset_color();
+
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "#ff6f6f";
+    s_mark.style.background = "#f7b9b9";
+
     if(md_flag>0)
     {
         for(i=0;i<core.length;i++)
         {
             ch_td = document.getElementById(core[i]);
             ch_td.style.background = "#ff6f6f";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#ff6f6f";
+            cs_text.innerText="C";
         }
 
         for(i=0;i<support.length;i++)
         {
             ch_td = document.getElementById(support[i]);
             ch_td.style.background = "#f7b9b9";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            //document.getElementsByClassName('show').style.display = "block";
+            cs.style.background = "#f7b9b9";
+            cs_text.innerText="S";
         }
     }
     if(md_flag<0)

@@ -40,6 +40,17 @@ public class SubjectController {
         result.put("subjectDetailList",dao.subjectDetailList(subject));
         return result;
     }
+    @ResponseBody
+    @RequestMapping(value="/cil/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map subjectTrackList(Model model, int page_id)
+    {
+        System.out.println("in"+page_id);
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        return result;
+    }
+
     @GetMapping("/cil/subject")
     public ResponseEntity<? extends BaseResponse> getAll() {
         List<SubjectDto> collect = subjectService.getAllSubject().stream().map(subject -> new SubjectDto(subject)).collect(Collectors.toList());

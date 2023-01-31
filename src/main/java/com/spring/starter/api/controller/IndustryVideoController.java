@@ -7,11 +7,18 @@ import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.db.entity.Jobs;
 import com.spring.starter.db.repository.JobsRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.spring.starter.dao.amamDAO;
 
 
 @RestController
@@ -21,6 +28,9 @@ public class IndustryVideoController {
 
     private final IndustryVideoService industryVideoService;
     private final JobsRepository jobsRepository;
+
+    @Autowired
+    private SqlSession sqlSession;
 
     @GetMapping("/all")
     public ResponseEntity<? extends BaseResponse> getAll() {
@@ -40,6 +50,17 @@ public class IndustryVideoController {
             industryVideoDto.setThumbnail("/industryImg/" + industryVideoDto.getThumbnail());
         }
         return ResponseEntity.status(200).body(new IndustryVideoRes("직업에 해당하는 비디오를 가져왔습니다.", 201, industryVideoDtoListByJob));
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/aam/video",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map videoView(Model model, String videoCode)
+    {
+        System.out.println("in"+videoCode);
+        amamDAO dao = sqlSession.getMapper(amamDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("getVideoCode",dao.getVideoCode(videoCode));
+        return result;
     }
 
 }

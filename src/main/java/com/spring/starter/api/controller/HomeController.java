@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import com.spring.starter.dao.cilDAO;
+import com.spring.starter.dao.amamDAO;
+
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -43,6 +46,8 @@ public class HomeController {
 
         try {
             model.addAttribute("subjectList", dao.subjectList());
+            model.addAttribute("jobList", dao.jobList());
+            System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -51,11 +56,19 @@ public class HomeController {
         return "cil";
     }
 
-    @RequestMapping("aam/")
-    public String aamView() throws Exception {
-        System.out.println("errrrror");
+    @RequestMapping("aam")
+    public String aamView(Model model) throws Exception {
+        System.out.println("cil들어옴!~~~~~~!~!~@");
+        amamDAO dao = sqlSession.getMapper(amamDAO.class);
+
+        try {
+            model.addAttribute("videoList",dao.videoList());
+            System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "industry";
+        }
         return "industry";
     }
-
-
 }

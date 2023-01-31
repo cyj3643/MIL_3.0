@@ -24,12 +24,12 @@ header{
 }
 
 .header_wrap{
-    height:100%;
-    width:100%;
-    min-width:1400px;
-    background-color:#3462DC;
-    display:flex;
-    flex-direction:row;
+    height: 100%;
+    width: 100%;
+    min-width: 360px;
+    background-color: #3462DC;
+    display: flex;
+    flex-direction: row;
 }
 
 .title_wrap{
@@ -44,10 +44,10 @@ header{
 }
 
 .title p{
-	color: #ffffff;
-	font-size:20pt;
-	font-weight:bold;
-	margin-top:12px;
+    color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .admin_but_wrap{
@@ -121,25 +121,26 @@ li{
 /* ����ũ�⸦ 16px ���� ��� �����ϰ� width���� 700, ���� 50��ŭ ������ #ccc, ���ڻ��� ������, ���γ���50px
 menu�ڽ� �������, ���ڰ�� ���� */
 	#menu {
-		height:20%;
-	    position: absolute;
-	    right:0;
-	    margin-right:30px;
-		font-family:bold;
-        font-size:16px;
-		text-align: center;
+        height: 20%;
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+        font-family: bold;
+        font-size: 16px;
+        text-align: center;
 	}
 
 /* menu�±� �ڽ��� ul�� �ڽ� li�� �������İ� ���� 140���� */
 	#menu > ul > li {
-		margin: 0 0 0 0;
-	    padding: 0px 5px 0 0;
-	    border: 0;
-	    float: left;
-	    color: #ffffff;
-	    padding-left:12px;
-	    position:relative;
-		height:50px;
+        margin: 0 0 0 0;
+        /* padding: 0px 0px 0 0; */
+        padding-top: 3px;
+        border: 0;
+        float: left;
+        color: #ffffff;
+        padding-left: 12px;
+        position: relative;
+        height: 30px;
 	}
 	#menu > ul > li > ul {
 		width:260px;
@@ -180,14 +181,15 @@ menu�ڽ� �������, ���ڰ�� ���� */
 */
 .area_section,
 .jobs_section{
-	min-height:400px;
-	height:100%;
-    margin:0px;
-    padding-top:0px;
-    width:210px;
-    background-color : #252525;
-    display:flex;
-    justify-content: center;
+    height: 100%;
+    /* max-height: 900px; */
+    margin: 0px;
+    padding-top: 3px;
+    width: 210px;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 .area_section table, 
 .jobs_section table{
@@ -195,6 +197,7 @@ menu�ڽ� �������, ���ڰ�� ���� */
     margin-top:0px;
     border-collapse:collapse;
     margin-top:0px;
+    margin-left:6px;
 }
 .area_section table th,
 .jobs_section table th
@@ -207,13 +210,61 @@ menu�ڽ� �������, ���ڰ�� ���� */
     height:50px;
     color:#f1f1f1;
 }
+
+.jobs_title
+{
+    text-align : center;
+    font-size : 13px;
+    padding : 6px 10px;
+    border-right:none;
+    background-color: #252525;
+    height:50px;
+    color:#f1f1f1;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-left:6px;
+}
+
+.area_title
+{
+    text-align : center;
+    font-size : 13px;
+    padding : 6px 10px;
+    border-right:none;
+    background-color: #252525;
+    height:50px;
+    color:#f1f1f1;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
 .area_section table th span,
-.jobs_section table th span
+.jobs_section table th span,
+.jobs_title span, .area_title span
 {
     height : 25px;
     width : 110px;
     border-radius: 4px;
-    background: #3462DC
+    background: #3462DC;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+}
+
+.jobs_list{
+    overflow-y: scroll;
+    display:flex;
+    justify-content: center;
 }
 
 .area_section table td
@@ -234,8 +285,11 @@ menu�ڽ� �������, ���ڰ�� ���� */
     cursor:pointer;
 }
 
-.area_table img{
-    width:130px;
+.area_table img {
+    /* width: 130px; */
+    height: 80px;
+    margin-top: 30px;
+    width: auto;
 }
 
 .area_table img:hover{
@@ -261,3 +315,15 @@ menu�ڽ� �������, ���ڰ�� ���� */
 .md_jobs{
     color:#ff8888;
 }
+
+::-webkit-scrollbar { width: 6px; height:6px;} /* 스크롤 바 */
+
+::-webkit-scrollbar-track { background-color:#252525; } /* 스크롤 바 밑의 배경 */
+
+::-webkit-scrollbar-thumb { background: #3462DC; border-radius: 10px; } /* 실질적 스크롤 바 */
+
+::-webkit-scrollbar-thumb:hover { background: #3462DC; } /* 실질적 스크롤 바 위에 마우스를 올려다 둘 때 */
+
+::-webkit-scrollbar-thumb:active { background: #3462DC; } /* 실질적 스크롤 바를 클릭할 때 */
+
+::-webkit-scrollbar-button { display: none; } /* 스크롤 바 상 하단 버튼 */

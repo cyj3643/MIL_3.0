@@ -22,4 +22,19 @@
 			<if test="value != null">AND cp.subject = #{subject} </if>
 		</where>
 	</select>
+	<select id="jobList" resultType="com.spring.starter.model.jobDTO">
+		select jobs.*
+		from mil_db.jobs jobs
+		<where>
+			<if test="value != null">AND cp.job_id = #{jobs_id} </if>
+		</where>
+	</select>
+	<select id="subjectTrackList" resultType="com.spring.starter.model.cilTrackDTO" parameterType="map">
+		select cp.col_id ,cp.row_id ,cp.subject, cs.page_id, cs.type
+		from mil_db.cil_position cp join mil_db.cil_subjectcore cs
+		on cp.subject = cs.subject
+		<where>
+			<if test="value != null">AND cs.page_id = #{page_id} </if>
+		</where>
+	</select>
 </mapper>

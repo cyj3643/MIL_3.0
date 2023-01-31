@@ -17,44 +17,45 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <body>
-    <header><jsp:include page="include/header.jsp" /></header>
+    <header>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <jsp:include page="include/header.jsp" />
+    </header>
     <section class="main_contents">
         <div class="area_section">
+            <!--<div class="area_title">
+                <select class="area_select" name="area">
+                    <option value="심화전공">전공</option>
+                    <option value="마이크로">마이크로</option>
+                    <option value="복수전공">복수전공</option>
+                    <option value="부전공">부전공</option>
+                </select>
+            </div>-->
+            <div class="area_title"><span>AREA</span></div>
             <table class="area_table">
                 <tr>
-                    <th class="area_title">
-
-                        <select class="area_select" name="area">
-                            <option value="심화전공">전공</option>
-                            <option value="마이크로">마이크로</option>
-                            <option value="복수전공">복수전공</option>
-                            <option value="부전공">부전공</option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
                     <td class="gi_wrap">
-                        <img id="gi_but" src="${pageContext.request.contextPath}/resources/img/area_icon/areaIcon_game.png">
+                        <img id="gi_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_gc.png">
                     </td>
                 </tr>
                 <tr>
                     <td class="cd_wrap">
-                        <img id="cd_but" src="${pageContext.request.contextPath}/resources/img/area_icon/areaIcon_dd.png">
+                        <img id="cd_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_cd.png">
                     </td>
                 </tr>
                 <tr>
                     <td class="de_wrap">
-                        <img id="de_but" src="${pageContext.request.contextPath}/resources/img/area_icon/areaIcon_df.png">
+                        <img id="de_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_de.png">
                     </td>
                 </tr>
                 <tr>
                     <td class="vc_wrap">
-                        <img id="vc_but" src="${pageContext.request.contextPath}/resources/img/area_icon/areaIcon_it.png">
+                        <img id="vc_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_vc.png">
                     </td>
                 </tr>
                 <tr>
                     <td class="md_wrap">
-                        <img id="md_but" src="${pageContext.request.contextPath}/resources/img/area_icon/areaIcon_ct.png">
+                        <img id="md_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_md.png">
                     </td>
                 </tr>
             </table>
@@ -85,22 +86,24 @@
                 <c:set var="index" value="0"/>
                 <c:set var="row" value="3"/>
                 <%
-                	for(int i=0; i<14; i++)
+                	for(int i=0; i<12; i++)
                 	{
                 		%>
                 		<tr>
                 			<c:set var="col" value="1"/>
                 			<%for(int j=0; j<8; j++){ %>
-                				<td>
+                				<td><div class="mandatory_cont">
 	                			<c:if test = "${subjectList[index].row_id==row}">
 			               			<c:if test = "${subjectList[index].col_id==col}">
 			               				<span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
 			               					  onclick="getDetail('${subjectList[index].subject}')">
 			               					<c:out value="${subjectList[index].name}"/>
 			               				</span>
+                                        <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
 			               				<c:set var="index" value="${index+1}"/>
 			               			</c:if>			               		
 			               		</c:if>
+                                </div>
 			               		</td>
 	                			<c:set var="col" value="${col+1}"/>
                 			<%} %>
@@ -109,71 +112,33 @@
                 		<% 
                 	}
                 %>
+                <tr>
+                    <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text">: Mandatory</a></a></td>
+                    <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text">: Core</a></a></td>
+                    <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text">: Support</a></a></td>
+                    <td><a id="tr13td4"></a></td>
+                    <td><a id="tr13td5"></a></td>
+                    <td><a id="tr13td6"></a></td>
+                    <td><a id="tr13td7"></a></td>
+                    <td><a id="tr13td8"></a></td>
+                </tr>
             </table>
         </div>
             <div class="jobs_section">
-                <table class="jobs_table">
-                    <tr>
-                        <th class="jobs_title"><span>JOBS</span></th>
-                    </tr>
-                    <tr>
-                        <td class="gi_jobs">게임기획자</td>
-                    </tr>
-                    <tr>
-                        <td class="gi_jobs">게임프로그래머</td>
-                    </tr>
-                    <tr>
-                        <td class="gi_jobs">게임그래픽디자이너</td>
-                    </tr>
-                    <tr>
-                        <td class="gi_jobs">스마트문화앱콘텐츠제작</td>
-                    </tr>
-                    <tr>
-                        <td class="cd_jobs">시각디자이너</td>
-                    </tr>
-                    <tr>
-                        <td class="cd_jobs">서비스경험디자이너</td>
-                    </tr>
-                    <tr>
-                        <td class="cd_jobs">디지털디자이너</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">영상연출가</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">제작PD</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">브랜드디자이너(OAP)</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">CG아티스트</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">모션그래픽디자이너</td>
-                    </tr>
-                    <tr>
-                        <td class="de_jobs">사운드슈퍼바이저</td>
-                    </tr>
-                    <tr>
-                        <td class="vc_jobs">3D 컴퓨터그래픽스</td>
-                    </tr>
-                    <tr>
-                        <td class="vc_jobs">영상테크니컬디렉터</td>
-                    </tr>
-                    <tr>
-                        <td class="vc_jobs">게임클라이언트개발자</td>
-                    </tr>
-                    <tr>
-                        <td class="md_jobs">데이터사이언티스트</td>
-                    </tr>
-                    <tr>
-                        <td class="md_jobs">데이터엔지니어</td>
-                    </tr>
-                    <tr>
-                        <td class="md_jobs">데이터사이언스 대학원</td>
-                    </tr>
-                </table>
+                <div class="jobs_title"><span>JOBS</span></div>
+                <div class="jobs_list">
+                    <table class="jobs_table">
+                        <c:set var="index" value="0"/>
+                        <c:forEach var="jobList" items="${jobList}">
+                        <tr>
+                            <td class="${jobList.job_id}">
+                                <p><c:out value="${jobList.name}"/></p>
+                            </td>
+                        </tr>
+                        <c:set var="index" value="${index+1}"/>
+                        </c:forEach>
+                    </table>
+                </div>
             </div>
     </section>
     <jsp:include page="modal/subjectDetail.jsp" />

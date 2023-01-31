@@ -1,0 +1,70 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital@1&family=Playfair+Display+SC:ital@1&display=swap');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body,html{
+    margin:0px;
+    padding:0px;
+    height:100%;
+    box-sizing :border-box;
+    width:100%;
+    background: #F5F5F5;
+}
+
+.main_contents{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-left: 17%;
+    padding-top: 5%;
+    /* top: 1080px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    /* align-items: center; */
+    /* transform: matrix(1, 0, 0, -1, 0, 0);*/
+}
+
+.main_contents_title{
+    /* 제목-전체메일발송 */
+
+    position: absolute;
+    width: 60%;
+    height: 10%;
+    top: 5%;
+    left: 20%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+.content_box{
+    /* 흰 바탕 */
+    position: relative;
+    left: 6.5%;
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-content: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 5%);
+    border-radius: 10px;
+}

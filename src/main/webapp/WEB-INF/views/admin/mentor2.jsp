@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-              pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/dashboard.css"> -->
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/mentor.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webapp/resources/css/admin/mentor.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webapp/resources/css/admin/menu.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="jquery/jquery-3.5.1.min.js"></script>
-    <script src="jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script src="js/includeHTML.js"></script>
-    <script src="$js/cil.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
+    <script src="${pageContext.request.contextPath}/webapp/resources/js/pop-up.js"></script>
 </head>
-<!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
 
 <div class="main_contents">

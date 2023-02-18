@@ -58,16 +58,18 @@ public class HomeController {
 
     @RequestMapping("aam")
     public String aamView(Model model) throws Exception {
-        System.out.println("cil들어옴!~~~~~~!~!~@");
+        System.out.println("aam들어옴!~~~~~~!~!~@");
         amamDAO dao = sqlSession.getMapper(amamDAO.class);
+        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
 
         try {
             model.addAttribute("videoList",dao.videoList());
+            model.addAttribute("jobList", cil_dao.jobList());
             System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            return "industry";
+            //return "industry";
         }
         return "industry";
     }

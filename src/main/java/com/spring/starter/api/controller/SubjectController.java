@@ -38,6 +38,9 @@ public class SubjectController {
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("subjectDetailList",dao.subjectDetailList(subject));
+        result.put("subjectPreList",dao.subjectPreList(subject));
+        //.put("subjectDetailCoreList",dao.subjectDetailCoreList(subject));
+        //model.addAttribute("coreYN", dao.subjectDetailCoreList(subject));
         return result;
     }
     @ResponseBody

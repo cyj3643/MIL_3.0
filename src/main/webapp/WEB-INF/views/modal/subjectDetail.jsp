@@ -17,6 +17,25 @@
 <body>
 <div id ="detailModal" class="detailModal">
 <div class="black_bg"></div>
+	<!--<div class="modal_side_wrap" id="modal_side_wrap">
+		<div class="modal_header">
+			<p>PRE COURSES</p>
+		</div>
+		<div class="modal_body">
+				<table>
+					<tr>
+						<td class="sub_pre_subject"></td>
+					</tr>
+					<tr>
+						<td class="main_pre_subject"></td>
+					</tr>
+					<tr>
+						<td class="main_subject"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>-->
 	<div class="modal_wrap" id="modal_wrap">
 	   <div class="modal_header">
 	   	<p>COURSE INFORMATION</p>
@@ -39,10 +58,10 @@
 		   <div class="modal_right_wrap">
 		   	<div class="icon_wrap">
 				<img class="subject_icon" id="gi_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_game_off.png">
-				<img class="subject_icon" id="cd_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_ct_off.png">
-				<img class="subject_icon" id="de_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_dd_off.png">
-				<img class="subject_icon" id="vc_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_df_off.png">
-				<img class="subject_icon" id="md_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_it_off.png">
+				<img class="subject_icon" id="cd_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_dd_off.png">
+				<img class="subject_icon" id="de_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_df_off.png">
+				<img class="subject_icon" id="vc_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_it_off.png">
+				<img class="subject_icon" id="md_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_ct_off.png">
 		   	</div>
 		   	<div class="tools_wrap">
 		   		<p class="title">Tools</p>
@@ -66,9 +85,11 @@
 	$(document).mouseup(function (e){
 	  var backGround = $(".detailModal");
 	  var layerPopup = $(".modal_wrap");
+	  var sidePopup = $(".modal_side_wrap");
 	  
 	  if(layerPopup.has(e.target).length === 0){
 		layerPopup.attr("style", "display:none");
+		sidePopup.attr("style", "display:none");
 	  	backGround.find(".black_bg").attr("style", "display:none");
 
 	  }

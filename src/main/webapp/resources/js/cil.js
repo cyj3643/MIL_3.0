@@ -17,6 +17,9 @@ function getDetail(subjectCode){
 				var modal = $("#detailModal");
                 //modal.empty();
                 //modal.append(data);
+                //modal.find(".main_subject").empty();
+                //modal.find(".main_subject").append(data.subjectPreList.main_subject);
+                //alert(data.subjectPreList.main_subject);
 				modal.find(".course_cont").empty();
                 modal.find(".course_cont").append(data.subjectDetailList[0].name);
 				modal.find(".keyword_cont").empty();
@@ -25,11 +28,29 @@ function getDetail(subjectCode){
                 modal.find(".detail_cont").append(data.subjectDetailList[0].detail);
 				modal.find(".tools_cont").empty();
                 modal.find(".tools_cont").append(data.subjectDetailList[0].tool);
-				modal.find(".pre_cont").empty();
+                modal.find("#gi_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_game_off.png");
+                modal.find("#de_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_df_off.png");
+                modal.find("#cd_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_dd_off.png");
+                modal.find("#vc_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_it_off.png");
+                modal.find("#md_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_ct_off.png");
+                for(i = 0; i<data.subjectDetailList.length; i++)
+                {
+                    if(data.subjectDetailList[i].page_id == 133)
+                        modal.find("#gi_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_game_on.png");
+                    else if(data.subjectDetailList[i].page_id == 129)
+                        modal.find("#de_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_df_on.png");
+                    else if(data.subjectDetailList[i].page_id == 130)
+                        modal.find("#cd_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_dd_on.png");
+                    else if(data.subjectDetailList[i].page_id == 131)
+                        modal.find("#vc_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_it_on.png");
+                    else if(data.subjectDetailList[i].page_id == 132)
+                        modal.find("#md_icon").attr("src", "/resources/img/TrackIcon/CIL_subject_ct_on.png");
+                }
                 //modal.find(".pre_cont").append(data.subjectDetailList[0].name);
 				modal.find(".related_cont").empty();
                 modal.find(".related_cont").append(data.subjectDetailList[0].relate_subject);
                 modal.find(".modal_wrap").attr("style", "display:flex");
+                modal.find(".modal_side_wrap").attr("style", "display:flex");
                 modal.find(".black_bg").attr("style", "display:block");
 			},
 			complete: function() {
@@ -45,7 +66,7 @@ function getDetail(subjectCode){
 function reset_color(){
     var ch_td;
 
-    for(i=3;i<=14;i++)
+    for(i=2;i<=16;i++)
     {
         for(j=1;j<=8;j++)
         {
@@ -117,10 +138,8 @@ function trackClick(page_id,job_id){
 			error:function(request, status, error){
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
 			}			
 		});
-
 }
 
 function giClick(core,support)

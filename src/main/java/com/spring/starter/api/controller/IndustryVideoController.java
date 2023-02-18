@@ -23,7 +23,7 @@ import com.spring.starter.dao.amamDAO;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/industry")
+//@RequestMapping("/industry")
 public class IndustryVideoController {
 
     private final IndustryVideoService industryVideoService;
@@ -56,11 +56,11 @@ public class IndustryVideoController {
     @RequestMapping(value="/aam/video",method=RequestMethod.POST, produces="application/json; charset=utf-8")
     public Map videoView(Model model, String videoCode)
     {
+        System.out.println("@@@@@@@video View@@@@@@@");
         System.out.println("in"+videoCode);
         amamDAO dao = sqlSession.getMapper(amamDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("getVideoCode",dao.getVideoCode(videoCode));
         return result;
     }
-
 }

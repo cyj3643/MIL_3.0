@@ -9,6 +9,7 @@ public class cilDetailDTO {
     private String relate_subject;
     private String keyword;
     private String subject;
+    private String page_id;
 
     public String getSubject() {
         return subject;
@@ -57,5 +58,12 @@ public class cilDetailDTO {
     }
     public void setKeyword(String keyword) {
         this.keyword = keyword;
+    }
+
+    public String getPage_id() {
+        return page_id;
+    }
+    public void setPage_id(String page_id) {
+        this.page_id = page_id;
     }
 }

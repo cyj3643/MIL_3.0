@@ -54,3 +54,6 @@ test {
     useJUnitPlatform()
     systemProperty "jasypt.encryptor.password", project.getProperties().get("jasypt.encryptor.password")
 }
+test.onlyIf {
+    !project.hasProperty('test')
+}

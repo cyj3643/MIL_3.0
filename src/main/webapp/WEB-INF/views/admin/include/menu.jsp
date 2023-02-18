@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/webapp/resources/css/admin/menu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/menu.css">
 <div class="left_menu">
     <div class="mil_logo">
         <div class="title" onclick="location.href='./main.jsp'"  style=" cursor: pointer;">

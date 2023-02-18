@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/curriculum.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/menu.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
@@ -57,8 +56,8 @@
                         <td class="menu_action">
                             <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
                             <button class="mil_btn mil_green_btn" type="button" onclick="open_pop_modify();" style="cursor: pointer;">페이지 수정</button>
-                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;">삭제</button>
                             <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='http://media-jobs.ajou.ac.kr/wordpress/%eb%94%94%ec%a7%80%ed%84%b8%eb%94%94%ec%9e%90%ec%9d%b4%eb%84%88/'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
+                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;">삭제</button>
                         </td>
                     </tr>
                     <c:set var="index" value="${index+1}"/>
@@ -173,7 +172,11 @@
 
 
         </div>
+
         <div class="Modal mileditor_wrap" id="Modal_subject">
+            <div class="close" onclick="close_pop_subject() ;" style="cursor: pointer">
+                <span class="close_btn"> X </span>
+            </div>
             <div class="setting_block" style="display: flex;">
                 <div class="setting_block_left">
                     <span class="setting_title">과목등록</span>
@@ -194,183 +197,87 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <c:set var="index" value="0"/>
+                            <c:set var="row" value="2"/>
+                            <%
+                                for(int i=0; i<15; i++)
+                                {
+                            %>
                             <tr>
-                                <td id="td11"></td>
-                                <td id="td12"></td>
-                                <td id="td13"></td>
-                                <td id="td14"></td>
-                                <td id="td15"></td>
-                                <td id="td16"></td>
-                                <td id="td17"></td>
-                                <td id="td18"></td>
-                            </tr>
-                            <!--2nd row-->
-                            <tr>
-                                <td id="td21" colspan="2"><div class="table_bg"
-                                                               style="width: 150px;">
-                                    <span>물리학, 생명과학, 선형대수1, 수학2, 이산수학 중 택 1</span></div></td>
-                                <td id="td23"></td>
-                                <td id="td24"></td>
-                                <td id="td25"></td>
-                                <td id="td26"></td>
-                                <td id="td27"></td>
-                                <td id="td28"></td>
-                            </tr>
-                            <!--3rd row-->
-                            <tr>
-                                <td id="td31"></td>
-                                <td id="td32"></td>
-                                <td id="td33"></td>
-                                <td id="td34"></td>
-                                <td id="td35"></td>
-                                <td id="td36"></td>
-                                <td id="td37"></td>
-                                <td id="td38"></td>
-                            </tr>
+                                <c:set var="col" value="1"/>
+                                <c:choose>
+                                    <c:when test="${row==2}">
+                                        <td><span class="must_math">수학1</span></td>
+                                        <td><span class="must_math">확률 및 통계1</span></td>
+                                        <c:set var="col" value="3"/>
+                                        <%for(int j=0; j<6; j++){ %>
+                                        <td><div class="mandatory_cont">
+                                            <c:if test = "${subjectList[index].row_id==row}">
+                                                <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
 
-                            <!--4th row-->
-                            <tr>
-                                <td id="td41"></td>
-                                <td id="td42"></td>
-                                <td id="td43"></td>
-                                <td id="td44"></td>
-                                <td id="td45"></td>
-                                <td id="td46"></td>
-                                <td id="td47"></td>
-                                <td id="td48"></td>
-                            </tr>
+                                                    <c:set var="index" value="${index+1}"/>
+                                                </c:if>
+                                            </c:if>
+                                        </div>
+                                        </td>
+                                        <c:set var="col" value="${col+1}"/>
+                                        <%} %>
+                                    </c:when>
+                                    <c:when test="${row==16}">
+                                        <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> Mandatory</a></a></td>
+                                        <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> Core</a></a></td>
+                                        <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> Support</a></a></td>
+                                        <c:set var="col" value="4"/>
+                                        <%for(int j=0; j<5; j++){ %>
+                                        <td><div class="mandatory_cont">
+                                            <c:if test = "${subjectList[index].row_id==16}">
+                                                <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
+                                                    <c:set var="index" value="${index+1}"/>
+                                                </c:if>
+                                            </c:if>
+                                        </div>
+                                        </td>
+                                        <c:set var="col" value="${col+1}"/>
+                                        <%} %>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <%for(int j=0; j<8; j++){ %>
+                                        <td><div class="mandatory_cont">
+                                            <c:if test = "${subjectList[index].row_id==row}">
+                                                <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
 
-                            <!--5th row-->
-                            <tr>
-                                <td id="td51"></td>
-                                <td id="td52"></td>
-                                <td id="td53"></td>
-                                <td id="td54"></td>
-                                <td id="td55"></td>
-                                <td id="td56"></td>
-                                <td id="td57"></td>
-                                <td id="td58"></td>
+                                                    <c:if test = "${subjectList[index].is_mandatory == 'T'}">
+                                                        <div class="cs_m" ><a>M</a></div>
+                                                    </c:if>
+                                                    <c:set var="index" value="${index+1}"/>
+                                                </c:if>
+                                            </c:if>
+                                        </div>
+                                        </td>
+                                        <c:set var="col" value="${col+1}"/>
+                                        <%} %>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:set var="row" value="${row+1}"/>
                             </tr>
-
-                            <!--6th row-->
-                            <tr>
-                                <td id="td61"></td>
-                                <td id="td62"></td>
-                                <td id="td63"></td>
-                                <td id="td64"></td>
-                                <td id="td65"></td>
-                                <td id="td66"></td>
-                                <td id="td67"></td>
-                                <td id="td68"></td>
-                            </tr>
-
-                            <!--7th row-->
-                            <tr>
-                                <td id="td71"></td>
-                                <td id="td72"></td>
-                                <td id="td73"></td>
-                                <td id="td74"></td>
-                                <td id="td75"></td>
-                                <td id="td76"></td>
-                                <td id="td77"></td>
-                                <td id="td78"></td>
-                            </tr>
-
-                            <!--8th row-->
-                            <tr>
-                                <td id="td81"></td>
-                                <td id="td82"></td>
-                                <td id="td83"></td>
-                                <td id="td84"></td>
-                                <td id="td85"></td>
-                                <td id="td86"></td>
-                                <td id="td87"></td>
-                                <td id="td88"></td>
-                            </tr>
-
-                            <!--9th row-->
-                            <tr>
-                                <td id="td91"></td>
-                                <td id="td92"></td>
-                                <td id="td93"></td>
-                                <td id="td94"></td>
-                                <td id="td95"></td>
-                                <td id="td96"></td>
-                                <td id="td97"></td>
-                                <td id="td98"></td>
-                            </tr>
-
-                            <!--10th row-->
-                            <tr>
-                                <td id="td101"></td>
-                                <td id="td102"></td>
-                                <td id="td103"></td>
-                                <td id="td104"></td>
-                                <td id="td105"></td>
-                                <td id="td106"></td>
-                                <td id="td107"></td>
-                                <td id="td108"></td>
-                            </tr>
-
-                            <!--11th row-->
-                            <tr>
-                                <td id="td111"></td>
-                                <td id="td112"></td>
-                                <td id="td113"></td>
-                                <td id="td114"></td>
-                                <td id="td115"></td>
-                                <td id="td116"></td>
-                                <td id="td117"></td>
-                                <td id="td118"></td>
-                            </tr>
-
-                            <!--12th row-->
-                            <tr>
-                                <td id="td121"></td>
-                                <td id="td122"></td>
-                                <td id="td123"></td>
-                                <td id="td124"></td>
-                                <td id="td125"></td>
-                                <td id="td126"></td>
-                                <td id="td127"></td>
-                                <td id="td128"></td>
-                            </tr>
-
-                            <!--13th row-->
-                            <tr>
-                                <td id="td131"></td>
-                                <td id="td132"></td>
-                                <td id="td133"></td>
-                                <td id="td134"></td>
-                                <td id="td135"></td>
-                                <td id="td136"></td>
-                                <td id="td137"></td>
-                                <td id="td138"></td>
-                            </tr>
-
-                            <!--14th row-->
-                            <tr>
-                                <td id="td141"></td>
-                                <td id="td142"></td>
-                                <td id="td143"></td>
-                                <td id="td144"></td>
-                                <td id="td145"></td>
-                                <td id="td146"></td>
-                                <td id="td147"></td>
-                                <td id="td148"></td>
-                            </tr>
-
-                            <!--15th row-->
-                            <tr>
-                                <td id="td151"></td>
-                                <td id="td152"></td>
-                                <td id="td153"></td>
-                                <td id="td154"></td>
-                                <td id="td155"></td>
-                                <td id="td156"></td>
-                                <td id="td157"></td>
-                                <td id="td158"></td>
-                            </tr>
+                            <%
+                                }
+                            %>
                             </tbody>
                         </table>
                     </div>
@@ -400,22 +307,20 @@
                     </section>
                 </div>
             </div>
-            <div class="close" onclick="close_pop_subject();">
-                <span class="close_btn">close</span>
-            </div>
+
         </div>
         <div class="Modal Modal_modify" id="Modal_modify">
             <div class="page">
             </div>
-            <div class="close" onclick="close_pop_modify();">
-                <span class="close_btn">close</span>
+            <div class="close" onclick="close_pop_subject() ;" style="cursor: pointer">
+                <span class="close_btn"> X </span>
             </div>
         </div>
         <div class="Modal Modal_enter" id="Modal_enter">
             <div class="page">
             </div>
-            <div class="close" onclick="close_pop_enter();">
-                <span class="close_btn">close</span>
+            <div class="close" onclick="close_pop_subject() ;" style="cursor: pointer">
+                <span class="close_btn"> X </span>
             </div>
         </div>
 
@@ -426,22 +331,45 @@
 왼쪽 메뉴 소스 header처럼 include 소스로 빼기
 -->
 <div class="left_menu">
-    <div class="mil_logo">
-        <div class="title" onclick="location.href='./main.html'"  style=" cursor: pointer;">
-            <p class="title1">MI</p>
-            <p class="title2">L</p>
-        </div>
-        <div>
-            <p class="sub_title">관리자페이지</p>
-        </div>
-
-    </div>
-    <a href="curriculum.html"><div class="menu1">교과과정 편집</div></a>
-    <a href="subject.html"><div class="menu2"><p>과목편집</p></div></a>
-    <a href="video.html"><div class="menu3"><p>전문가영상관리</p></div></a>
-    <a href="mentor.html"><div class="menu4"><p>멘토관리</p></div></a>
-    <a href="mail.html"><div class="menu5"><p>전체메일발송</p></div></a>
+    <meta name="viewport" content="height=device-height">
+    <jsp:include page="include/menu.jsp" />
 </div>
 
 </body>
+<script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
+<script>
+    includeHTML();
+    $('#gi_but').on('click',function(){
+        trackClick(133);
+    });
+    $('#cd_but').on('click',function(){
+        trackClick(130);
+    });
+    $('#de_but').on('click',function(){
+        trackClick(129);
+    });
+    $('#vc_but').on('click',function(){
+        trackClick(131);
+    });
+    $('#md_but').on('click',function(){
+        trackClick(132);
+    });
+
+    $(document).ready(function(){
+        /*$.ajax({ url: "/cil/subject",
+            context: document.body,
+            success: (data) => {console.log(data);}
+        });*/
+        $.ajax({
+            type:"get",
+            url:"subjects",
+            success:function(productList){
+                $("#listView").empty();
+                $.each(productList,function(i,product){
+                    $("#listView").append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>").css("background","pink");
+                });
+            }
+        });//ajax
+    });
+</script>
 </html>

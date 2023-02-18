@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.spring.starter.dao.cilDAO;
 import com.spring.starter.dao.amamDAO;
-
+import com.spring.starter.dao.adminDAO;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,5 +72,42 @@ public class HomeController {
             //return "industry";
         }
         return "industry";
+    }
+
+    /*
+    * admin : 관리자 메인 페이지로 이동
+    * */
+    @RequestMapping("admin")
+    public String adminMainList(Model model) {
+        System.out.println("admin들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/adminMain";
+        }
+        return "admin/adminMain";
+    }
+
+    @RequestMapping("admin/curriculum")
+    public String adminCurriList(Model model) {
+        System.out.println("admin_curriculum들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            model.addAttribute("curriList", dao.curriList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/adminMain";
+        }
+        return "admin/adminMain";
     }
 }

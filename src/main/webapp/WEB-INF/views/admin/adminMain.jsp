@@ -14,6 +14,7 @@
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
 
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -229,9 +230,9 @@
                                         <%} %>
                                     </c:when>
                                     <c:when test="${row==16}">
-                                        <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> Mandatory</a></a></td>
-                                        <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> Core</a></a></td>
-                                        <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> Support</a></a></td>
+                                        <td id="mark_td"><a id="tr13td1"></a></td>
+                                        <td id="mark_td" class="addLine"><a id="tr13td2"></a></td>
+                                        <td id="mark_td"><a id="tr13td3"></a></td>
                                         <c:set var="col" value="4"/>
                                         <%for(int j=0; j<5; j++){ %>
                                         <td><div class="mandatory_cont">
@@ -310,17 +311,14 @@
 
         </div>
         <div class="Modal Modal_modify" id="Modal_modify">
-            <div class="page">
-            </div>
-            <div class="close" onclick="close_pop_subject() ;" style="cursor: pointer">
+            <div class="close" onclick="close_pop_modify() ;" style="cursor: pointer">
                 <span class="close_btn"> X </span>
+            </div>
+            <div class="page">
             </div>
         </div>
         <div class="Modal Modal_enter" id="Modal_enter">
             <div class="page">
-            </div>
-            <div class="close" onclick="close_pop_subject() ;" style="cursor: pointer">
-                <span class="close_btn"> X </span>
             </div>
         </div>
 
@@ -336,7 +334,7 @@
 </div>
 
 </body>
-<script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
 <script>
     includeHTML();
     $('#gi_but').on('click',function(){

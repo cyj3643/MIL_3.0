@@ -21,9 +21,12 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <body>
-    <header><jsp:include page="/WEB-INF/views/include/header.jsp" /></header>
+<header>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<jsp:include page="../include/header.jsp" />
+</header>
 	<section>
-		<div><jsp:include page="/WEB-INF/views/include/menu.jsp" /></div>
+		<div><jsp:include page="../include/menu.jsp" /></div>
 		<div class="mainCont">
 			<div>
 				<table>

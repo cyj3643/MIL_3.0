@@ -110,4 +110,58 @@ public class HomeController {
         }
         return "admin/adminMain";
     }
+
+    @RequestMapping("admin/subject")
+    public String adminSubjectList(Model model) {
+        System.out.println("admin들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/subject";
+        }
+        return "admin/subject";
+    }
+
+    @RequestMapping("admin/mentor")
+    public String adminMentorList(Model model) {
+        System.out.println("mentor들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/mentor2";
+        }
+        return "admin/mentor2";
+    }
+
+    /*
+    * 사학과, 금융공학과 사이트 연결
+    * */
+    @RequestMapping("hil")
+    public String hilSubjectList(Model model) {
+        System.out.println("hil들어옴!~~~~~~!~!~@");
+        //cilDAO dao = sqlSession.getMapper(cilDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "hil";
+        }
+        return "hil";
+    }
 }

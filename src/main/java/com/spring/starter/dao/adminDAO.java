@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface adminDAO {
     public ArrayList<curriDTO> curriList();
+    //public ArrayList<curriDTO> curriList();
 }

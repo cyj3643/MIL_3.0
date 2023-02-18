@@ -67,15 +67,17 @@ body,html{
     background: #FFFFFF;
     box-shadow: 0px 4px 12px rgb(0 0 0 / 5%);
     border-radius: 10px;
+
+    overflow: auto;
 }
-.content_top{
+.admin_page_header{
     display: flex;
     flex-direction: row;
     height: 5%;
     padding-top: 22px;
 }
-.content_box_title{
-    /* 미디어 컨텐츠 교과과정 편집 */
+.admin_page_title{
+    /* 디지털미디어 교과과정 편집 */
 
     position: relative;
     width: 70%;
@@ -91,25 +93,11 @@ body,html{
     align-items: center;
     color: #000000;
 }
-.add_btn{
-    position: relative;
-    width: 10%;
-    top: 15%;
-    right: -16.2%;
-    border-radius: 0px;
-    color: #777777;
-    border-color: #777777;
-
-    font-family: 'Pretendard-Regular';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.8rem;
-}
 
 table{
     position: relative;
     left: 3.4%;
-    top: 5%;
+    top: 2%;
     width: 93%;
     align-items: center;
     align-content: center;
@@ -137,19 +125,32 @@ th,td{
     font-size: 0.76rem;
     line-height: 2rem;
 }
-.action_bnt{
+.mil_btn{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
     font-size: 0.76rem;
     line-height: 1rem;
-}
 
-button{
     color:#3462DC;
     background: #FFFFFF;
     border: 1px solid #3462DC;
     border-radius: 4px;
+}
+.mil_add_btn{
+    position: absolute;
+    width: 10%;
+    top: 5.5%;
+    right: 3.7%;
+    border-radius: 0px;
+    color: #777777;
+    border-color: #777777;
+
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 0.2rem;
 }
 
 /*----------팝업창------------*/
@@ -185,7 +186,7 @@ button{
     margin-left: 45%
 }
 
-.Modal .page .title{
+.Modal .page .setting_title{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -198,7 +199,33 @@ button{
 
 /*--------------추가하기 Modal-------------------------------*/
 
-.Modal_add .page .content #input{
+.bottom{
+    display: flex;
+}
+.mil_create_page_button{
+    width: 12%;
+    border-radius: 0px;
+    color: #777777;
+    border-color: #777777;
+
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+}
+.bottom .close{
+    margin-left: 10px;
+}
+.bottom .close span{
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+}
+
+.mileditor_wrap .page .setting_table_wrap .mil_input{
     width: 272.5px;
     font-size: 40px;
     background-color: transparent;
@@ -214,7 +241,7 @@ button{
     color: #A4A4A4;
 }
 
-.Modal_add .page .content .name{
+.mileditor_wrap .page .setting_table_wrap .name{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -225,11 +252,11 @@ button{
 
     padding-bottom: 10px;
 }
-.Modal_add .page .content .name #input{
+.mileditor_wrap .page .setting_table_wrap .name .mil_input{
     margin-left: 50px;
 }
 
-.Modal_add .page .content .slug{
+.mileditor_wrap .page .setting_table_wrap .slug{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -240,10 +267,10 @@ button{
 
     padding-bottom: 10px;
 }
-.Modal_add .page .content .slug #input{
+.mileditor_wrap .page .setting_table_wrap .slug .mil_input{
     margin-left: 26px;
 }
-.Modal_add .page .content .short-code{
+.mileditor_wrap .page .setting_table_wrap .short-code{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -254,22 +281,22 @@ button{
 
     padding-bottom: 10px;
 }
-.Modal_add .page .content .short-code #input{
+.mileditor_wrap .page .setting_table_wrap .short-code .mil_input{
     margin-left: 26px;
 }
 
 /*----------------------------------------------*/
 
-.Modal_add .page .content .row1{
+.mileditor_wrap .page .setting_table_wrap .row1{
     display: flex;
     padding-bottom: 10px;
 }
-.Modal_add .page .content .row2{
+.mileditor_wrap .page .setting_table_wrap .row2{
     display: flex;
     padding-bottom: 10px;
 }
 
-.Modal_add .page .content .mandatory{
+.mileditor_wrap .page .setting_table_wrap .mandatory{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -278,16 +305,16 @@ button{
     align-items: center;
     color: #000000;
 }
-.Modal_add .page .content .mandatory-color{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color{
     width: 205px;
     margin-left: 50px;
 }
-.Modal_add .page .content .mandatory-color .square1{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color .view_color{
     width: 20px;
     height: 20px;
-    background: #D9D9D9;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .mandatory-color #code1{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -302,7 +329,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .mandatory-color #explain1{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color #explain1{
     width: 205px;
     height: 16px;
 
@@ -319,12 +346,12 @@ button{
     padding-bottom: 3px;
 }
 
-.Modal_add .page .content .mandatory-color .square2{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color .view_color{
     width: 20px;
     height: 20px;
-    background: #6D6E71;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .mandatory-color #code2{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -339,7 +366,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .mandatory-color #explain2{
+.mileditor_wrap .page .setting_table_wrap .mandatory-color #explain2{
     width: 205px;
     height: 16px;
 
@@ -358,7 +385,7 @@ button{
 
 /*----------------------------------------------*/
 
-.Modal_add .page .content .core{
+.mileditor_wrap .page .setting_table_wrap .core{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -368,16 +395,16 @@ button{
     color: #000000;
 }
 
-.Modal_add .page .content .core-color{
+.mileditor_wrap .page .setting_table_wrap .core-color{
     width: 205px;
     margin-left: 50px;
 }
-.Modal_add .page .content .core-color .square1{
+.mileditor_wrap .page .setting_table_wrap .core-color .view_color{
     width: 20px;
     height: 20px;
-    background: #F8AD40;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .core-color #code1{
+.mileditor_wrap .page .setting_table_wrap .core-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -392,7 +419,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .core-color #explain1{
+.mileditor_wrap .page .setting_table_wrap .core-color #explain1{
     width: 205px;
     height: 16px;
 
@@ -408,12 +435,12 @@ button{
     padding-top: 3px;
     padding-bottom: 3px;
 }
-.Modal_add .page .content .core-color .square2{
+.mileditor_wrap .page .setting_table_wrap .core-color .view_color{
     width: 20px;
     height: 20px;
-    background: #F4911E;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .core-color #code2{
+.mileditor_wrap .page .setting_table_wrap .core-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -428,7 +455,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .core-color #explain2{
+.mileditor_wrap .page .setting_table_wrap .core-color #explain2{
     width: 205px;
     height: 16px;
 
@@ -447,7 +474,7 @@ button{
 
 /*----------------------------------------------*/
 
-.Modal_add .page .content .support{
+.mileditor_wrap .page .setting_table_wrap .support{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -457,16 +484,16 @@ button{
     color: #000000;
 }
 
-.Modal_add .page .content .support-color{
+.mileditor_wrap .page .setting_table_wrap .support-color{
     width: 205px;
     margin-left: 66px;
 }
-.Modal_add .page .content .support-color .square1{
+.mileditor_wrap .page .setting_table_wrap .support-color .view_color{
     width: 20px;
     height: 20px;
-    background: #FEEED6;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .support-color #code1{
+.mileditor_wrap .page .setting_table_wrap .support-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -481,7 +508,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .support-color #explain1{
+.mileditor_wrap .page .setting_table_wrap .support-color #explain1{
     width: 205px;
     height: 16px;
 
@@ -497,12 +524,12 @@ button{
     padding-top: 3px;
     padding-bottom: 3px;
 }
-.Modal_add .page .content .support-color .square2{
+.mileditor_wrap .page .setting_table_wrap .support-color .view_color{
     width: 20px;
     height: 20px;
-    background: #FBCE8C;
+    border: 0.5px solid black;
 }
-.Modal_add .page .content .support-color #code2{
+.mileditor_wrap .page .setting_table_wrap .support-color .mil_input{
     width: 51px;
     height: 16px;
 
@@ -517,7 +544,7 @@ button{
 
     padding-left: 7px;
 }
-.Modal_add .page .content .support-color #explain2{
+.mileditor_wrap .page .setting_table_wrap .support-color #explain2{
     width: 205px;
     height: 16px;
 
@@ -536,7 +563,7 @@ button{
 
 /*----------------------------------------------*/
 
-.Modal_add .page .content .type{
+.mileditor_wrap .page .setting_table_wrap .type{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -545,10 +572,10 @@ button{
     align-items: center;
     color: #000000;
 }
-.Modal_add .page .content .type-sort{
+.mileditor_wrap .page .setting_table_wrap .type-sort{
     margin-left: 46px;
 }
-.Modal_add .page .content .type-sort label{
+.mileditor_wrap .page .setting_table_wrap .type-sort label{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 500;
@@ -557,14 +584,30 @@ button{
     align-items: center;
     color: #000000;
 }
+.mileditor_wrap .page .setting_table_wrap .type-sort #explain1{
+    width: 210px;
+    height: 16px;
+
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.57rem;
+    line-height: 1rem;
+    display: flex;
+    align-items: center;
+    color: #A4A4A4;
+
+    padding-top: 7px;
+    padding-bottom: 3px;
+}
 
 /*----------------------------------------------*/
 
-.Modal_add .page .content .row3{
+.mileditor_wrap .page .setting_table_wrap .row3{
     display: flex;
 }
 
-.Modal_add .page .content .major-details{
+.mileditor_wrap .page .setting_table_wrap .major-details{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -573,11 +616,11 @@ button{
     align-items: center;
     color: #000000;
 }
-.Modal_add .page .content .select{
+.mileditor_wrap .page .setting_table_wrap .select{
     margin-left: 38px;
     display: column;
 }
-.Modal_add .page .content .select .selection{
+.mileditor_wrap .page .setting_table_wrap .select .selection{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -586,7 +629,7 @@ button{
     align-items: center;
     color: #000000;
 }
-.Modal_add .page .content .select span{
+.mileditor_wrap .page .setting_table_wrap .select span{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -598,23 +641,24 @@ button{
 
 /*-----------------과목등록 Modal--------------------*/
 
-.Modal_subject .page{
+#Modal_subject .setting_block{
     /* 팝업창-흰색 */
     width: 85%;
     height: 80%;
-    padding: 1% 2% 1% 2%;
+    padding: 3% 2% 1% 3%;
     margin: 4% auto auto 5%;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     background-color: #FFFFFF;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+    overflow: auto;
 }
-.Modal_subject .page .title{
+#Modal_subject .setting_block .setting_title{
     height: 15px;
     margin-top: 25px;
 }
-.Modal_subject .page .subtitle{
+#Modal_subject .setting_block .subtitle{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -623,18 +667,15 @@ button{
     align-items: center;
     color: #A4A4A4;
 }
-.Modal_subject .page .subject-list table{
-    width: 90%;
-    height: 80%;
+#mil_subject_table{
+    width: 100%;
     /* margin-left: -3.5%; */
-    margin-top: 2%;
+    margin-top: 35px;
 }
-.Modal_subject .page .subject-list table tr th{
+#mil_subject_table thead{
     width: 102px;
     height: 20px;
     background: #F4F4F4;
-}
-.Modal_subject .page .subject-list .class_mark{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -643,31 +684,47 @@ button{
     text-align: center;
     color: #000000;
 }
-.Modal_subject .page .subject-list table tr td{
+
+#mil_subject_table tbody{
     width: 130px;
     height: 30px;
     border: 0.931223px solid #C2C2C2;
     border-radius: 3.72489px;
-}
-.Modal_subject .page .subject-list table tr td span{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
     font-size: 0.2rem;
-    line-height: 10%;
+    line-height: -1rem;
     align-items: center;
     text-align: center;
     color: #000000;
 }
 
+#mil_subject_table tbody td{
+    box-sizing: border-box;
+    border: 0.931223px solid #C2C2C2;
+    border-radius: 3.72489px;
+    cursor: pointer;
+}
+
+#mil_subject_table span{
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.2rem;
+    line-height: 0rem;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
 
 /*-----------------------------------------*/
-.Modal_subject .page .subject-type{
+.regidit_subject-type{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.Modal_subject .page .subject-type .title{
+.regidit_subject-type .setting_title{
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -676,7 +733,7 @@ button{
     align-items: center;
     color: #000000;
 }
-.Modal_subject .page .subject-type #Core{
+.regidit_subject-type input{
     font-family: 'Noto Sans';
     font-style: normal;
     font-weight: 400;
@@ -684,4 +741,9 @@ button{
     line-height: 2rem;
     align-items: top;
     color: #000000;
+}
+
+.regidit_subject-type button{
+    margin-bottom: 5px;
+    padding: 3px;
 }

@@ -31,7 +31,7 @@
                     <option value="부전공">부전공</option>
                 </select>
             </div>-->
-            <div class="area_title"><span>AREA</span></div>
+            <div class="area_title"><span>TRACK</span></div>
             <table class="area_table">
                 <tr>
                     <td class="gi_wrap">
@@ -73,7 +73,7 @@
                     <th><span class="class_mark">4-1</span></th>
                     <th><span class="class_mark">4-2</span></th>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td><span class="must_math">수학1</span></td>
                     <td><span class="must_math">확률 및 통계1</span></td>
                     <td></td>
@@ -82,36 +82,89 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr>-->
                 <c:set var="index" value="0"/>
-                <c:set var="row" value="3"/>
+                <c:set var="row" value="2"/>
                 <%
-                	for(int i=0; i<12; i++)
+                	for(int i=0; i<15; i++)
                 	{
                 		%>
                 		<tr>
-                			<c:set var="col" value="1"/>
+                            <c:set var="col" value="1"/>
+                            <c:choose>
+                            <c:when test="${row==2}">
+                                <td><span class="must_math">수학1</span></td>
+                                <td><span class="must_math">확률 및 통계1</span></td>
+                                <c:set var="col" value="3"/>
+                                <%for(int j=0; j<6; j++){ %>
+                                <td><div class="mandatory_cont">
+                                    <c:if test = "${subjectList[index].row_id==row}">
+                                        <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                            <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
+
+                                            <c:set var="index" value="${index+1}"/>
+                                        </c:if>
+                                    </c:if>
+                                </div>
+                                </td>
+                                <c:set var="col" value="${col+1}"/>
+                                <%} %>
+                            </c:when>
+                                <c:when test="${row==16}">
+                                    <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> Mandatory</a></a></td>
+                                    <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> Core</a></a></td>
+                                    <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> Support</a></a></td>
+                                    <c:set var="col" value="4"/>
+                                    <%for(int j=0; j<5; j++){ %>
+                                    <td><div class="mandatory_cont">
+                                        <c:if test = "${subjectList[index].row_id==16}">
+                                            <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                                <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
+                                                <c:set var="index" value="${index+1}"/>
+                                            </c:if>
+                                        </c:if>
+                                    </div>
+                                    </td>
+                                    <c:set var="col" value="${col+1}"/>
+                                    <%} %>
+                                </c:when>
+                            <c:otherwise>
                 			<%for(int j=0; j<8; j++){ %>
                 				<td><div class="mandatory_cont">
-	                			<c:if test = "${subjectList[index].row_id==row}">
-			               			<c:if test = "${subjectList[index].col_id==col}">
-			               				<span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-			               					  onclick="getDetail('${subjectList[index].subject}')">
-			               					<c:out value="${subjectList[index].name}"/>
-			               				</span>
-                                        <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
-			               				<c:set var="index" value="${index+1}"/>
-			               			</c:if>			               		
-			               		</c:if>
+                                    <c:if test = "${subjectList[index].row_id==row}">
+                                        <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                            <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
+
+                                            <c:if test = "${subjectList[index].is_mandatory == 'T'}">
+                                                <div class="cs_m" ><a>M</a></div>
+                                            </c:if>
+                                            <c:set var="index" value="${index+1}"/>
+                                        </c:if>
+                                    </c:if>
                                 </div>
 			               		</td>
 	                			<c:set var="col" value="${col+1}"/>
                 			<%} %>
+                            </c:otherwise>
+                            </c:choose>
                 			<c:set var="row" value="${row+1}"/>
                 		</tr>
                 		<% 
                 	}
                 %>
+                <!--
                 <tr>
                     <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text">: Mandatory</a></a></td>
                     <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text">: Core</a></a></td>
@@ -121,7 +174,7 @@
                     <td><a id="tr13td6"></a></td>
                     <td><a id="tr13td7"></a></td>
                     <td><a id="tr13td8"></a></td>
-                </tr>
+                </tr>-->
             </table>
         </div>
             <div class="jobs_section">

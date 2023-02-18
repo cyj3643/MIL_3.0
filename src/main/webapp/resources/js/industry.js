@@ -1,13 +1,15 @@
 function getVideo(videoCode){
+	alert("click video!");
 	$.ajax({
 			type: 'POST',
-			url: '/industry/video',
+			url: '/aam/video',
 			async: true,
 			data: { "videoCode" : videoCode
 			},
 			success: function (data) {
 				//alert("success"+data.getVideoCode[0].video_link);
 				var modal = $("#videoView");
+				modal.attr("style","display:block");
 				modal.find(".video_title").empty();
                 modal.find(".video_title").append(data.getVideoCode[0].video_title);
 				$(".video").attr("src", data.getVideoCode[0].video_link);
@@ -17,8 +19,8 @@ function getVideo(videoCode){
 			complete: function() {
 			},
 			error:function(request, status, error){
-				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				alert("codee:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                console.log("code:ee"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 
 			}			
 		});

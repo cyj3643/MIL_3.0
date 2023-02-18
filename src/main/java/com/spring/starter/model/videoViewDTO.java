@@ -29,5 +29,4 @@ public class videoViewDTO {
     public void setVideo_link(String video_link) {
         this.video_link = video_link;
     }
-
 }

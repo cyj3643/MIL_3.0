@@ -7,7 +7,27 @@
 
 *{
 	font-family: 'Pretendard-Regular';
+    box-sizing :border-box;
 }
+
+body,html{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    /* min-height: 900px; */
+    width: 100%;
+    /* min-width: 1682px; */
+    /* min-height: -webkit-fill-available; */
+    /* max-width: -webkit-fill-available; */
+    box-sizing: border-box;
+}
+.main_contents{
+    display: flex;
+    height: 92%;
+    /* min-width: 1680px; */
+    overflow-x: auto;
+}
+
 
 .header_nav:visited,.header_nav:link,.header_nav:active{
     color:#FFFFFF;

@@ -1,28 +1,5 @@
 @import url("common.css");
 
-*{
-    box-sizing :border-box;
-}
-
-body,html{
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    /* min-height: 900px; */
-    width: 100%;
-    /* min-width: 1682px; */
-    /* min-height: -webkit-fill-available; */
-    /* max-width: -webkit-fill-available; */
-    box-sizing: border-box;
-}
-
-.main_contents{
-    display: flex;
-    height: 92%;
-    /* min-width: 1680px; */
-    overflow-x: auto;
-}
-
 /*
     main contents section
 */
@@ -34,24 +11,27 @@ body,html{
     background-size: 1px 1px;
     min-width:900px;
     min-height:100%;
-
-
 }
 
 .cil_table_section table{
     border-collapse:collapse;
+    height: 100%;
 }
 
 .cil_table_section table td,
-.cil_table_section table th{
-    border-right : solid 2px rgb(228, 228, 228);
-    border-bottom : none;
-    width : 140px;
-    height : 45px;
-    text-align : center;
-    font-size : 11px;
-    padding: 4px 13px;
-    color:#292828;
+.cil_table_section table th {
+    border-right: solid 2px rgb(228, 228, 228);
+    border-bottom: none;
+    width: 140px;
+    height: 38px;
+    text-align: center;
+    font-size: 10px;
+    padding: 1px 14px;
+    color: #292828;
+    /* display: flex; */
+}
+.cil_table_section table > tr:last-child > td {
+    height: 35px;
 }
 
 .cil_table_section table th{
@@ -71,6 +51,7 @@ span {
     vertical-align: middle;
     background-color: #fbfbfb;
     box-shadow: 2px 2px 5px #d3d1d1, -2px -2px 2px #f2f2f2;
+    word-break: keep-all;
 }
 
 .class_mark{
@@ -98,14 +79,27 @@ span {
     z-index: 2;
     border-radius:5px;
 }
-.modal_header{
-    height:10%;
-    padding-left:5px;
-    border-bottom:1px solid #464646;
-    font-weight:bold;
-    color:#515151;
-    font-size:15px;
-    padding-top:0;
+.modal_side_wrap{
+    display: none;
+    flex-direction:column;
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    top:60%;
+    left: 40%;
+    margin: -250px 0 0 -250px;
+    background: rgb(254 254 254);
+    z-index: 2;
+    border-radius:5px;
+}
+.modal_header {
+    height: 10%;
+    padding-left: 15px;
+    border-bottom: 1px solid #464646;
+    color: #3462dc;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 0;
 }
 
 .modal_body{
@@ -118,7 +112,7 @@ span {
     height:100%;
     width:50%;
     border-right:1px solid #c7c7c7;
-    padding:1px 5px;
+    padding:15px;
 }
 
 .modal_left_wrap div, .modal_right_wrap div{
@@ -133,6 +127,10 @@ span {
     font-weight:bold;
 }
 
+.details_wrap{
+    height: 60%;
+}
+
 .detail_cont{
     height: 180%;
     overflow-y: scroll;
@@ -144,7 +142,7 @@ span {
 }
 
 .icon_wrap {
-    padding-top: 14px;
+    padding-top: 9px;
 }
 
 .black_bg{
@@ -226,6 +224,16 @@ span {
     border-radius: 10px;
     border: solid 1px rgb(228, 228, 228);
     display: none;
+}
+.cs_m{
+    background: #c7c7c7;
+    position: relative;
+    top: -36px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    border: solid 1px rgb(228, 228, 228);
 }
 
 .mandatory a{

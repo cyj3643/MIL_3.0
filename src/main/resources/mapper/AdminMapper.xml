@@ -39,4 +39,26 @@
 		UPDATE mentor SET name=#{name}, industry_name=#{industry_name}, email=#{email}, area=#{area} WHERE id=#{id}
 	</update>
 
+    <!--
+    Video Mapper
+    -->
+    <select id="videoList" resultType="com.spring.starter.model.videoDTO">
+				select * from industry_video order by id;
+	</select>
+
+    <select id="videoDetailList" resultType="com.spring.starter.model.videoDTO">
+        select id,job_name,video_title,thumbnail_url,substr(video_link,-11) as video_link,jobs_id from industry_video
+        <where>
+            <if test="value != null">AND id = #{id} </if>
+        </where>
+    </select>
+
+    <insert id="addVideo">
+        INSERT INTO mentor (name, industry_name, email, area) VALUES (#{name}, #{industry_name}, #{email}, #{area})
+    </insert>
+
+    <update id="updateVideo" >
+		UPDATE mentor SET name=#{name}, industry_name=#{industry_name}, email=#{email}, area=#{area} WHERE id=#{id}
+	</update>
+
 </mapper>

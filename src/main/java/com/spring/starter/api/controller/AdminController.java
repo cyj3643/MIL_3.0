@@ -71,11 +71,50 @@ public class AdminController {
 
     @ResponseBody
     @RequestMapping(value="/admin/mentor/add",method=RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map updateMentor(Model model, String name, String industry_name,String email, String area)
+    public Map addMentor(Model model, String name, String industry_name,String email, String area)
     {
         System.out.println("mentor add in");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
         dao.addMentor(name,industry_name,email,area);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        //result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/video/detail",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map videoDetailList(Model model, int id)
+    {
+        System.out.println("video detailList in"+id);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("videoDetailList", dao.videoDetailList(id));
+        //result.put("videoList", dao.mentorList());
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/video/update",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map updateVideo(Model model, int id,String job_name,String video_title,String thumbnail_url, String video_link,String jobs_id)
+    {
+        System.out.println("video update in"+id);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.updateVideo(id,job_name,video_title,thumbnail_url,video_link,jobs_id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("videoDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/video/add",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map addVideo(Model model, String job_name,String video_title,String thumbnail_url, String video_link,String jobs_id)
+    {
+        System.out.println("video add in");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.addVideo(job_name,video_title,thumbnail_url,video_link,jobs_id);
         Map<String, Object> result = new HashMap<String, Object>();
         //result.put("subjectTrackList",dao.subjectTrackList(page_id));
         //result.put("mentorDetailList", dao.mentorDetailList(id));

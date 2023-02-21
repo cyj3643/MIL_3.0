@@ -154,7 +154,7 @@ public class HomeController {
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
 
         try {
-            //model.addAttribute("subjectList", dao.subjectList());
+            model.addAttribute("videoList", dao.videoList());
             //model.addAttribute("jobList", dao.jobList());
             //System.out.println("testtesttest");
         } catch (Exception e) {

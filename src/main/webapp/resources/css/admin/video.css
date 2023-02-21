@@ -199,3 +199,12 @@ input{
     margin-top: 0px;
     margin-left: 650px;
 }
+
+/*
+비디오 썸네일 이미지
+*/
+.thumbnail_uploaded {
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}

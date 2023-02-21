@@ -22,3 +22,21 @@ function deleteCurriculum(page_id){
         }
     });
 }
+
+
+var pos = 0;
+function HighlightTD(target){
+    if(pos){
+        pos.style.borderColor = '#C2C2C2';
+    }
+    target.style.borderColor = '#3462DC';
+    pos = target;
+}
+function saveSubject(){
+    alert("과목저장 완료");
+
+}
+
+function deleteSubject(){
+    alert("과목삭제 완료");
+}

@@ -673,7 +673,7 @@ th,td{
 }
 #Modal_subject .setting_block .close{
     position: absolute;
-    margin-left: 85%;
+    margin-left: 83%;
     margin-top: -2.1%;
 }
 #Modal_subject .setting_block .setting_title{
@@ -720,15 +720,17 @@ th,td{
     line-height: 0rem;
     align-items: center;
     text-align: center;
-    word-break: keep-all;
     color: #000000;
 }
 
 #mil_subject_table tbody td{
+    width: 102px;
+    height: 60px;
     box-sizing: border-box;
     border: 0.931223px solid #C2C2C2;
     border-radius: 3.72489px;
     cursor: pointer;
+    text-align:center;
 }
 
 #mil_subject_table span{
@@ -739,6 +741,7 @@ th,td{
     line-height: 0rem;
     align-items: center;
     text-align: center;
+    word-break: keep-all;
     color: #000000;
 }
 

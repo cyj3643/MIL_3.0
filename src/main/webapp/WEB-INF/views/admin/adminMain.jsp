@@ -53,7 +53,8 @@
                             <c:out value="${curriList.name}"/>
                         </td>
                         <td class="menu_category">
-                            <c:out value="${curriList.category}"/>
+                            <input type="radio" id = "r1" value="track" <c:if test="${curriList.category eq 'track'}">checked</c:if>/><label>track</label>
+                            <input type="radio" id = "r2" value="job" <c:if test="${curriList.category eq 'job'}">checked</c:if>/><label>job</label>
                         </td>
                         <td class="menu_action">
                             <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>

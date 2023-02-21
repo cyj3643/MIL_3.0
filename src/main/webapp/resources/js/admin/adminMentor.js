@@ -7,7 +7,7 @@ function getMentorDetail(id){
         data: { "id" : id
         },
         success : function (data){
-            $("#admin_page_content").load("/admin/curriculum #admin_page_content");
+            $("#create_mentor_form").load("/admin/mentor/detail #create_mentor_form");
         }
     });
 }

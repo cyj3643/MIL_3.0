@@ -42,6 +42,18 @@ public class AdminController {
         result.put("curriList", dao.curriList());
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/mentor/detail",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map mentorDetailList(Model model, int id)
+    {
+        System.out.println("mentor detailList in"+id);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
     /*
     @ResponseBody
     @RequestMapping(value="/cil/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")

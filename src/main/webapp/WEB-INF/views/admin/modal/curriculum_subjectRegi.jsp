@@ -66,8 +66,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                        <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
-
                                         <c:set var="index" value="${index+1}"/>
                                     </c:if>
                                 </c:if>
@@ -89,7 +87,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                        <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
                                         <c:set var="index" value="${index+1}"/>
                                     </c:if>
                                 </c:if>
@@ -107,11 +104,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                        <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
-
-                                        <c:if test = "${subjectList[index].is_mandatory == 'T'}">
-                                            <div class="cs_m" ><a>M</a></div>
-                                        </c:if>
                                         <c:set var="index" value="${index+1}"/>
                                     </c:if>
                                 </c:if>

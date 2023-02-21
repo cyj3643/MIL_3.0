@@ -15,6 +15,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
 
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

@@ -98,9 +98,11 @@ public class HomeController {
     public String adminCurriList(Model model) {
         System.out.println("admin_curriculum들어옴!~~~~~~!~!~@");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
 
         try {
             model.addAttribute("curriList", dao.curriList());
+            model.addAttribute("subjectList", cil_dao.subjectList());
             //model.addAttribute("jobList", dao.jobList());
             //System.out.println("testtesttest");
         } catch (Exception e) {

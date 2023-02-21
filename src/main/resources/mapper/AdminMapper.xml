@@ -10,4 +10,39 @@
 				select * from curriculum_admin order by category desc, page_id;
 		</select>
 
+    <select id="deleteCurriculum" resultType="com.spring.starter.model.curriDTO">
+				delete from curriculum_admin
+        <where>
+            <if test="value != null">AND page_id = #{page_id} </if>
+        </where>
+	</select>
+
+    <!--
+    Mentor Mapper
+    -->
+    <select id="mentorList" resultType="com.spring.starter.model.mentorDTO">
+				select * from mentor order by category desc, page_id;
+		</select>
+
+    <select id="mentorDetailList" resultType="com.spring.starter.model.mentorDTO">
+				select * from mentor order by category desc, page_id;
+        <where>
+            <if test="value != null">AND id = #{id} </if>
+        </where>
+    </select>
+
+    <select id="addMentor" resultType="com.spring.starter.model.mentorDTO">
+				select * from mentor order by category desc, page_id;
+        <where>
+            <if test="value != null">AND page_id = #{page_id} </if>
+        </where>
+    </select>
+
+    <select id="updateMentor" resultType="com.spring.starter.model.mentorDTO">
+				select * from mentor order by category desc, page_id;
+        <where>
+            <if test="value != null">AND id = #{id} </if>
+        </where>
+    </select>
+
 </mapper>

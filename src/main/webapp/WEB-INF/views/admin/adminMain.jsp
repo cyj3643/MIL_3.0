@@ -16,7 +16,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
-
+    <script src="${pageContext.request.contextPath}/resources/js/admin/adminCurriculum.js"></script>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="admin_page_content">
+        <div id="admin_page_content" class="admin_page_content">
             <table>
                 <thead>
                 <tr>
@@ -59,7 +59,7 @@
                             <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
                             <button class="mil_btn mil_green_btn" type="button" onclick="open_pop_modify();" style="cursor: pointer;">페이지 수정</button>
                             <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='http://media-jobs.ajou.ac.kr/wordpress/%eb%94%94%ec%a7%80%ed%84%b8%eb%94%94%ec%9e%90%ec%9d%b4%eb%84%88/'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
-                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;">삭제</button>
+                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;" onclick="deleteCurriculum('${curriList.page_id}')">삭제</button>
                         </td>
                     </tr>
                     <c:set var="index" value="${index+1}"/>
@@ -220,7 +220,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
 
                                                     <c:set var="index" value="${index+1}"/>
                                                 </c:if>
@@ -243,7 +242,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
                                                     <c:set var="index" value="${index+1}"/>
                                                 </c:if>
                                             </c:if>
@@ -261,8 +259,6 @@
                                                   onclick="getDetail('${subjectList[index].subject}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
-                                                    <div class="cs" id="cs_tr${subjectList[index].row_id}td${subjectList[index].col_id}"><a class="cs_txt_tr${subjectList[index].row_id}td${subjectList[index].col_id}">C</a></div>
-
                                                     <c:if test = "${subjectList[index].is_mandatory == 'T'}">
                                                         <div class="cs_m" ><a>M</a></div>
                                                     </c:if>

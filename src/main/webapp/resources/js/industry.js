@@ -1,5 +1,4 @@
 function getVideo(videoCode){
-	alert("click video!");
 	$.ajax({
 			type: 'POST',
 			url: '/aam/video',

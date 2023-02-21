@@ -29,23 +29,19 @@ public class AdminController {
 
     @Autowired
     private SqlSession sqlSession;
-/*
-    @RequestMapping("admin/curriculum")
-    public String adminMainList(Model model) {
-        System.out.println("admin_curriculum들어옴!~~~~~~!~!~@");
-        adminDAO dao = sqlSession.getMapper(adminDAO.class);
 
-        try {
-            model.addAttribute("curriList", dao.curriList());
-            //model.addAttribute("jobList", dao.jobList());
-            //System.out.println("testtesttest");
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            return "admin/adminMain";
-        }
-        return "admin/adminMain";
-    }*/
+    @ResponseBody
+    @RequestMapping(value="/admin/curriculum/delete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map deleteCurriculum(Model model, int page_id)
+    {
+        System.out.println("delete curriculum in"+page_id);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.deleteCurriculum(page_id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("curriList", dao.curriList());
+        return result;
+    }
     /*
     @ResponseBody
     @RequestMapping(value="/cil/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")

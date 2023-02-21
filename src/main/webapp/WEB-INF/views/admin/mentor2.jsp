@@ -16,10 +16,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/adminMentor.js"></script>
 </head>
-<header>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <jsp:include page="../include/menu.jsp" />
-</header>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
 
@@ -105,5 +101,11 @@
         </form>
     </div>
 </div>
+
+<div class="left_menu">
+    <meta name="viewport" content="height=device-height">
+    <jsp:include page="include/menu.jsp" />
+</div>
+
 </body>
 </html>

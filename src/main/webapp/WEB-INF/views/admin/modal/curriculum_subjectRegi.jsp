@@ -55,11 +55,11 @@
                     <c:set var="col" value="1"/>
                     <c:choose>
                         <c:when test="${row==2}">
-                            <td><span class="must_math">수학1</span></td>
-                            <td><span class="must_math">확률 및 통계1</span></td>
+                            <td onclick="HighlightTD(this);"><span class="must_math">수학1</span></td>
+                            <td onclick="HighlightTD(this);"><span class="must_math">확률 및 통계1</span></td>
                             <c:set var="col" value="3"/>
                             <%for(int j=0; j<6; j++){ %>
-                            <td><div class="mandatory_cont">
+                            <td onclick="HighlightTD(this);"><div class="mandatory_cont">
                                 <c:if test = "${subjectList[index].row_id==row}">
                                     <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
@@ -75,12 +75,12 @@
                             <%} %>
                         </c:when>
                         <c:when test="${row==16}">
-                            <td id="mark_td"><a id="tr13td1"></a></td>
-                            <td id="mark_td" class="addLine"><a id="tr13td2"></a></td>
-                            <td id="mark_td"><a id="tr13td3"></a></td>
+                            <td id="mark_td" onclick="HighlightTD(this);"><a id="tr13td1"></a></td>
+                            <td id="mark_td" class="addLine" onclick="HighlightTD(this);"><a id="tr13td2"></a></td>
+                            <td id="mark_td" onclick="HighlightTD(this);"><a id="tr13td3"></a></td>
                             <c:set var="col" value="4"/>
                             <%for(int j=0; j<5; j++){ %>
-                            <td><div class="mandatory_cont">
+                            <td onclick="HighlightTD(this);"><div class="mandatory_cont">
                                 <c:if test = "${subjectList[index].row_id==16}">
                                     <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
@@ -97,7 +97,7 @@
                         </c:when>
                         <c:otherwise>
                             <%for(int j=0; j<8; j++){ %>
-                            <td><div class="mandatory_cont">
+                            <td onclick="HighlightTD(this, '#3462DC');"><div class="mandatory_cont">
                                 <c:if test = "${subjectList[index].row_id==row}">
                                     <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
@@ -141,9 +141,8 @@
                 <input type="radio" name="milpage_subject_type" value="support">Support
             </div>
             <br/>
-            <button type="button" class="mil_btn mil_green_btn milpage_regidit_type_button" style="cursor: pointer;">등록</button>
-            <button type="button" class="mil_btn mil_blue_btn milpage_modify_type_button" style="cursor: pointer;">수정</button>
-            <button type="button" class="mil_btn mil_red_btn milpage_delete_type_button" style="cursor: pointer;">삭제</button>
+            <button type="button" class="mil_btn mil_green_btn milpage_regidit_type_button" onclick="saveSubject()" style="cursor: pointer;">저장</button>
+            <button type="button" class="mil_btn mil_red_btn milpage_delete_type_button" onclick="deleteSubject()" style="cursor: pointer;">삭제</button>
         </section>
     </div>
 </div>

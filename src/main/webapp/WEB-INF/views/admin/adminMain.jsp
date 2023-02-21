@@ -53,7 +53,8 @@
                             <c:out value="${curriList.name}"/>
                         </td>
                         <td class="menu_category">
-                            <c:out value="${curriList.category}"/>
+                            <input type="radio" id = "r1" value="track" <c:if test="${curriList.category eq 'track'}">checked</c:if>/><label>track</label>
+                            <input type="radio" id = "r2" value="job" <c:if test="${curriList.category eq 'job'}">checked</c:if>/><label>job</label>
                         </td>
                         <td class="menu_action">
                             <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
@@ -96,40 +97,5 @@
 </div>
 
 </body>
-<script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
-<script>
-    includeHTML();
-    $('#gi_but').on('click',function(){
-        trackClick(133);
-    });
-    $('#cd_but').on('click',function(){
-        trackClick(130);
-    });
-    $('#de_but').on('click',function(){
-        trackClick(129);
-    });
-    $('#vc_but').on('click',function(){
-        trackClick(131);
-    });
-    $('#md_but').on('click',function(){
-        trackClick(132);
-    });
 
-    $(document).ready(function(){
-        /*$.ajax({ url: "/cil/subject",
-            context: document.body,
-            success: (data) => {console.log(data);}
-        });*/
-        $.ajax({
-            type:"get",
-            url:"subjects",
-            success:function(productList){
-                $("#listView").empty();
-                $.each(productList,function(i,product){
-                    $("#listView").append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>").css("background","pink");
-                });
-            }
-        });//ajax
-    });
-</script>
 </html>

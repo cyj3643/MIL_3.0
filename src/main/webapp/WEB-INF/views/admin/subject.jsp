@@ -7,66 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <script type="text/javascript">
-        addLoadEvent = function(func){if(typeof jQuery!="undefined")jQuery(document).ready(func);else if(typeof wpOnload!='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
-        var ajaxurl = '/wordpress/wp-admin/admin-ajax.php',
-            pagenow = 'mil-editor_page_mileditor_subject_media_contents',
-            typenow = '',
-            adminpage = 'mil-editor_page_mileditor_subject_media_contents',
-            thousandsSeparator = ',',
-            decimalPoint = '.',
-            isRtl = 0;
-    </script>
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/webapp/resources/css/admin/subject.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/subject.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-
-    <script type="text/javascript">
-        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/media-jobs.ajou.ac.kr\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6"}};
-        !function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-    </script>
-
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var userSettings = {"url":"\/wordpress\/","uid":"1","time":"1676099509","secure":""};/* ]]> */
-    </script>
-    <script type='text/javascript' src='http://media-jobs.ajou.ac.kr/wordpress/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=jquery-core,jquery-migrate,utils&amp;ver=4.6'></script>
-    <script type='text/javascript' src='http://media-jobs.ajou.ac.kr/wordpress/wp-content/plugins/mil_editor/backend/js/admin.script.js?ver=4.6'></script>
-    <script type='text/javascript' src='http://media-jobs.ajou.ac.kr/wordpress/wp-content/plugins/mil_editor/backend/js/admin.industry.script.js?ver=4.6'></script>
-    <script type='text/javascript' src='http://media-jobs.ajou.ac.kr/wordpress/wp-content/plugins/mil_editor/backend/js/admin.mentor.script.js?ver=4.6'></script>
-    <script type='text/javascript' src='http://media-jobs.ajou.ac.kr/wordpress/wp-content/plugins/kboard/pages/cosmosfarm-apis.js?ver=5.2'></script>
-
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
-    <script src="${pageContext.request.contextPath}/webapp/resources/js/pop-up.js"></script>
-
-    <script src="${pageContext.request.contextPath}/webapp/WEB-INF/views/cil.js"></script>
-
-    <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, document.getElementById( 'wp-admin-canonical' ).href + window.location.hash );
-        }
-    </script>
+    <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/admin/adminCurriculum.js"></script>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
-<script type="text/javascript">
-    document.body.className = document.body.className.replace('no-js','js');
-</script>
-
-<script type="text/javascript">
-    (function() {
-        var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?'+cs+'(\\s+|$)');
-
-        request = true;
-
-        b[c] = b[c].replace( rcs, ' ' );
-        b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
-    }());
-</script>
 
 <div class="setting_block">
     <p class="setting_block_title">과목편집</p>
@@ -76,7 +29,7 @@
             <div id="mil_subject_table_wrap">
                 <table id="mil_subject_table">
                     <thead>
-                    <tr style="background-color: #F4F4F4;">
+                    <tr>
                         <td><div>1-1</div></td>
                         <td><div>1-2</div></td>
                         <td><div>2-1</div></td>
@@ -88,188 +41,79 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:set var="index" value="0"/>
+                    <c:set var="row" value="2"/>
+                    <%
+                        for(int i=0; i<15; i++)
+                        {
+                    %>
                     <tr>
-                        <td id="td11"></td>
-                        <td id="td12"></td>
-                        <td id="td13"></td>
-                        <td id="td14"></td>
-                        <td id="td15"></td>
-                        <td id="td16"></td>
-                        <td id="td17"></td>
-                        <td id="td18"></td>
+                        <c:set var="col" value="1"/>
+                        <c:choose>
+                            <c:when test="${row==2}">
+                                <td onclick="HighlightTD(this);"><span class="must_math">수학1</span></td>
+                                <td onclick="HighlightTD(this);"><span class="must_math">확률 및 통계1</span></td>
+                                <c:set var="col" value="3"/>
+                                <%for(int j=0; j<6; j++){ %>
+                                <td onclick="HighlightTD(this);"><div class="mandatory_cont">
+                                    <c:if test = "${subjectList[index].row_id==row}">
+                                        <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                            <c:set var="index" value="${index+1}"/>
+                                        </c:if>
+                                    </c:if>
+                                </div>
+                                </td>
+                                <c:set var="col" value="${col+1}"/>
+                                <%} %>
+                            </c:when>
+                            <c:when test="${row==16}">
+                                <td id="mark_td" onclick="HighlightTD(this);"><a id="tr13td1"></a></td>
+                                <td id="mark_td" class="addLine" onclick="HighlightTD(this);"><a id="tr13td2"></a></td>
+                                <td id="mark_td" onclick="HighlightTD(this);"><a id="tr13td3"></a></td>
+                                <c:set var="col" value="4"/>
+                                <%for(int j=0; j<5; j++){ %>
+                                <td onclick="HighlightTD(this);"><div class="mandatory_cont">
+                                    <c:if test = "${subjectList[index].row_id==16}">
+                                        <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                            <c:set var="index" value="${index+1}"/>
+                                        </c:if>
+                                    </c:if>
+                                </div>
+                                </td>
+                                <c:set var="col" value="${col+1}"/>
+                                <%} %>
+                            </c:when>
+                            <c:otherwise>
+                                <%for(int j=0; j<8; j++){ %>
+                                <td onclick="HighlightTD(this, '#3462DC');"><div class="mandatory_cont">
+                                    <c:if test = "${subjectList[index].row_id==row}">
+                                        <c:if test = "${subjectList[index].col_id==col}">
+                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
+                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                <c:out value="${subjectList[index].name}"/>
+                                            </span>
+                                            <c:set var="index" value="${index+1}"/>
+                                        </c:if>
+                                    </c:if>
+                                </div>
+                                </td>
+                                <c:set var="col" value="${col+1}"/>
+                                <%} %>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:set var="row" value="${row+1}"/>
                     </tr>
-                    <!--2nd row-->
-                    <tr>
-                        <td id="td21" colspan="2">
-                            <div class="table_bg" style="width: 130px;">
-                      <span
-                      >물리학, 생명과학, 선형대수1, 수학2, 이산수학 중 택
-                        1</span
-                      >
-                            </div>
-                        </td>
-                        <td id="td23"></td>
-                        <td id="td24"></td>
-                        <td id="td25"></td>
-                        <td id="td26"></td>
-                        <td id="td27"></td>
-                        <td id="td28"></td>
-                    </tr>
-                    <!--3rd row-->
-                    <tr>
-                        <td id="td31"></td>
-                        <td id="td32"></td>
-                        <td id="td33"></td>
-                        <td id="td34"></td>
-                        <td id="td35"></td>
-                        <td id="td36"></td>
-                        <td id="td37"></td>
-                        <td id="td38"></td>
-                    </tr>
-
-                    <!--4th row-->
-                    <tr>
-                        <td id="td41"></td>
-                        <td id="td42"></td>
-                        <td id="td43"></td>
-                        <td id="td44"></td>
-                        <td id="td45"></td>
-                        <td id="td46"></td>
-                        <td id="td47"></td>
-                        <td id="td48"></td>
-                    </tr>
-
-                    <!--5th row-->
-                    <tr>
-                        <td id="td51"></td>
-                        <td id="td52"></td>
-                        <td id="td53"></td>
-                        <td id="td54"></td>
-                        <td id="td55"></td>
-                        <td id="td56"></td>
-                        <td id="td57"></td>
-                        <td id="td58"></td>
-                    </tr>
-
-                    <!--6th row-->
-                    <tr>
-                        <td id="td61"></td>
-                        <td id="td62"></td>
-                        <td id="td63"></td>
-                        <td id="td64"></td>
-                        <td id="td65"></td>
-                        <td id="td66"></td>
-                        <td id="td67"></td>
-                        <td id="td68"></td>
-                    </tr>
-
-                    <!--7th row-->
-                    <tr>
-                        <td id="td71"></td>
-                        <td id="td72"></td>
-                        <td id="td73"></td>
-                        <td id="td74"></td>
-                        <td id="td75"></td>
-                        <td id="td76"></td>
-                        <td id="td77"></td>
-                        <td id="td78"></td>
-                    </tr>
-
-                    <!--8th row-->
-                    <tr>
-                        <td id="td81"></td>
-                        <td id="td82"></td>
-                        <td id="td83"></td>
-                        <td id="td84"></td>
-                        <td id="td85"></td>
-                        <td id="td86"></td>
-                        <td id="td87"></td>
-                        <td id="td88"></td>
-                    </tr>
-
-                    <!--9th row-->
-                    <tr>
-                        <td id="td91"></td>
-                        <td id="td92"></td>
-                        <td id="td93"></td>
-                        <td id="td94"></td>
-                        <td id="td95"></td>
-                        <td id="td96"></td>
-                        <td id="td97"></td>
-                        <td id="td98"></td>
-                    </tr>
-
-                    <!--10th row-->
-                    <tr>
-                        <td id="td101"></td>
-                        <td id="td102"></td>
-                        <td id="td103"></td>
-                        <td id="td104"></td>
-                        <td id="td105"></td>
-                        <td id="td106"></td>
-                        <td id="td107"></td>
-                        <td id="td108"></td>
-                    </tr>
-
-                    <!--11th row-->
-                    <tr>
-                        <td id="td111"></td>
-                        <td id="td112"></td>
-                        <td id="td113"></td>
-                        <td id="td114"></td>
-                        <td id="td115"></td>
-                        <td id="td116"></td>
-                        <td id="td117"></td>
-                        <td id="td118"></td>
-                    </tr>
-
-                    <!--12th row-->
-                    <tr>
-                        <td id="td121"></td>
-                        <td id="td122"></td>
-                        <td id="td123"></td>
-                        <td id="td124"></td>
-                        <td id="td125"></td>
-                        <td id="td126"></td>
-                        <td id="td127"></td>
-                        <td id="td128"></td>
-                    </tr>
-
-                    <!--13th row-->
-                    <tr>
-                        <td id="td131"></td>
-                        <td id="td132"></td>
-                        <td id="td133"></td>
-                        <td id="td134"></td>
-                        <td id="td135"></td>
-                        <td id="td136"></td>
-                        <td id="td137"></td>
-                        <td id="td138"></td>
-                    </tr>
-
-                    <!--14th row-->
-                    <tr>
-                        <td id="td141"></td>
-                        <td id="td142"></td>
-                        <td id="td143"></td>
-                        <td id="td144"></td>
-                        <td id="td145"></td>
-                        <td id="td146"></td>
-                        <td id="td147"></td>
-                        <td id="td148"></td>
-                    </tr>
-
-                    <!--15th row-->
-                    <tr>
-                        <td id="td151"></td>
-                        <td id="td152"></td>
-                        <td id="td153"></td>
-                        <td id="td154"></td>
-                        <td id="td155"></td>
-                        <td id="td156"></td>
-                        <td id="td157"></td>
-                        <td id="td158"></td>
-                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>
@@ -1151,7 +995,7 @@
                         type="button"
                         class="mil_btn mil_blue_btn mil_modify_subject_button"
                 >
-                    과목 설정
+                    정보 저장
                 </button>
                 <button
                         type="button"
@@ -1170,712 +1014,12 @@
         </div>
     </div>
 </div>
-<script>
-    var td = document.getElementById("td71");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("컴퓨터프로그래밍및실습");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td63");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("자료구조");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td72");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("객체지향");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("프로그래밍및실습");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td115");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("운영체제");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td86");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("데이터베이스");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td26");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("알고리즘");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td98");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("창업현장실습1~2");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td81");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("창의미디어");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td92");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("발상과");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("시각화");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td44");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("3D캐릭터애니메이션");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td73");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("스토리텔링");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td83");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어심리학");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td34");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("비주얼커뮤니케이션");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td55");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어융합연구");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td135");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("3D캐릭터리깅");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td125");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상처리");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td35");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("GPU프로그래밍");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td127");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("창업실습1~2");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td58");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("해외인턴쉽1~2");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td68");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("렌더링이론");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td124");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상제작미학");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td64");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("디지털타이포그래피");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td114");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어와창업");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td65");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("게임엔진프로그래밍");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td134");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("게임의이해");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td82");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("그래픽디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td103");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("3D그래픽디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td43");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("디지털사운드기초");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td36");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("정보디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td67");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("모션그래픽디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td104");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("3D어셋크리에이션");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td106");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("VR스튜디오");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td95");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상연출");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td46");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상편집론");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td94");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("컴퓨터그래픽스");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td66");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어집중교육1");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td47");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어집중교육2");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td37");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상사운드제작");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td76");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("공간음향제작");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td116");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("인터랙션디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td57");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("UX디자인");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td105");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("영상합성");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td88");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어현장실습1~6");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td87");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("애니메이션이론");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td78");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어경영");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td75");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어산업혁명기획");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td108");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("인터네셔널세미나");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td77");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어프로젝트");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td11");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("수학1");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td12");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("확률및통계1");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td45");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("인포그래픽스");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td117");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("해외봉사실천1~2");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td53");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어통계");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td74");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어애널리틱스");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td85");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어조사방법론");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td93");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("모바일프로그래밍");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td96");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("데이터사이언스개론");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td54");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어융합기획");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td97");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("데이터시각화");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td107");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("시리어스게임분석");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td84");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("뉴미디어와");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("디지털방송");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.8em";
-    text_wrap.style.fontSize = "0.75em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td56");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("컴퓨터비젼");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td24");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("크리에이티브미디어");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("프로그래밍");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-6px");
-    var text = document.createTextNode("");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.8em";
-    text_wrap.style.fontSize = "0.75em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td25");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("몰입형미디어");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("프로그래밍");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-6px");
-    var text = document.createTextNode("");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.8em";
-    text_wrap.style.fontSize = "0.75em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td27");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("미디어소프트웨어");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-3px");
-    var text = document.createTextNode("엔지니어링");
-    var linebreak = document.createElement("br");
-    text_wrap.appendChild(text);
-    text_wrap.appendChild(linebreak);
-    jQuery(text_wrap).css("margin-top", "-6px");
-    var text = document.createTextNode("");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.8em";
-    text_wrap.style.fontSize = "0.75em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td137");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("기계학습");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td48");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("데이터마이닝");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-    var td = document.getElementById("td126");
-    var bg = document.createElement("DIV");
-    bg.className = "table_bg";
-    var text_wrap = document.createElement("SPAN");
-    var text = document.createTextNode("인디게임제작");
-    text_wrap.appendChild(text);
-    text_wrap.style.fontSize = "0.2em";
-    bg.appendChild(text_wrap);
-    td.appendChild(bg);
-</script>
+
 
 <div class="left_menu">
     <meta name="viewport" content="height=device-height">
     <jsp:include page="include/menu.jsp" />
 </div>
 
-<script type="text/javascript">
-    (function ($) {
-        $(document).ajaxSend(function (event, jqxhr, settings) {
-            if (settings.url &&
-                -1 < settings.url.indexOf('admin-ajax.php') &&
-                ! ( settings.url.indexOf( '_fs_blog_admin' ) > 0 )
-            ) {
-                if (settings.url.indexOf('?') > 0) {
-                    settings.url += '&';
-                } else {
-                    settings.url += '?';
-                }
-
-                settings.url += '_fs_blog_admin=true';
-
-            }
-        });
-    })(jQuery);
-</script>
-<script type="text/javascript">
-    (function ($) {
-        $('.fs-submenu-item.wp-support-forum').parent().attr('target', '_blank');
-    })(jQuery);
-</script>
-
-<script type='text/javascript'>
-    /* <![CDATA[ */
-    var commonL10n = {"warnDelete":"\uc774\ub4e4 \uc544\uc774\ud15c\uc744 \uc601\uad6c\uc801\uc73c\ub85c \uc0ad\uc81c\ud558\ub824\uace0 \ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.\n  \uc911\uc9c0\ud558\ub824\uba74 '\ucde8\uc18c'\ub97c, \uc0ad\uc81c\ub294 'OK'.","dismiss":"\uc774 \uc54c\ub9bc \ubb34\uc2dc\ud558\uae30."};var heartbeatSettings = {"nonce":"04d416c604"};var authcheckL10n = {"beforeunload":"\uc138\uc158\uc774 \ub9cc\ub8cc\ub410\uc2b5\ub2c8\ub2e4. \uc774 \ud398\uc774\uc9c0\uc5d0\uc11c \ub2e4\uc2dc \ub85c\uadf8\uc778\ud558\uac70\ub098 \ub85c\uadf8\uc778 \ud398\uc774\uc9c0\ub85c \uc774\ub3d9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.","interval":"180"};/* ]]> */
-</script>
-<script type='text/javascript'
-        src='http://media-jobs.ajou.ac.kr/wordpress/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.6'>
-</script>
-<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
 </body>
 </html>

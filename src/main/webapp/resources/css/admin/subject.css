@@ -101,10 +101,23 @@ body,html{
     margin-top: 35px;
 }
 
+#mil_subject_table thead{
+    width: 102px;
+    height: 20px;
+    background: #F4F4F4;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.76rem;
+    line-height: 0rem;
+    text-align: center;
+    color: #000000;
+}
+
 #mil_subject_table tbody td{
     position: relative;
     width: 130px;
-    height: 30px;
+    height: 40px;
     box-sizing: border-box;
     border: 0.931223px solid #C2C2C2;
     border-radius: 3.72489px;
@@ -117,6 +130,7 @@ body,html{
     line-height: 0.9rem;
     align-items: center;
     text-align: center;
+    word-break: keep-all;
     color: #000000;
 }
 
@@ -207,7 +221,7 @@ body,html{
     color: #000000;
 }
 .setting_table_wrap input{
-    width: 60%;
+    width: 63%;
     margin-left: 50px;
     margin-bottom: 20px;
     background-color: transparent;

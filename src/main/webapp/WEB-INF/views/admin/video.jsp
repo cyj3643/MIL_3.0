@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/webapp/resources/css/admin/video.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/video.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
@@ -438,7 +438,7 @@
 
 <div class="left_menu">
     <meta name="viewport" content="height=device-height">
-    <jsp:include page="include/menu.jsp" />
+    <jsp:include page="./include/menu.jsp" />
 </div>
 
 <script type="text/javascript">

@@ -89,9 +89,9 @@ public class HomeController {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            return "admin/adminMain";
+            return "admin/main-dash";
         }
-        return "admin/adminMain";
+        return "admin/main-dash";
     }
 
     @RequestMapping("admin/curriculum")
@@ -143,6 +143,40 @@ public class HomeController {
             return "admin/mentor2";
         }
         return "admin/mentor2";
+    }
+
+    @RequestMapping("admin/video")
+    public String adminVideoList(Model model) {
+        System.out.println("mentor들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/video";
+        }
+        return "admin/video";
+    }
+
+    @RequestMapping("admin/mail")
+    public String adminMailList(Model model) {
+        System.out.println("mentor들어옴!~~~~~~!~!~@");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            //System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "admin/mail";
+        }
+        return "admin/mail";
     }
 
     /*

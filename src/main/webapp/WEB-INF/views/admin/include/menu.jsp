@@ -12,7 +12,7 @@
         </div>
 
     </div>
-    <a href="../curriculum.jsp"><div class="menu1">교과과정 편집</div></a>
+    <a href='/admin/curriculum'><div class="menu1">교과과정 편집</div></a>
     <a href="../subject.jsp"><div class="menu2"><p>과목편집</p></div></a>
     <a href="../video.jsp"><div class="menu3"><p>전문가영상관리</p></div></a>
     <a href="../mentor2.jsp"><div class="menu4"><p>멘토관리</p></div></a>

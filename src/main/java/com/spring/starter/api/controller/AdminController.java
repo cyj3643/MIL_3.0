@@ -52,6 +52,33 @@ public class AdminController {
         Map<String, Object> result = new HashMap<String, Object>();
         //result.put("subjectTrackList",dao.subjectTrackList(page_id));
         result.put("mentorDetailList", dao.mentorDetailList(id));
+        result.put("mentorList", dao.mentorList());
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/mentor/update",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map updateMentor(Model model, int id,String name,String industry_name,String email, String area)
+    {
+        System.out.println("mentor update in"+id);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.updateMentor(id,name,industry_name,email,area);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/mentor/add",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map updateMentor(Model model, String name, String industry_name,String email, String area)
+    {
+        System.out.println("mentor add in");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.addMentor(name,industry_name,email,area);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        //result.put("mentorDetailList", dao.mentorDetailList(id));
         return result;
     }
     /*

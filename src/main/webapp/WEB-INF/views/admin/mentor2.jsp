@@ -35,14 +35,15 @@
                 <input
                         type="text"
                         class="input-text input-addon-select"
-                        name="video_title"
+                        name="mentor_name"
+                        id = "mentor_name"
                         placeholder="멘토 이름을 입력하세요"
-                        value=""
+                        value="${mentorDetailList.name}"
                 />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <select id="set_mentor" class="select-addon" name="set_mentor" onchange="getMentorDetail(this.value)">
                     <option disabled selected value>수정할 멘토 이름 선택</option>
-                    <option value="선택없음">선택없음</option>
+                    <option value="0">선택없음</option>
                     <c:set var="index" value="0"/>
                     <c:forEach var="mentorList" items="${mentorList}">
                             <option value="${mentorList.id}">
@@ -66,6 +67,7 @@
                         type="text"
                         class="input-text"
                         name="industry_name"
+                        id="mentor_industry_name"
                         placeholder="멘토가 근무하는 기업 이름을 입력하세요"
                         value=""
                 />
@@ -79,6 +81,7 @@
                         type="text"
                         class="input-text"
                         name="email"
+                        id="mentor_email"
                         placeholder="멘토의 이메일을 입력하세요. 질문 발송에 이용됩니다."
                         value=""
                 >
@@ -88,17 +91,17 @@
 
             <div class="row">
                 <span class="input-addon">멘토가 해당하는 AREA</span>
-                <select id="area" class="select-addon" name="area">
+                <select id="mentor_area" class="select-addon" name="area">
                     <option disabled selected value>AREA 선택</option>
                     <option  value="game">GAME</option>
                     <option  value="dd">DIGITAL DESIGN</option>
                     <option  value="df">DIGITAL FILM</option>
                     <option  value="it">IT PROGRAMMING</option>
-                    <option  value="ct">CONVERGENCE TECHNOLOGY</option>
+                    <option  value="ct">CO NVERGENCE TECHNOLOGY</option>
                 </select>
             </div>
             </br></br>
-            <button type='button' class='create_mentor_button'>멘토 추가하기</button>
+            <button type='button' class='create_mentor_button' onclick="submitMentorInfo()">멘토 추가하기</button>
         </form>
     </div>
 </div>

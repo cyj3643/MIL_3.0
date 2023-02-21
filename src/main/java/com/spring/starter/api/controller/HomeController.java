@@ -141,6 +141,7 @@ public class HomeController {
             //System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception
+            model.addAttribute("mentorList", dao.mentorList());
             e.printStackTrace();
             return "admin/mentor2";
         }

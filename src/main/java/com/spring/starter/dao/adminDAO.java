@@ -13,8 +13,8 @@ public interface adminDAO {
     //멘토
     public ArrayList<mentorDTO> mentorList();
     public ArrayList<mentorDTO> mentorDetailList(int id);
-    public void addMentor(int page_id);
-    public void updateMentor(int page_id);
+    public void addMentor(int id);
+    public void updateMentor(int id);
 
     //비디오
 

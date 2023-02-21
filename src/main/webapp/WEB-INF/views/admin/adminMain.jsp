@@ -97,40 +97,5 @@
 </div>
 
 </body>
-<script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
-<script>
-    includeHTML();
-    $('#gi_but').on('click',function(){
-        trackClick(133);
-    });
-    $('#cd_but').on('click',function(){
-        trackClick(130);
-    });
-    $('#de_but').on('click',function(){
-        trackClick(129);
-    });
-    $('#vc_but').on('click',function(){
-        trackClick(131);
-    });
-    $('#md_but').on('click',function(){
-        trackClick(132);
-    });
 
-    $(document).ready(function(){
-        /*$.ajax({ url: "/cil/subject",
-            context: document.body,
-            success: (data) => {console.log(data);}
-        });*/
-        $.ajax({
-            type:"get",
-            url:"subjects",
-            success:function(productList){
-                $("#listView").empty();
-                $.each(productList,function(i,product){
-                    $("#listView").append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>").css("background","pink");
-                });
-            }
-        });//ajax
-    });
-</script>
 </html>

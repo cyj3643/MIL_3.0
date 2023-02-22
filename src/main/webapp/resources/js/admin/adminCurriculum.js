@@ -33,10 +33,10 @@ function HighlightTD(target){
     pos = target;
 }
 function saveSubject(){
-    alert("과목저장 완료");
+    alert("정보 저장 완료");
 
 }
 
 function deleteSubject(){
-    alert("과목삭제 완료");
+    alert("정보 삭제 완료");
 }

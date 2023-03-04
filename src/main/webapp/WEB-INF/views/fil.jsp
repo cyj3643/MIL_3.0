@@ -195,9 +195,9 @@
                     <td class="addLine"><a id="tr12td8"></a></td>
                 </tr>
                 <tr>
-                    <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text">: Mandatory</a></a></td>
-                    <td id="mark_td" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text">: Core</a></a></td>
-                    <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text">: Support</a></a></td>
+                    <td id="mark_m"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text">: Mandatory</a></a></td>
+                    <td id="mark_c" class="addLine"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text">: Core</a></a></td>
+                    <td id="mark_s"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text">: Support</a></a></td>
                     <td class="addLine"><a id="tr13td4"></a></td>
                     <td class="addLine"><a id="tr13td5"></a></td>
                     <td class="addLine"><a id="tr13td6"></a></td>

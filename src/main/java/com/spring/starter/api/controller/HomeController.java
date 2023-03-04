@@ -201,4 +201,21 @@ public class HomeController {
         }
         return "hil";
     }
+
+    @RequestMapping("fil")
+    public String filSubjectList(Model model) {
+        System.out.println("fil들어옴!~~~~~~!~!~@");
+        //cilDAO dao = sqlSession.getMapper(cilDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "fil";
+        }
+        return "fil";
+    }
 }

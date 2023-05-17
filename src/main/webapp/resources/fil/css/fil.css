@@ -202,20 +202,21 @@ span{
 	font-size:15px;
 		position:relative; 
 		top:-22px;
+        left: 15px;
 }
 .c_text{
 	background:none;
 	font-size:15px;
 		position:relative; 
 		top:-22px;
-		right:40px;
+		left:10px;
 }
 .s_text{
 	background:none;
 	font-size:15px;
 		position:relative; 
 		top:-22px;
-		right:15px;
+		left:15px;
 }
 
 #mark_td{

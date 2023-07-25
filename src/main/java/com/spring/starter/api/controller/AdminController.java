@@ -153,4 +153,6 @@ public class AdminController {
     public List<Board> boardList(HttpServletRequest request, @ModelAttribute Board board) throws Exception {
         return this.boardService.selectBoardList(request, board);
     }*/
+
 }
+

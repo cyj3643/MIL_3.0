@@ -233,28 +233,9 @@ public class HomeController {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            return "fil/admin/main-dash";
+            return "fil-admin/adminMain";
         }
-        return "fil/admin/main-dash";
-    }
-
-    @RequestMapping("fil/admin/curriculum")
-    public String filAdminCurriList(Model model) {
-        System.out.println("fil_admin_curriculum들어옴!~~~~~~!~!~@");
-        adminDAO dao = sqlSession.getMapper(adminDAO.class);
-        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
-
-        try {
-            model.addAttribute("fil_curriList", dao.curriList());
-            model.addAttribute("fil_subjectList", cil_dao.subjectList());
-            //model.addAttribute("jobList", dao.jobList());
-            //System.out.println("testtesttest");
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            return "fil/admin/adminMain";
-        }
-        return "fil/admin/adminMain";
+        return "fil-admin/adminMain";
     }
 
     @RequestMapping("fil/admin/subject")
@@ -269,26 +250,9 @@ public class HomeController {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            return "admin/subject";
+            return "fil-admin/subject";
         }
-        return "admin/subject";
-    }
-
-    @RequestMapping("fil/admin/mail")
-    public String filAdminMailList(Model model) {
-        System.out.println("fil_admin_mail들어옴!~~~~~~!~!~@");
-        adminDAO dao = sqlSession.getMapper(adminDAO.class);
-
-        try {
-            //model.addAttribute("subjectList", dao.subjectList());
-            //model.addAttribute("jobList", dao.jobList());
-            //System.out.println("testtesttest");
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            return "fil/admin/mail";
-        }
-        return "fil/admin/mail";
+        return "fil-admin/subject";
     }
 
 }

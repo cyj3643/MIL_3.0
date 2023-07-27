@@ -463,10 +463,10 @@ function viJobsClick(){
 */
 const home = document.getElementById("title");
 home.addEventListener("click", reset_color);
-
+/* 금융 TRACK
 const gi = document.getElementById("gi_but");
 gi.addEventListener("click", giClick);
-
+*/
 const cd = document.getElementById("cd_but");
 cd.addEventListener("click", cdClick);
 

@@ -22,3 +22,17 @@ header{
     padding-top:0px;
 }
 
+.login_wrap{
+    margin-left: auto;
+    padding-top:20px;
+    padding-right:40px;
+
+}
+
+.login_wrap button {
+    background-color:#292929;
+    color:#e6e2df;
+}
+
+
+

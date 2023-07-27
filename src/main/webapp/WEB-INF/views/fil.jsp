@@ -49,14 +49,15 @@
             <table class="area_table">
             
                 <tr>
-                    <th class="area_title"><span>TRACK</span></th>
+                    <th class="area_title"><span>MICRO</span></th>
                 </tr>
-                
+<%--금융 트랙
                 <tr>
                     <td class="gi_wrap">
                         <img id="gi_but" src="${pageContext.request.contextPath}/resources/fil/img/areaIcon_finance.png">
                     </td>
                 </tr>
+  --%>
                 <tr>
                     <td class="cd_wrap">
                         <img id="cd_but" src="${pageContext.request.contextPath}/resources/fil/img/areaIcon_fprogram.png">

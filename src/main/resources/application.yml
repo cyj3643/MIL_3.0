@@ -11,10 +11,12 @@ spring:
   datasource:
     #    TODO AWS RDS
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbc-url: jdbc:mariadb://mechmedic.iptime.org:3306/
-
+#    jdbc-url: jdbc:mariadb://mechmedic.iptime.org:3306/
+    jdbc-url: ENC(bZfkkfKYs/OhxUfAAyjEhSe9JFFAoCEaVBsanY1qKcyV1M/C2V0jJCJAu9+8Me+wXmpdlnatY3g=)
     username: Ajou
-    password: Trading408
+
+ #   password: Trading408
+    password: ENC(RGnRbyTvVntQGIV/hWwOw8lxAkQjR+bw)
     mapper-locations: classpath*:mapper/*.xml
   mvc:
     view:

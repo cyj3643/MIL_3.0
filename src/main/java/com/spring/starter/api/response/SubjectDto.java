@@ -1,6 +1,7 @@
 package com.spring.starter.api.response;
 
-import com.spring.starter.db.entity.MilSubject;
+import com.spring.starter.db.entity.FeSubject;
+import com.spring.starter.db.entity.FilPosition;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +14,8 @@ public class SubjectDto {
     private int rowId;
     private int columnId;
 
-    public SubjectDto(MilSubject subject) {
+    public SubjectDto(FeSubject subject) {
         this.code = subject.getCode();
         this.course = subject.getName();
-        this.rowId = subject.getRowId();
-        this.columnId = subject.getColId();
     }
 }

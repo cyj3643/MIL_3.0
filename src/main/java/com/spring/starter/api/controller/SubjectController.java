@@ -31,41 +31,41 @@ public class SubjectController {
     private SqlSession sqlSession;
 
     @ResponseBody
-    @RequestMapping(value="/cil/detail",method= RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map subjectDetail(Model model, String subject)
+    @RequestMapping(value="/fil/detail",method= RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map subjectDetail(Model model, String code)
     {
-        System.out.println("in"+subject);
+        System.out.println("in"+code);
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("subjectDetailList",dao.subjectDetailList(subject));
-        result.put("subjectPreList",dao.subjectPreList(subject));
+        result.put("subjectDetailList",dao.subjectDetailList(code));
+        //result.put("subjectPreList",dao.subjectPreList(code));
         //.put("subjectDetailCoreList",dao.subjectDetailCoreList(subject));
         //model.addAttribute("coreYN", dao.subjectDetailCoreList(subject));
         return result;
     }
     @ResponseBody
-    @RequestMapping(value="/cil/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map subjectTrackList(Model model, int page_id)
+    @RequestMapping(value="/fil/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map subjectTrackList(Model model, String carrer_path_id)
     {
-        System.out.println("in"+page_id);
+        System.out.println("in"+carrer_path_id);
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("subjectTrackList",dao.subjectTrackList(carrer_path_id));
         return result;
     }
 
-    @GetMapping("/cil/subject")
+    @GetMapping("/fil/subject")
     public ResponseEntity<? extends BaseResponse> getAll() {
         List<SubjectDto> collect = subjectService.getAllSubject().stream().map(subject -> new SubjectDto(subject)).collect(Collectors.toList());
         return ResponseEntity.status(200).body(new SubjectRes("모든 과목을 불러왔습니다", 200, collect));
     }
 
-    @GetMapping("/cil/subject/{subjectId}")
+    @GetMapping("/fil/subject/{subjectId}")
     public ResponseEntity<? extends BaseResponse> getDetails(@PathVariable Long subjectId) {
         return ResponseEntity.status(200).body(new SubjectDetailsRes("과목 상세정보를 불러왔습니다.", 200, subjectService.getSubjectDetails(subjectId)));
     }
 
-    @RequestMapping("/cil/test")
+    @RequestMapping("/fil/test")
     public String callView() throws Exception {
         System.out.println("test");
         return "home";

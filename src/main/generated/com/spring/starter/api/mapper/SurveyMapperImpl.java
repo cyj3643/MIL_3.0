@@ -1,9 +1,5 @@
 package com.spring.starter.api.mapper;
 
-import com.spring.starter.api.request.user.SurveyDto;
-import com.spring.starter.api.request.user.SurveyDto.SurveyDtoBuilder;
-import com.spring.starter.db.entity.Survey;
-import com.spring.starter.db.entity.Survey.SurveyBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;

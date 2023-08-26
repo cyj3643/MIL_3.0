@@ -7,7 +7,11 @@
     <!-- DAO의 메서드가 될 것이다. -->
 
     <select id="curriList" resultType="com.spring.starter.model.curriDTO">
-				select * from curriculum_admin order by category desc, page_id;
+				select cp.id, cp.small_category, ci.category
+				from linka.carrer_path cp
+                         inner join linka.carrer_id ci
+                                    on cp.large_category = ci.large_category
+				order by category desc, id;
 		</select>
 
     <select id="deleteCurriculum" resultType="com.spring.starter.model.curriDTO">

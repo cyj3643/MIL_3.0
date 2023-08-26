@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cil.css">
-<script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fil/css/fil.css">
+<script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
 <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
@@ -43,36 +43,29 @@
 	   <div class="modal_body">
 		   <div class="modal_left_wrap">	
 		   	<div class="course_wrap">
-		   		<p class="title">Course</p>
+		   		<p class="title">교과명</p>
 		   		<p class="course_cont"></p>
 		   	</div>
 		   	<div class="keyword_wrap">
-		   		<p class="title">Key-words</p>
+		   		<p class="title">원어강의</p>
 		   		<p class="keyword_cont"></p>
 		   	</div>
 		   	<div class="details_wrap">
-		   		<p class="title">Details</p>
+		   		<p class="title">세부 내용</p>
 		   		<p class="detail_cont"></p>
 		   	</div>
 		   </div>
 		   <div class="modal_right_wrap">
-		   	<div class="icon_wrap">
-				<img class="subject_icon" id="gi_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_game_off.png">
-				<img class="subject_icon" id="cd_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_dd_off.png">
-				<img class="subject_icon" id="de_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_df_off.png">
-				<img class="subject_icon" id="vc_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_it_off.png">
-				<img class="subject_icon" id="md_icon" src="${pageContext.request.contextPath}/resources/img/TrackIcon/CIL_subject_ct_off.png">
-		   	</div>
 		   	<div class="tools_wrap">
-		   		<p class="title">Tools</p>
+		   		<p class="title">공동 개설학과</p>
 		   		<p class="tools_cont"></p>
 		   	</div>
 		   	<div class="pre_wrap">
-		   		<p class="title">Prerequisite Courses</p>
+		   		<p class="title">선수과목</p>
 		   		<p class="pre_cont"></p>
 		   	</div>
 		   	<div class="related_wrap">
-		   		<p class="title">Related Courses</p>
+		   		<p class="title">연계과목</p>
 		   		<p class="related_cont"></p>
 		   	</div>
 		   </div>

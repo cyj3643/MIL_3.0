@@ -14,9 +14,9 @@
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/admin/adminCurriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/curriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/admin/adminCurriculum.js"></script>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
@@ -24,56 +24,57 @@
 <div class="main_contents">
     <p class="main_contents_title">교과과정 편집</p>
     <div class="content_box">
+                <div class="admin_page_header">
+                    <p class="admin_page_title">금융공학 교과과정 편집</p>
+                    <div class="admin_page_tool_bar">
+                        <button class="mil_btn mil_add_btn" type="button" onclick="open_pop_add();" style="cursor: pointer;" >+ 추가하기</button>
+                    </div>
+                </div>
+                        <div id="admin_page_content" class="admin_page_content">
 
-        <div class="admin_page_header">
-            <p class="admin_page_title">금융공학 교과과정 편집</p>
-            <div class="admin_page_tool_bar">
-                <button class="mil_btn mil_add_btn" type="button" onclick="open_pop_add();" style="cursor: pointer;" >+ 추가하기</button>
-            </div>
-        </div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>페이지 이름</th>
+                                    <th>항목</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                               <tbody>
+                                <c:set var="index" value="0"/>
+                                <c:forEach var="curriList" items="${curriList}">
+                                    <tr>
+                                        <td class="menu_page_id">
+                                            <c:out value="${curriList.page_id}"/>
+                                        </td>
+                                        <td class="menu_name">
+                                            <c:out value="${curriList.name}"/>
+                                        </td>
+                                        <td class="menu_category">
+                                            <input type="radio" id = "r1" value="track" <c:if test="${curriList.category eq 'major'}">checked</c:if>/><label>major</label>
+                                            <input type="radio" id = "r2" value="job" <c:if test="${curriList.category eq 'job'}">checked</c:if>/><label>job</label>
+                                        </td>
+                                        <td class="menu_action">
+                                            <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
+                                            <button class="mil_btn mil_green_btn" type="button" onclick="open_pop_modify();" style="cursor: pointer;">페이지 수정</button>
+                                            <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='/fil'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
+                                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;" onclick="deleteCurriculum('${curriList.page_id}')">삭제</button>
+                                        </td>
+                                    </tr>
+                                    <c:set var="index" value="${index+1}"/>
+                                </c:forEach>
 
-        <div id="admin_page_content" class="admin_page_content">
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>페이지 이름</th>
-                    <th>항목</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:set var="index" value="0"/>
-                <c:forEach var="curriList" items="${curriList}">
-                    <tr>
-                        <td class="menu_page_id">
-                            <c:out value="${curriList.page_id}"/>
-                        </td>
-                        <td class="menu_name">
-                            <c:out value="${curriList.name}"/>
-                        </td>
-                        <td class="menu_category">
-                            <input type="radio" id = "r1" value="track" <c:if test="${curriList.category eq 'track'}">checked</c:if>/><label>track</label>
-                            <input type="radio" id = "r2" value="job" <c:if test="${curriList.category eq 'job'}">checked</c:if>/><label>job</label>
-                        </td>
-                        <td class="menu_action">
-                            <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
-                            <button class="mil_btn mil_green_btn" type="button" onclick="open_pop_modify();" style="cursor: pointer;">페이지 수정</button>
-                            <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='/cil'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
-                            <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;" onclick="deleteCurriculum('${curriList.page_id}')">삭제</button>
-                        </td>
-                    </tr>
-                    <c:set var="index" value="${index+1}"/>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
+                                </tbody>
+
+                            </table>
+
+                        </div>
 
         <div class="Modal mileditor_wrap" id="Modal_add">
             <meta name="viewport" content="width= 85%">
             <jsp:include page="modal/curriculum_add.jsp" />
         </div>
-
 
         <div class="Modal mileditor_wrap" id="Modal_subject">
             <meta name="viewport" content="width= 85%">
@@ -85,8 +86,8 @@
             <jsp:include page="modal/curriculum_pageModify.jsp" />
         </div>
 
-    </div>
-</div>
+            </div>
+        </div>
 
 <!--
 왼쪽 메뉴 소스 header처럼 include 소스로 빼기

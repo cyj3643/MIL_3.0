@@ -56,24 +56,6 @@ public class HomeController {
         return "cil";
     }
 
-    @RequestMapping("aam")
-    public String aamView(Model model) throws Exception {
-        System.out.println("aam들어옴!~~~~~~!~!~@");
-        amamDAO dao = sqlSession.getMapper(amamDAO.class);
-        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
-
-        try {
-            model.addAttribute("videoList",dao.videoList());
-            model.addAttribute("jobList", cil_dao.jobList());
-            System.out.println("testtesttest");
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            //return "industry";
-        }
-        return "industry";
-    }
-
     /*
     * admin : 관리자 메인 페이지로 이동
     * */
@@ -185,31 +167,16 @@ public class HomeController {
     /*
     * 사학과, 금융공학과 사이트 연결
     * */
-    @RequestMapping("hil")
-    public String hilSubjectList(Model model) {
-        System.out.println("hil들어옴!~~~~~~!~!~@");
-        //cilDAO dao = sqlSession.getMapper(cilDAO.class);
 
-        try {
-            //model.addAttribute("subjectList", dao.subjectList());
-            //model.addAttribute("jobList", dao.jobList());
-            System.out.println("testtesttest");
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            return "hil";
-        }
-        return "hil";
-    }
 
     @RequestMapping("fil")
     public String filSubjectList(Model model) {
         System.out.println("fil들어옴!~~~~~~!~!~@");
-        //cilDAO dao = sqlSession.getMapper(cilDAO.class);
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
 
         try {
-            //model.addAttribute("subjectList", dao.subjectList());
-            //model.addAttribute("jobList", dao.jobList());
+            model.addAttribute("subjectList", dao.subjectList());
+            model.addAttribute("jobList", dao.jobList());
             System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception
@@ -225,8 +192,11 @@ public class HomeController {
     public String filAdminMainList(Model model) {
         System.out.println("fil_admin들어옴!~~~~~~!~!~@");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
 
         try {
+            model.addAttribute("curriList", dao.curriList());
+            model.addAttribute("subjectList", cil_dao.subjectList());
             //model.addAttribute("subjectList", dao.subjectList());
             //model.addAttribute("jobList", dao.jobList());
             //System.out.println("testtesttest");
@@ -242,10 +212,11 @@ public class HomeController {
     public String filAdminSubjectList(Model model) {
         System.out.println("fil_admin_subject들어옴!~~~~~~!~!~@");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cao = sqlSession.getMapper(cilDAO.class);
 
         try {
-            //model.addAttribute("subjectList", dao.subjectList());
-            //model.addAttribute("jobList", dao.jobList());
+            model.addAttribute("subjectList", cao.subjectList());
+            model.addAttribute("jobList", cao.jobList());
             //System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception

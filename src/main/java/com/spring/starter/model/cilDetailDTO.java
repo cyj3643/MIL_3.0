@@ -1,21 +1,28 @@
 package com.spring.starter.model;
 public class cilDetailDTO {
 
+    private int id;
+    private String code;
     private String name;
     private String detail;
     private int semester;
-    private int semester_social_media;
-    private String tool;
-    private String relate_subject;
-    private String keyword;
-    private String subject;
-    private String page_id;
+    private int is_mandatory;
+    private int original_language;
+    private String joint_department;
+    private String pre_subject_code;
+    private String relate_subject_code;
 
-    public String getSubject() {
-        return subject;
+    public int getId() {
+        return id;
     }
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getSubject() {
+        return code;
+    }
+    public void setSubject(String code) {
+        this.code = code;
     }
     public String getName() {
         return name;
@@ -35,35 +42,35 @@ public class cilDetailDTO {
     public void setSemester(int semester) {
         this.semester = semester;
     }
-    public int getSemester_social_media() {
-        return semester_social_media;
+    public int getIs_mandatory() {
+        return is_mandatory;
     }
-    public void setSemester_social_media(int semester_social_media) {
-        this.semester_social_media = semester_social_media;
+    public void setIs_mandatory(int is_mandatory) {
+        this.is_mandatory = is_mandatory;
     }
-    public String getTool() {
-        return tool;
+    public int getOriginal_language() {
+        return original_language;
     }
-    public void setTool(String tool) {
-        this.tool = tool;
+    public void setOriginal_language(int original_language) {
+        this.original_language = original_language;
     }
-    public String getRelate_subject() {
-        return relate_subject;
+    public String getJoint_department() {
+        return joint_department;
     }
-    public void setRelate_subject(String relate_subject) {
-        this.relate_subject = relate_subject;
+    public void setJoint_department(String joint_department) {
+        this.joint_department = joint_department;
     }
-    public String getKeyword() {
-        return keyword;
+    public String getPre_subject_code() {
+        return pre_subject_code;
     }
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
+    public void setPre_subject_code(String pre_subject_code) {
+        this.pre_subject_code = pre_subject_code;
     }
 
-    public String getPage_id() {
-        return page_id;
+    public String getRelate_subject_code() {
+        return relate_subject_code;
     }
-    public void setPage_id(String page_id) {
-        this.page_id = page_id;
+    public void setRelate_subject_code(String relate_subject_code) {
+        this.relate_subject_code = relate_subject_code;
     }
 }

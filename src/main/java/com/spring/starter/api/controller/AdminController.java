@@ -31,7 +31,7 @@ public class AdminController {
     private SqlSession sqlSession;
 
     @ResponseBody
-    @RequestMapping(value="/admin/curriculum/delete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    @RequestMapping(value="admin/curriculum/delete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
     public Map deleteCurriculum(Model model, int page_id)
     {
         System.out.println("delete curriculum in"+page_id);

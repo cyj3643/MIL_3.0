@@ -15,7 +15,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/cil.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/adminCurriculum.js"></script>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -50,26 +50,6 @@
                     <tr>
                         <c:set var="col" value="1"/>
                         <c:choose>
-                            <c:when test="${row==2}">
-                                <td onclick="HighlightTD(this);"><span class="must_math">수학1</span></td>
-                                <td onclick="HighlightTD(this);"><span class="must_math">확률 및 통계1</span></td>
-                                <c:set var="col" value="3"/>
-                                <%for(int j=0; j<6; j++){ %>
-                                <td onclick="HighlightTD(this);"><div class="mandatory_cont">
-                                    <c:if test = "${subjectList[index].row_id==row}">
-                                        <c:if test = "${subjectList[index].col_id==col}">
-                                            <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-                                                  onclick="getDetail('${subjectList[index].subject}')">
-                                                <c:out value="${subjectList[index].name}"/>
-                                            </span>
-                                            <c:set var="index" value="${index+1}"/>
-                                        </c:if>
-                                    </c:if>
-                                </div>
-                                </td>
-                                <c:set var="col" value="${col+1}"/>
-                                <%} %>
-                            </c:when>
                             <c:when test="${row==16}">
                                 <td id="mark_td" onclick="HighlightTD(this);"><a id="tr13td1"></a></td>
                                 <td id="mark_td" class="addLine" onclick="HighlightTD(this);"><a id="tr13td2"></a></td>
@@ -80,7 +60,7 @@
                                     <c:if test = "${subjectList[index].row_id==16}">
                                         <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                  onclick="getDetail('${subjectList[index].code}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
                                             <c:set var="index" value="${index+1}"/>
@@ -97,7 +77,7 @@
                                     <c:if test = "${subjectList[index].row_id==row}">
                                         <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-                                                  onclick="getDetail('${subjectList[index].subject}')">
+                                                  onclick="getDetail('${subjectList[index].code}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
                                             <c:set var="index" value="${index+1}"/>

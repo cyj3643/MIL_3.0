@@ -2,9 +2,9 @@ package com.spring.starter.model;
 public class cilTrackDTO {
     private int row_id;
     private int col_id;
-    private String subject;
+    private String code;
     private String type;
-    private int page_id;
+    private String carrer_path_id;
 
     public int getRow_id() {
         return row_id;
@@ -19,10 +19,10 @@ public class cilTrackDTO {
         this.col_id = col_id;
     }
     public String getSubject() {
-        return subject;
+        return code;
     }
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubject(String code) {
+        this.code = code;
     }
     public String getType() {
         return type;
@@ -30,11 +30,11 @@ public class cilTrackDTO {
     public void setType(String type) {
         this.type = type;
     }
-    public int getPage_id() {
-        return page_id;
+    public String getPage_id() {
+        return carrer_path_id;
     }
-    public void setPage_id(int page_id) {
-        this.page_id = page_id;
+    public void setPage_id(String carrer_path_id) {
+        this.carrer_path_id = carrer_path_id;
     }
 
 }

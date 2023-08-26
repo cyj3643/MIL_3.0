@@ -51,4 +51,6 @@ public class CarrerId extends BaseEntity{
         this.carrerPathSubjectsList.add(CarrerPathSubject);
         CarrerPathSubject.setCarrer_path_id(this);
     }
+
+    String category;
 }

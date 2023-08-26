@@ -5,24 +5,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.starter.dao.cilDAO">
 
-    <select id="subjectList" resultType="com.spring.starter.model.cilDTO">
-				select cp.*,ms.name,ms.is_mandatory
-				  from mil_db.cil_position cp
-		    inner join mil_db.mil_subject ms
-				    on cp.subject = ms.code
-			  order by cp.row_id, cp.col_id;
-		</select>
-
-	<select id="subjectDetailList" resultType="com.spring.starter.model.cilDetailDTO" parameterType="map">
-		select ms.*,cs.page_id
-		from mil_db.mil_subject ms
-		inner join mil_db.cil_subjectcore cs
-		on ms.code = cs.subject
-		<where>
-			<if test="value != null">AND ms.code = #{subject} </if>
-		</where>
-		and cs.page_id in ('129','130','131','132','133')
-	</select>
 	<select id="subjectCoreList" resultType="com.spring.starter.model.cilDetailCoreDTO">
 		select cs.subject,cs.page_id
 		from mil_db.cil_position cp
@@ -36,28 +18,61 @@
 	</select>
 
 	<select id="subjectPreList" resultType="com.spring.starter.model.cilPreDTO" parameterType="map">
-		select sub.subject as main_subject, sub.pre_subject as main_pre_subject, psub.pre_subject as sub_pre_subject
-		from prerequisite_subjects sub
-		join prerequisite_subjects psub
-		on sub.pre_subject = psub.subject
+		select sub.code as main_subject, psub.pre_subject_code as main_pre_subject
+		from linka.fe_subject sub
+		join linka.prerequisite_subjects psub
+		on sub.code = psub.code
 		<where>
-			<if test="value != null">AND sub.subject = #{subject} </if>
+			<if test="value != null">AND sub.code = #{subject} </if>
 		</where>
 	</select>
 
-	<select id="jobList" resultType="com.spring.starter.model.jobDTO">
-		select jobs.*
-		from mil_db.jobs jobs
-		<where>
-			<if test="value != null">AND cp.job_id = #{jobs_id} </if>
-		</where>
-	</select>
 	<select id="subjectTrackList" resultType="com.spring.starter.model.cilTrackDTO" parameterType="map">
-		select cp.col_id ,cp.row_id ,cp.subject, cs.page_id, cs.type
-		from mil_db.cil_position cp join mil_db.cil_subjectcore cs
-		on cp.subject = cs.subject
+		select fp.col_id ,fp.row_id ,fp.code, cps.carrer_path_id, cps.type
+		from linka.fil_position fp join linka.carrer_path_subjects cps
+		on fp.code = cps.subject_code
 		<where>
-			<if test="value != null">AND cs.page_id = #{page_id} </if>
+			<if test="value != null">AND cps.carrer_path_id = #{carrer_path_id} </if>
 		</where>
 	</select>
+
+	<select id="subjectList" resultType="com.spring.starter.model.filDTO">
+		select fp.*,fs.name,fs.is_mandatory
+		from linka.fil_position fp
+				 inner join linka.fe_subject fs
+							on fp.code = fs.code
+		order by fp.row_id, fp.col_id;
+	</select>
+
+	<select id="jobList" resultType="com.spring.starter.model.jobDTO">
+		select jobs.small_category, ci.carrer_path_id
+		from linka.carrer_path jobs
+			inner join linka.carrer_id ci
+				on jobs.large_category = ci.large_category
+		where ci.category = "job"
+		<where>
+			<if test="value != null">AND fp.job_id = #{jobs_id} </if>
+		</where>
+	</select>
+
+	<select id="subjectDetailList" resultType="com.spring.starter.model.cilDetailDTO" parameterType="map">
+		select main.id, main.name, main.code, main. detail, main.semester, main.is_mandatory, main.original_language, main.joint_department,ffs.name as pre_subject_code ,sfs.name as relate_subject_code
+		from (
+			select fs.*, jd.joint_department , ps.pre_subject_code , rs.relate_subject_code
+			from linka.fe_subject fs
+				left join linka.joint_departments jd
+					on fs.code = jd.code
+				left join linka.prerequisite_subjects ps
+					on fs.code = ps.code
+				left join linka.relate_subjects rs
+					on fs.code = rs.code) as main
+			left join linka.fe_subject ffs
+				on main.pre_subject_code = ffs.code
+			left join linka.fe_subject sfs
+				on main.relate_subject_code = sfs.code
+		<where>
+			<if test="value != null">AND main.code = #{code} </if>
+		</where>
+	</select>
+
 </mapper>

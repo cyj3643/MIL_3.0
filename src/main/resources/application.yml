@@ -1,11 +1,20 @@
 spring:
+
+#  datasource:
+#    #    TODO AWS RDS
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    jdbc-url: ENC(8ZMawoCJ2aEvm35do6woaH9AdGuQobST7j679PsTjb2t2oJu7PuV8wYcd7S379wOio/HmQGOSwIB0UZoHPII/s1Q7a3TATPt+hs9jb1daRta8y/Yi14hfA==)
+
+#    username: admin
+#    password: ENC(J1fdVjJ60H/S9zv7FxbNWqJHcT8MJZtX)
+#    mapper-locations: classpath*:mapper/*.xml
   datasource:
     #    TODO AWS RDS
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbc-url: ENC(8ZMawoCJ2aEvm35do6woaH9AdGuQobST7j679PsTjb2t2oJu7PuV8wYcd7S379wOio/HmQGOSwIB0UZoHPII/s1Q7a3TATPt+hs9jb1daRta8y/Yi14hfA==)
+    jdbc-url: jdbc:mariadb://mechmedic.iptime.org:3306/
 
-    username: admin
-    password: ENC(J1fdVjJ60H/S9zv7FxbNWqJHcT8MJZtX)
+    username: Ajou
+    password: Trading408
     mapper-locations: classpath*:mapper/*.xml
   mvc:
     view:

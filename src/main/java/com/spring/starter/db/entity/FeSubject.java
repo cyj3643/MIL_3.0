@@ -27,6 +27,7 @@ import lombok.Setter;
 @Table(name="fe_subject")
 public class FeSubject extends BaseEntity{
 
+    @NotNull
     String code;
 
     String name;

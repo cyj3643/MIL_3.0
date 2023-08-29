@@ -6,6 +6,7 @@ import com.spring.starter.api.response.index.SubjectRes;
 import com.spring.starter.api.service.SubjectService;
 import com.spring.starter.common.model.BaseResponse;
 import com.spring.starter.dao.adminDAO;
+import com.spring.starter.dao.cilDAO;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,15 +45,16 @@ public class AdminController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/admin/mentor/detail",method=RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map mentorDetailList(Model model, int id)
+    @RequestMapping(value="/admin/subject/SubjectInfo",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map getSubjectInfo(Model model, String code)
     {
-        System.out.println("mentor detailList in"+id);
-        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        System.out.println("in"+ code);
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
-        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
-        result.put("mentorDetailList", dao.mentorDetailList(id));
-        result.put("mentorList", dao.mentorList());
+        result.put("subjectDetailList",dao.subjectDetailList(code));
+        //result.put("subjectPreList",dao.subjectPreList(code));
+        //.put("subjectDetailCoreList",dao.subjectDetailCoreList(subject));
+        //model.addAttribute("coreYN", dao.subjectDetailCoreList(subject));
         return result;
     }
 

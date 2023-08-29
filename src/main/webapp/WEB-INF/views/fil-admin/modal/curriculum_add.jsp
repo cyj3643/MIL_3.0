@@ -14,7 +14,7 @@
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/includeHTML.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/curriculum.js"></script>
 
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

@@ -27,7 +27,7 @@ public class HomeController {
 
     @Autowired
     private SqlSession sqlSession;
-
+/*
     @RequestMapping("/")
     public String main() throws Exception {
         System.out.println("errrrror");
@@ -38,7 +38,7 @@ public class HomeController {
     public String cilView() throws Exception {
         System.out.println("errrrror");
         return "cil";
-    }*/
+    }
     @RequestMapping("cil")
     public String subjectList(Model model) {
         System.out.println("cil들어옴!~~~~~~!~!~@");
@@ -58,7 +58,7 @@ public class HomeController {
 
     /*
     * admin : 관리자 메인 페이지로 이동
-    * */
+    *
     @RequestMapping("admin")
     public String adminMainList(Model model) {
         System.out.println("admin들어옴!~~~~~~!~!~@");
@@ -164,12 +164,10 @@ public class HomeController {
         return "admin/mail";
     }
 
-    /*
-    * 사학과, 금융공학과 사이트 연결
-    * */
+  */
 
 
-    @RequestMapping("fil")
+    @RequestMapping("/")
     public String filSubjectList(Model model) {
         System.out.println("fil들어옴!~~~~~~!~!~@");
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
@@ -188,7 +186,7 @@ public class HomeController {
     /*
      * admin : 관리자 메인 페이지로 이동
      * */
-    @RequestMapping("fil/admin")
+    @RequestMapping("/admin")
     public String filAdminMainList(Model model) {
         System.out.println("fil_admin들어옴!~~~~~~!~!~@");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);
@@ -208,7 +206,7 @@ public class HomeController {
         return "fil-admin/adminMain";
     }
 
-    @RequestMapping("fil/admin/subject")
+    @RequestMapping("/admin/subject")
     public String filAdminSubjectList(Model model) {
         System.out.println("fil_admin_subject들어옴!~~~~~~!~!~@");
         adminDAO dao = sqlSession.getMapper(adminDAO.class);

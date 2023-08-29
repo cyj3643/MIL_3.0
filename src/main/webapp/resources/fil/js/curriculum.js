@@ -12,7 +12,7 @@ var vij_flag = 1;
 function getDetail(code){
     $.ajax({
         type: 'POST',
-        url: '/fil/detail',
+        url: '/detail',
         async: true,
         data: { "code" : code },
         success: function (data) {
@@ -70,7 +70,7 @@ function trackClick(carrer_path_id){
 
     $.ajax({
         type: 'POST',
-        url: '/fil/track',
+        url: '/track',
         async: true,
         data: {"carrer_path_id" : carrer_path_id},
         dataType : 'json',

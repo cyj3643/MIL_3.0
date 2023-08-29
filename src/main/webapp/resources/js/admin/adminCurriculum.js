@@ -24,6 +24,7 @@ function deleteCurriculum(page_id){
 }
 
 
+
 var pos = 0;
 function HighlightTD(target){
     if(pos){

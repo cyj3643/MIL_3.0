@@ -12,7 +12,7 @@ var vij_flag = 1;
 function getDetail(code){
     $.ajax({
         type: 'POST',
-        url: '/fil/detail',
+        url: '/detail',
         async: true,
         data: { "code" : code },
         success: function (data) {
@@ -70,7 +70,7 @@ function trackClick(carrer_path_id){
 
     $.ajax({
         type: 'POST',
-        url: '/fil/track',
+        url: '/track',
         async: true,
         data: {"carrer_path_id" : carrer_path_id},
         dataType : 'json',
@@ -113,7 +113,7 @@ function trackClick(carrer_path_id){
                     cdJobsClick(core,support);
                     break;
                 case 131:
-                    viJobsClick(core,support);
+                    vcJobsClick(core,support);
                     break;
                 case 132:
                     mdClick(core,support);
@@ -422,7 +422,7 @@ function deJobsClick(core,support){
 
 
 
-function viJobsClick(core,support){
+function vcJobsClick(core,support){
     reset_color();
 
 	var c_mark = document.querySelector('.c_mark');

@@ -52,13 +52,18 @@
                                             <c:out value="${curriList.name}"/>
                                         </td>
                                         <td class="menu_category">
-                                            <input type="radio" id = "r1" value="track" <c:if test="${curriList.category eq 'major'}">checked</c:if>/><label>major</label>
-                                            <input type="radio" id = "r2" value="job" <c:if test="${curriList.category eq 'job'}">checked</c:if>/><label>job</label>
+                                            <c:if test="${curriList.category eq 'major'}">
+                                            <input type="radio" id = "r1" value="track" checked/><label>major</label>
+                                            </c:if>
+                                            <c:if test="${curriList.category eq 'job'}">
+                                            <input type="radio" id = "r2" value="job" checked/><label>job</label>
+                                            </c:if>
+
                                         </td>
                                         <td class="menu_action">
                                             <button class="mil_btn mil_blue_btn" type="button" onclick="open_pop_subject();" style="cursor: pointer;">과목등록</button>
                                             <button class="mil_btn mil_green_btn" type="button" onclick="open_pop_modify();" style="cursor: pointer;">페이지 수정</button>
-                                            <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='/fil'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
+                                            <button class="mil_btn mil_yellow_btn" target="_blank"  type="button" onClick="location.href='/'" original-title="교과과정표 보기" style="cursor: pointer;">페이지 보기</button>
                                             <button class="mil_btn mil_red_btn mil_page_remove_btn" type="button" data="701"  style="cursor: pointer;" onclick="deleteCurriculum('${curriList.page_id}')">삭제</button>
                                         </td>
                                     </tr>

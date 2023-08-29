@@ -16,7 +16,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/pop-up.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/curriculum.js"></script>
     <script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/admin/adminCurriculum.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/admin/adminCurriculum.js"></script>
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
@@ -60,7 +60,7 @@
                                     <c:if test = "${subjectList[index].row_id==16}">
                                         <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-                                                  onclick="getDetail('${subjectList[index].code}')">
+                                                  onclick="getSubjectInfo('${subjectList[index].code}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
                                             <c:set var="index" value="${index+1}"/>
@@ -77,7 +77,7 @@
                                     <c:if test = "${subjectList[index].row_id==row}">
                                         <c:if test = "${subjectList[index].col_id==col}">
                                             <span id="tr${subjectList[index].row_id}td${subjectList[index].col_id}"
-                                                  onclick="getDetail('${subjectList[index].code}')">
+                                                  onclick="getSubjectInfo('${subjectList[index].code}')">
                                                 <c:out value="${subjectList[index].name}"/>
                                             </span>
                                             <c:set var="index" value="${index+1}"/>
@@ -116,6 +116,7 @@
                                         type="text"
                                         class="mil_input"
                                         name="mil_subject_code"
+                                        id = "subject_code"
                                         value=""
                                         placeholder="과목 코드를 입력해주세요 (ex: DMED100)"
                                 />
@@ -128,6 +129,7 @@
                                         type="text"
                                         class="mil_input"
                                         name="mil_subject_name"
+                                        id = "subject_name"
                                         value=""
                                         placeholder="띄어쓰기가 줄넘김으로 표시됩니다"
                                 />
@@ -147,6 +149,7 @@
                                 <select
                                         class="mil_input_select"
                                         name="mil_subject_semester"
+                                        id = "subject_semester"
                                 >
                                     <option value="1">1-1</option>
                                     <option value="2">1-2</option>
@@ -182,6 +185,7 @@
                                 <input
                                         class="mil_input"
                                         name="mil_subject_detail"
+                                        id = "subject_detail"
                                         rows="4"
                                         cols="50"
                                         placeholder="과목의 설명을 입력해주세요"
@@ -189,20 +193,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>전공 과목 여부</th>
+                            <th>필수 과목 여부</th>
                             <td>
                                 <input
                                         id="major"
                                         type="checkbox"
                                         name="mil_subject_mandatory"
-                                        value="T"
+                                        value="1"
                                 >
                                 <label>
                                     전공 과목
                                 </label>
                                 <div class="description_container">
                       <span class="description">
-                        과목이 전공 과목이면 체크해주세요
+                        과목이 필수 과목이면 체크해주세요
                       </span>
                                 </div>
                             </td>
@@ -995,11 +999,15 @@
     </div>
 </div>
 
-
 <div class="left_menu">
     <meta name="viewport" content="height=device-height">
     <jsp:include page="include/menu.jsp" />
 </div>
-
 </body>
+    <script src="${pageContext.request.contextPath}/resources/fil/js/admin/adminCurriculum.js"></script>
+<script>
+        $('.mil_btn get_subject_info_by_name_button').on('click',function(){
+            getSubjectInfo( document.getElementById("subject_code").value);
+        });
+</script>
 </html>

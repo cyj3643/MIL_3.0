@@ -11,9 +11,8 @@
     <div class="title_wrap">
         <a class="title" id="title"><img src="${pageContext.request.contextPath}/resources/fil/img/FIL_logo_3.png"></a>
     </div>
-
     <div class="login_wrap" >
-        <button class="loginbtn">login</button>
+        <button class="loginbtn">°ü¸®ÀÚ</button>
     </div>
     </div>
 </body>

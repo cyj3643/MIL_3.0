@@ -72,8 +72,9 @@
                                 <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> Mandatory</a></a></td>
                                 <td id="mark_td"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> Core</a></a></td>
                                 <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> Support</a></a></td>
-                                <c:set var="col" value="4"/>
-                                <%for(int j=0; j<5; j++){ %>
+                                <td id="mark_td"><a id="tr13td4"><a class="season"> 2023년 요람기준</a></a></td>
+                                <c:set var="col" value="5"/>
+                                <%for(int j=0; j<4; j++){ %>
                                 <td><div class="mandatory_cont">
                                     <c:if test = "${subjectList[index].row_id==16}">
                                         <c:if test = "${subjectList[index].col_id==col}">

@@ -21,6 +21,34 @@
         </where>
 	</select>
 
+
+    <!--
+    Update fe_position
+    -->
+    <insert id="addFePosition">
+        INSERT INTO fe_position( row_id,col_id,code) VALUES (#{row_id}, #{col_id}, #{code})
+    </insert>
+
+    <update id="updateFePosition" >
+        UPDATE fe_position SET row_id=#{row_id}, col_id=#{col_id} WHERE code=#{code}
+    </update>
+
+    <!--
+    fe_subject
+    -->
+    <insert id="addFeSubject">
+        INSERT INTO fe_subject(code, name, detail, semester,is_mandatory,original_language) VALUES (#{code}, #{name}, #{detail}, #{semester}, #{is_mandatory}, #{original_language})
+    </insert>
+
+    <update id="updatFeSubject" >
+        UPDATE fe_subject SET name=#{name}, detail=#{detail}, semester=#{semester},is_mandatory=#{is_mandatory},original_language=#{original_language}, WHERE code=#{code}
+    </update>
+
+
+
+
+
+
     <!--
     Mentor Mapper
     -->

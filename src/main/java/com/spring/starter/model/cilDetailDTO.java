@@ -11,6 +11,8 @@ public class cilDetailDTO {
     private String joint_department;
     private String pre_subject_code;
     private String relate_subject_code;
+    private String pre_subject_name;
+    private String relate_subject_name;
 
     public int getId() {
         return id;
@@ -73,4 +75,18 @@ public class cilDetailDTO {
     public void setRelate_subject_code(String relate_subject_code) {
         this.relate_subject_code = relate_subject_code;
     }
+    public String getPre_subject_name() {
+        return pre_subject_name;
+    }
+    public void setPre_subject_name(String pre_subject_name) {
+        this.pre_subject_name = pre_subject_name;
+    }
+
+    public String getRelate_subject_name() {
+        return relate_subject_name;
+    }
+    public void setRelate_subject_name(String relate_subject_name) {
+        this.relate_subject_name = relate_subject_name;
+    }
+
 }

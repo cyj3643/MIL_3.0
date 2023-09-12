@@ -222,7 +222,7 @@ body,html{
 }
 .setting_table_wrap input{
     width: 63%;
-    margin-left: 50px;
+    margin-left: 60px;
     margin-bottom: 20px;
     background-color: transparent;
     border: none;
@@ -236,11 +236,27 @@ body,html{
     align-items: center;
     color: #A4A4A4;
 }
+.setting_table_wrap textarea{
+    width: 63%;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.56rem;
+    line-height: 1rem;
+    align-items: center;
+    color: #A4A4A4;
+}
 #major{
     width: 5%;
     margin-bottom: 0px;
 }
-
+#origin{
+    width: 5%;
+    margin-bottom: 0px;
+}
 .mil_btn{
     font-family: 'Noto Sans KR';
     font-style: normal;

@@ -40,7 +40,7 @@
         INSERT INTO fe_subject(code, name, detail, semester,is_mandatory,original_language) VALUES (#{code}, #{name}, #{detail}, #{semester}, #{is_mandatory}, #{original_language})
     </insert>
 
-    <update id="updatFeSubject" >
+    <update id="updateFeSubject" >
         UPDATE fe_subject SET name=#{name}, detail=#{detail}, semester=#{semester},is_mandatory=#{is_mandatory},original_language=#{original_language}, WHERE code=#{code}
     </update>
 

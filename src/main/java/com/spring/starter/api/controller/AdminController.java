@@ -52,11 +52,43 @@ public class AdminController {
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("subjectDetailList",dao.subjectDetailList(code));
+        result.put("subjectPositionList",dao.subjectPositionList(code));
         //result.put("subjectPreList",dao.subjectPreList(code));
         //.put("subjectDetailCoreList",dao.subjectDetailCoreList(subject));
         //model.addAttribute("coreYN", dao.subjectDetailCoreList(subject));
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/SubjectUpdate",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map updateFeSubject(Model model, String code,String name,String detail, int semester,int is_mandatory, int original_language, int row_id, int col_id)
+    {
+        System.out.println("subject update in"+code);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.updateFeSubject(code,name,detail,semester,is_mandatory,original_language);
+        dao.updateFePosition(code, row_id, col_id);
+        cilDAO cao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("subjectDetailList", cao.subjectDetailList(code));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/SubjectAdd",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map addFeSubject(Model model, String code,String name,String detail, int semester,int is_mandatory, int original_language, int row_id, int col_id)
+    {
+        System.out.println("FeSubject add in");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.addFeSubject(code,name,detail,semester,is_mandatory,original_language);
+        dao.addFePosition(code,row_id,col_id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        //result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
+
 
     @ResponseBody
     @RequestMapping(value="/admin/mentor/update",method=RequestMethod.POST, produces="application/json; charset=utf-8")

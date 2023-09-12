@@ -56,7 +56,7 @@
 	</select>
 
 	<select id="subjectDetailList" resultType="com.spring.starter.model.cilDetailDTO" parameterType="map">
-		select main.id, main.name, main.code, main. detail, main.semester, main.is_mandatory, main.original_language, main.joint_department,ffs.name as pre_subject_code ,sfs.name as relate_subject_code
+		select main.id, main.name, main.code, main. detail, main.semester, main.is_mandatory, main.original_language, main.joint_department,ffs.code as pre_subject_code,ffs.name as pre_subject_name ,sfs.code as relate_subject_code,sfs.name as relate_subject_name
 		from (
 			select fs.*, jd.joint_department , ps.pre_subject_code , rs.relate_subject_code
 			from linka.fe_subject fs
@@ -75,4 +75,11 @@
 		</where>
 	</select>
 
+	<select id="subjectPositionList" resultType="com.spring.starter.model.cilPositionDTO" parameterType="map">
+		select *
+		from linka.fil_position fp
+		<where>
+			<if test="value != null">AND fp.code = #{code} </if>
+		</where>
+	</select>
 </mapper>

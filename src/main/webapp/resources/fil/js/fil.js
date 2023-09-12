@@ -37,12 +37,12 @@ function getDetail(code){
             for(var i=0; i<data.subjectDetailList.length; i++)
             {
                 modal.find(".tools_cont").append(data.subjectDetailList[i].joint_department);
-                modal.find(".pre_cont").append(data.subjectDetailList[i].pre_subject_code);
-                modal.find(".related_cont").append(data.subjectDetailList[i].relate_subject_code);
+                modal.find(".pre_cont").append(data.subjectDetailList[i].pre_subject_name);
+                modal.find(".related_cont").append(data.subjectDetailList[i].relate_subject_name);
                 if( i != (data.subjectDetailList.length-1)){
                     if (data.subjectDetailList[i].joint_department != null){modal.find(".tools_cont").append(",");}
-                    if (data.subjectDetailList[i].pre_subject_code != null){modal.find(".pre_cont").append(",");}
-                    if (data.subjectDetailList[i].relate_subject_code != null){modal.find(".related_cont").append(",");}
+                    if (data.subjectDetailList[i].pre_subject_name != null){modal.find(".pre_cont").append(",");}
+                    if (data.subjectDetailList[i].relate_subject_name != null){modal.find(".related_cont").append(",");}
                 }
             }
             modal.find(".modal_wrap").attr("style", "display:flex");
@@ -136,6 +136,15 @@ function reset_color(){
     var ch_td;
     var ch_cls;
 
+    var c_text = document.querySelector('.c_text');
+    var s_text = document.querySelector('.s_text');
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.innerText = "C";
+    s_mark.innerText = "S";
+    c_text.innerText = "Core";
+    s_text.innerText = "Support";
+
     for(i=2;i<=16;i++)
     {
         for(j=1;j<=8;j++)
@@ -167,63 +176,20 @@ function reset_color(){
     }
 }
 
-/*
-function giClick(core,support){
-    var ch_td;
-
-    reset_color();
-
-	var c_mark = document.querySelector('.c_mark');
-	var s_mark = document.querySelector('.s_mark');
-	c_mark.style.background = "#EA8953";
-	s_mark.style.background = "#f3ba9b";
-
-    //if(gi_flag>0)
-    //{
-        for(i=0;i<gi_core.length;i++)
-        {
-            ch_td = document.getElementById(gi_core[i]);
-            ch_td.style.background = "#EA8953";
-			var cs = document.querySelector('#cs_'.concat(gi_core[i]));
-			var cs_text = document.querySelector('.cs_txt_'.concat(gi_core[i]));
-			cs.classList.toggle('show');
-			cs.style.background = "#EA8953";
-			cs_text.innerText="C";
-        }
-
-        for(i=0;i<gi_support.length;i++)
-        {
-            ch_td = document.getElementById(gi_support[i]);
-            ch_td.style.background = "#f3ba9b";
-			var cs = document.querySelector('#cs_'.concat(gi_support[i]));
-			var cs_text = document.querySelector('.cs_txt_'.concat(gi_support[i]));
-			cs.classList.toggle('show');
-			cs.style.background = "#f3ba9b";
-			cs_text.innerText="S";
-        }
-    if(gi_flag<0)
-    {
-        reset_color();
-    }
-    gi_flag*=-1;
-
-    cd_flag=1;
-    de_flag=1;
-	gij_flag=1;
-	dej_flag=1;
-	cdj_flag=1;
-	vij_flag=1;
-}
-*/
-
 function cdClick(cd_core,cd_support){
 
     reset_color();
-
+    var c_text = document.querySelector('.c_text');
+    var s_text = document.querySelector('.s_text');
     var c_mark = document.querySelector('.c_mark');
     var s_mark = document.querySelector('.s_mark');
     c_mark.style.background = "#00C7FF";
     s_mark.style.background = "#9eeaff";
+    c_mark.innerText = "R";
+    s_mark.innerText = "E";
+    c_text.innerText = "Require";
+    s_text.innerText = "Eletive";
+
 
     var ch_td;
 
@@ -237,7 +203,7 @@ function cdClick(cd_core,cd_support){
             var cs_text = document.querySelector('.cs_txt_'.concat(cd_core[i]));
             cs.classList.toggle('show');
             cs.style.background = "#00C7FF";
-            cs_text.innerText="C";
+            cs_text.innerText="R";
         }
 
         for(i=0;i<cd_support.length;i++)
@@ -248,7 +214,7 @@ function cdClick(cd_core,cd_support){
             var cs_text = document.querySelector('.cs_txt_'.concat(cd_support[i]));
             cs.classList.toggle('show');
             cs.style.background = "#9eeaff";
-            cs_text.innerText="S";
+            cs_text.innerText="E";
         }
     }
     if(cd_flag<0)

@@ -122,6 +122,21 @@
                                 />
                             </td>
                         </tr>
+                        <td>
+                            <button
+                                    type="button"
+                                    class="mil_btn get_subject_info_by_name_button"
+                                    id = "info_btn">
+                                과목 가져오기
+                            </button>
+                            <button
+                                    type="button"
+                                    class="mil_btn get_subject_info_by_name_button"
+                                    id = "info_reset_btn"
+                            >
+                                내용 초기화
+                            </button>
+                        </td>
                         <tr>
                             <th>과목 이름</th>
                             <td>
@@ -134,13 +149,6 @@
                                         placeholder="띄어쓰기가 줄넘김으로 표시됩니다"
                                 />
                                 &nbsp;&nbsp;
-                            </td>
-                            <td>
-                                <button
-                                        type="button"
-                                        class="mil_btn get_subject_info_by_name_button">
-                                    과목 가져오기
-                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -168,28 +176,42 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>과목 키워드</th>
+                            <th>과목 행</th>
                             <td>
                                 <input
                                         class="mil_input"
                                         name="mil_subject_keyword"
+                                        id = "row"
                                         rows="1"
                                         cols="50"
-                                        placeholder="과목의 키워드를 입력해주세요"
+                                        placeholder="과목의 행 위치를 입력해주세요"
+                                ></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>과목 열</th>
+                            <td>
+                                <input
+                                        class="mil_input"
+                                        name="mil_subject_keyword"
+                                        id = "column"
+                                        rows="1"
+                                        cols="50"
+                                        placeholder="과목의 열 위치를 입력해주세요"
                                 ></input>
                             </td>
                         </tr>
                         <tr>
                             <th>과목 요강</th>
                             <td>
-                                <input
+                                <textarea
                                         class="mil_input"
                                         name="mil_subject_detail"
                                         id = "subject_detail"
                                         rows="4"
                                         cols="50"
                                         placeholder="과목의 설명을 입력해주세요"
-                                ></input>
+                                ></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -200,9 +222,9 @@
                                         type="checkbox"
                                         name="mil_subject_mandatory"
                                         value="1"
-                                >
+                                />
                                 <label>
-                                    전공 과목
+                                    필수 과목
                                 </label>
                                 <div class="description_container">
                       <span class="description">
@@ -212,768 +234,185 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>사용 프로그램</th>
+                            <th>원어 과목 여부</th>
                             <td>
                                 <input
-                                        type="text"
-                                        class="mil_input"
-                                        name="mil_subject_tool"
-                                        value=""
-                                        placeholder="과목에서 사용하는 프로그램을 입력해주세요 (ex:
-                      Maya)"
+                                        id="origin"
+                                        type="checkbox"
+                                        name="mil_subject_origin_language"
+                                        value="1"
                                 />
+                                <label>
+                                    원어 과목
+                                </label>
+                                <div class="description_container">
+                      <span class="description">
+                        과목이 원어 과목이면 체크해주세요
+                      </span>
+                                </div>
                             </td>
                         </tr>
+
                         <tr>
-                            <th>선수 과목</th>
-                            <td id="presubject_selects">
+                            <th>선수 과목 1</th>
+                            <td >
                                 <select
+                                        id="presubject_select1"
                                         class="mil_input_select last_select"
                                         name="mil_subject_presubject_select[]"
                                 >
                                     <option value="None">None</option>
-                                    <option value="CAJ0114">아주희망</option>
-                                    <option value="CSE104">컴퓨터프로그래밍및실습</option>
-                                    <option value="CSE134">컴퓨터프로그램설계</option>
-                                    <option value="CSE200">자료구조</option>
-                                    <option value="CSE231">객체지향 프로그래밍및실습</option>
-                                    <option value="CSE311">운영체제</option>
-                                    <option value="CSE332">데이터베이스</option>
-                                    <option value="CSE350">알고리즘</option>
-                                    <option value="DGMC474">창업현장실습1~2</option>
-                                    <option value="DGMD10">창의미디어</option>
-                                    <option value="DGMD121">발상과 시각화</option>
-                                    <option value="DGMD2110">3D캐릭터애니메이션</option>
-                                    <option value="DGMD22">스토리텔링</option>
-                                    <option value="DGMD23">미디어심리학</option>
-                                    <option value="DGMD25">비주얼커뮤니케이션 디자인</option>
-                                    <option value="DGMD30">미디어융합연구</option>
-                                    <option value="DGMD31">게임FX</option>
-                                    <option value="DGMD319">3D캐릭터리깅</option>
-                                    <option value="DGMD34">영상처리</option>
-                                    <option value="DGMD344">GPU프로그래밍</option>
-                                    <option value="DGMD43">기계학습및 데이터마이닝</option>
-                                    <option value="DGMD471">창업실습1~2</option>
-                                    <option value="DGMD491">해외인턴쉽1~2</option>
-                                    <option value="DKFE21">렌더링이론</option>
-                                    <option value="DMED100">디지털미디어</option>
-                                    <option value="DMED130">디자인기초</option>
-                                    <option value="DMED201">영상제작미학</option>
-                                    <option value="DMED202">디지털타이포그래피</option>
-                                    <option value="DMED204">미디어와창업2</option>
-                                    <option value="DMED205">미디어와창업</option>
-                                    <option value="DMED210">게임엔진프로그래밍</option>
-                                    <option value="DMED212">게임의이해</option>
-                                    <option value="DMED230">그래픽디자인</option>
-                                    <option value="DMED235">피지컬인터랙션디자인</option>
-                                    <option value="DMED240">3D그래픽디자인</option>
-                                    <option value="DMED242">게임애니메이션</option>
-                                    <option value="DMED244">크로키</option>
-                                    <option value="DMED256">영상미학</option>
-                                    <option value="DMED270">컴퓨터프로그래밍</option>
-                                    <option value="DMED310">게임기획이론</option>
-                                    <option value="DMED311">게임프로그래밍2</option>
-                                    <option value="DMED312">게임스토리텔링</option>
-                                    <option value="DMED316">게임기획개론</option>
-                                    <option value="DMED317">게임스토리텔링</option>
-                                    <option value="DMED323">앱프로젝트</option>
-                                    <option value="DMED324">디지털사운드기초</option>
-                                    <option value="DMED330">정보디자인</option>
-                                    <option value="DMED331">모션그래픽디자인</option>
-                                    <option value="DMED336">인포그래픽스</option>
-                                    <option value="DMED347">3D어셋크리에이션</option>
-                                    <option value="DMED348">VR스튜디오</option>
-                                    <option value="DMED350">영상연출</option>
-                                    <option value="DMED356">영상편집론</option>
-                                    <option value="DMED370">컴퓨터그래픽스</option>
-                                    <option value="DMED388">창의적콘텐츠디자인2</option>
-                                    <option value="DMED389">창의적콘텐츠디자인1</option>
-                                    <option value="DMED401">미디어집중교육1</option>
-                                    <option value="DMED402">미디어집중교육2</option>
-                                    <option value="DMED404"></option>
-                                    <option value="DMED413">게임상호작용디자인</option>
-                                    <option value="DMED420">영상사운드제작</option>
-                                    <option value="DMED421">영상사운드제작</option>
-                                    <option value="DMED422">공간음향제작</option>
-                                    <option value="DMED434">인터랙션디자인</option>
-                                    <option value="DMED437">UX디자인</option>
-                                    <option value="DMED438">뉴미디어와모션그래픽스</option>
-                                    <option value="DMED441">영상합성</option>
-                                    <option value="DMED462">미디어현장실습1~6</option>
-                                    <option value="DMED471">애니메이션이론</option>
-                                    <option value="DMED483">이머징미디어특론</option>
-                                    <option value="DMED484">인터내셔널세미나</option>
-                                    <option value="DMED485">창업실습1,2</option>
-                                    <option value="DMED486">미디어경영</option>
-                                    <option value="DMED4911">미디어산업혁명기획</option>
-                                    <option value="DMED493">미디어현장실습1~6</option>
-                                    <option value="DMED497">창업실습1~2</option>
-                                    <option value="DMED498">인터네셔널세미나</option>
-                                    <option value="DMED499">미디어프로젝트</option>
-                                    <option value="DMED666">수학1</option>
-                                    <option value="DMED788">확률및통계1</option>
-                                    <option value="DMEDO3312">인포그래픽스</option>
-                                    <option value="ENG111">영어1</option>
-                                    <option value="ENG112">영어2</option>
-                                    <option value="G066">선형대수</option>
-                                    <option value="INFO401">해외인턴쉽1</option>
-                                    <option value="INFO402">해외인턴쉽</option>
-                                    <option value="INFO403">해외봉사실천1~2</option>
-                                    <option value="INFO404">해외봉사실천2</option>
-                                    <option value="KOR101">글쓰기</option>
-                                    <option value="MATH102">수학1</option>
-                                    <option value="MATH251">확률과통계1</option>
-                                    <option value="MIBS101">소셜미디어</option>
-                                    <option value="MIBS131">미디어통계</option>
-                                    <option value="MIBS221">소셜미디어 프로그래밍</option>
-                                    <option value="MIBS231">미디어애널리틱스</option>
-                                    <option value="MIBS232">소셜미디어애널리틱스</option>
-                                    <option value="MIBS252">소셜미디어휴먼</option>
-                                    <option value="MIBS253">미디어조사방법론</option>
-                                    <option value="MIBS311">소셜미디어기획</option>
-                                    <option value="MIBS312">광고이론및제작</option>
-                                    <option value="MIBS321">모바일 프로그래밍2</option>
-                                    <option value="MIBS322">모바일프로그래밍</option>
-                                    <option value="MIBS323">웹앱프로그래밍</option>
-                                    <option value="MIBS324">소셜앱프로젝트</option>
-                                    <option value="MIBS325">소셜앱프로젝트</option>
-                                    <option value="MIBS331">애널리틱스프로젝트</option>
-                                    <option value="MIBS332">시리어스게임 애널리틱스</option>
-                                    <option value="MIBS351">미디어이론</option>
-                                    <option value="MIBS352">창의성과데이터</option>
-                                    <option value="MIBS353">사물인터넷 구축및활용</option>
-                                    <option value="MIBS354">
-                                        데이터와과학적 창의프로젝트
-                                    </option>
-                                    <option value="MIBS374">인지과학응용</option>
-                                    <option value="MIBS381">창업현장실습1</option>
-                                    <option value="MIBS382">창업현장실습2</option>
-                                    <option value="MIBS412">미디어및UCC</option>
-                                    <option value="MIBS421">데이터사이언스개론</option>
-                                    <option value="MIBS422">미디어융합기획</option>
-                                    <option value="MIBS431">데이터시각화</option>
-                                    <option value="MIBS432">데이터사이언스 이론과응용</option>
-                                    <option value="MIBS433">시리어스게임분석</option>
-                                    <option value="MIBS461">뉴미디어기획</option>
-                                    <option value="MIBS462">뉴미디어와 디지털방송</option>
-                                    <option value="MIBS463">데이터사이언스와 UX</option>
-                                    <option value="MIBS465">텍스트마이닝과 감정분석</option>
-                                    <option value="MIBS471">러닝사이언스</option>
-                                    <option value="MIBS483">
-                                        엔터테인먼트엔지니 어링디자인세미나
-                                    </option>
-                                    <option value="SCE431">컴퓨터비젼</option>
-                                    <option value="TEAT444">
-                                        크리에이티브미디어 프로그래밍
-                                    </option>
-                                    <option value="TEST555">몰입형미디어 프로그래밍</option>
-                                    <option value="TEST666">
-                                        미디어소프트웨어 엔지니어링
-                                    </option>
-                                    <option value="TEST777">기계학습</option>
-                                    <option value="TEST888">데이터마이닝</option>
-                                    <option value="TESTCODE01">데이터마이닝</option>
-                                    <option value="TMDD543">인디게임제작</option>
-                                </select>
-                                <br />
-                                <script>
-                                    jQuery(".last_select").change(function () {
-                                        if (jQuery(this).val() != "None") {
-                                            jQuery(this).removeClass("last_select");
-                                            var option = jQuery("<option>");
-                                            option.val("None");
-                                            option.text("None");
-                                            var select = jQuery("<select>");
-                                            select.addClass("mil_input_select last_select");
-                                            select.attr(
-                                                "name",
-                                                "mil_subject_presubject_select[]"
-                                            );
-                                            select.append(option);
+                                    <c:forEach var="sl" items = "${subjectList}">
+                                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
 
-                                            var option = jQuery("<option>").val("CAJ0114");
-                                            option.text("아주희망");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE104");
-                                            option.text("컴퓨터프로그래밍및실습");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE134");
-                                            option.text("컴퓨터프로그램설계");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE200");
-                                            option.text("자료구조");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE231");
-                                            option.text("객체지향 프로그래밍및실습");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE311");
-                                            option.text("운영체제");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE332");
-                                            option.text("데이터베이스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("CSE350");
-                                            option.text("알고리즘");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMC474");
-                                            option.text("창업현장실습1~2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD10");
-                                            option.text("창의미디어");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD121");
-                                            option.text("발상과 시각화");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD2110");
-                                            option.text("3D캐릭터애니메이션");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD22");
-                                            option.text("스토리텔링");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD23");
-                                            option.text("미디어심리학");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD25");
-                                            option.text("비주얼커뮤니케이션 디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD30");
-                                            option.text("미디어융합연구");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD31");
-                                            option.text("게임FX");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD319");
-                                            option.text("3D캐릭터리깅");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD34");
-                                            option.text("영상처리");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD344");
-                                            option.text("GPU프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD43");
-                                            option.text("기계학습및 데이터마이닝");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD471");
-                                            option.text("창업실습1~2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DGMD491");
-                                            option.text("해외인턴쉽1~2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DKFE21");
-                                            option.text("렌더링이론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED100");
-                                            option.text("디지털미디어");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED130");
-                                            option.text("디자인기초");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED201");
-                                            option.text("영상제작미학");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED202");
-                                            option.text("디지털타이포그래피");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED204");
-                                            option.text("미디어와창업2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED205");
-                                            option.text("미디어와창업");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED210");
-                                            option.text("게임엔진프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED212");
-                                            option.text("게임의이해");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED230");
-                                            option.text("그래픽디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED235");
-                                            option.text("피지컬인터랙션디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED240");
-                                            option.text("3D그래픽디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED242");
-                                            option.text("게임애니메이션");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED244");
-                                            option.text("크로키");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED256");
-                                            option.text("영상미학");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED270");
-                                            option.text("컴퓨터프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED310");
-                                            option.text("게임기획이론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED311");
-                                            option.text("게임프로그래밍2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED312");
-                                            option.text("게임스토리텔링");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED316");
-                                            option.text("게임기획개론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED317");
-                                            option.text("게임스토리텔링");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED323");
-                                            option.text("앱프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED324");
-                                            option.text("디지털사운드기초");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED330");
-                                            option.text("정보디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED331");
-                                            option.text("모션그래픽디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED336");
-                                            option.text("인포그래픽스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED347");
-                                            option.text("3D어셋크리에이션");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED348");
-                                            option.text("VR스튜디오");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED350");
-                                            option.text("영상연출");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED356");
-                                            option.text("영상편집론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED370");
-                                            option.text("컴퓨터그래픽스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED388");
-                                            option.text("창의적콘텐츠디자인2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED389");
-                                            option.text("창의적콘텐츠디자인1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED401");
-                                            option.text("미디어집중교육1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED402");
-                                            option.text("미디어집중교육2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED404");
-                                            option.text("  ");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED413");
-                                            option.text("게임상호작용디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED420");
-                                            option.text("영상사운드제작");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED421");
-                                            option.text("영상사운드제작");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED422");
-                                            option.text("공간음향제작");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED434");
-                                            option.text("인터랙션디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED437");
-                                            option.text("UX디자인");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED438");
-                                            option.text("뉴미디어와모션그래픽스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED441");
-                                            option.text("영상합성");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED462");
-                                            option.text("미디어현장실습1~6");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED471");
-                                            option.text("애니메이션이론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED483");
-                                            option.text("이머징미디어특론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED484");
-                                            option.text("인터내셔널세미나");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED485");
-                                            option.text("창업실습1,2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED486");
-                                            option.text("미디어경영");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED4911");
-                                            option.text("미디어산업혁명기획");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED493");
-                                            option.text("미디어현장실습1~6");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED497");
-                                            option.text("창업실습1~2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED498");
-                                            option.text("인터네셔널세미나");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED499");
-                                            option.text("미디어프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED666");
-                                            option.text("수학1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMED788");
-                                            option.text("확률및통계1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("DMEDO3312");
-                                            option.text("인포그래픽스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("ENG111");
-                                            option.text("영어1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("ENG112");
-                                            option.text("영어2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("G066");
-                                            option.text("선형대수");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("INFO401");
-                                            option.text("해외인턴쉽1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("INFO402");
-                                            option.text("해외인턴쉽");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("INFO403");
-                                            option.text("해외봉사실천1~2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("INFO404");
-                                            option.text("해외봉사실천2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("KOR101");
-                                            option.text("글쓰기");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MATH102");
-                                            option.text("수학1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MATH251");
-                                            option.text("확률과통계1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS101");
-                                            option.text("소셜미디어");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS131");
-                                            option.text("미디어통계");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS221");
-                                            option.text("소셜미디어 프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS231");
-                                            option.text("미디어애널리틱스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS232");
-                                            option.text("소셜미디어애널리틱스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS252");
-                                            option.text("소셜미디어휴먼");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS253");
-                                            option.text("미디어조사방법론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS311");
-                                            option.text("소셜미디어기획");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS312");
-                                            option.text("광고이론및제작");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS321");
-                                            option.text("모바일 프로그래밍2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS322");
-                                            option.text("모바일프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS323");
-                                            option.text("웹앱프로그래밍");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS324");
-                                            option.text("소셜앱프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS325");
-                                            option.text("소셜앱프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS331");
-                                            option.text("애널리틱스프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS332");
-                                            option.text("시리어스게임 애널리틱스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS351");
-                                            option.text("미디어이론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS352");
-                                            option.text("창의성과데이터");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS353");
-                                            option.text("사물인터넷 구축및활용");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS354");
-                                            option.text("데이터와과학적 창의프로젝트");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS374");
-                                            option.text("인지과학응용");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS381");
-                                            option.text("창업현장실습1");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS382");
-                                            option.text("창업현장실습2");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS412");
-                                            option.text("미디어및UCC");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS421");
-                                            option.text("데이터사이언스개론");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS422");
-                                            option.text("미디어융합기획");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS431");
-                                            option.text("데이터시각화");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS432");
-                                            option.text("데이터사이언스 이론과응용");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS433");
-                                            option.text("시리어스게임분석");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS461");
-                                            option.text("뉴미디어기획");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS462");
-                                            option.text("뉴미디어와 디지털방송");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS463");
-                                            option.text("데이터사이언스와 UX");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS465");
-                                            option.text("텍스트마이닝과 감정분석");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS471");
-                                            option.text("러닝사이언스");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("MIBS483");
-                                            option.text("엔터테인먼트엔지니 어링디자인세미나");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("SCE431");
-                                            option.text("컴퓨터비젼");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TEAT444");
-                                            option.text("크리에이티브미디어 프로그래밍 ");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TEST555");
-                                            option.text("몰입형미디어 프로그래밍 ");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TEST666");
-                                            option.text("미디어소프트웨어 엔지니어링 ");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TEST777");
-                                            option.text("기계학습");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TEST888");
-                                            option.text("데이터마이닝");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TESTCODE01");
-                                            option.text("데이터마이닝");
-                                            select.append(option);
-                                            var option = jQuery("<option>").val("TMDD543");
-                                            option.text("인디게임제작");
-                                            select.append(option);
-                                            select.insertBefore(
-                                                jQuery("#presubject_selects .description_container")
-                                            );
-                                            jQuery(this).unbind("change");
-                                            jQuery(".last_select").change(arguments.callee);
-                                        }
-                                    });
-                                </script>
+                                </select>
+
                                 <div class="description_container">
                       <span class="description">
                         과목의 선수 과목을 선택해주세요</span>
                                 </div>
                             </td>
                         </tr>
+                <tr>
+                    <th>선수 과목 2</th>
+                    <td >
+                        <select
+                                id="presubject_select2"
+                                class="mil_input_select last_select"
+                                name="mil_subject_presubject_select[]"
+                        >
+                            <option value="None">None</option>
+                            <c:forEach var="sl" items = "${subjectList}">
+                                <option value = "${sl.code}">${sl.name}</option></c:forEach>
+
+                                </select>
+
+                                <div class="description_container">
+                            <span class="description">
+                        과목의 선수 과목을 선택해주세요</span>
+                </div>
+                </td>
+                </tr>
+            <tr>
+                <th>선수 과목 3</th>
+                <td >
+                <select
+                        id="presubject_select3"
+                        class="mil_input_select last_select"
+                        name="mil_subject_presubject_select[]"
+                >
+                    <option value="None">None</option>
+                    <c:forEach var="sl" items = "${subjectList}">
+                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
+
+                                </select>
+
+                                <div class="description_container">
+                    <span class="description">
+                        과목의 선수 과목을 선택해주세요</span>
+            </div>
+            </td>
+            </tr>
                         <tr>
-                            <th>연계 과목</th>
-                            <td>
+                            <th>연계 과목 1</th>
+                            <td >
                                 <select
+                                        id="related_subject_select1"
                                         class="mil_input_select"
                                         name="mil_subject_relsubject_select"
                                 >
                                     <option value="None">None</option>
-                                    <option value="CAJ0114">아주희망</option>
-                                    <option value="CSE104">컴퓨터프로그래밍및실습</option>
-                                    <option value="CSE134">컴퓨터프로그램설계</option>
-                                    <option value="CSE200">자료구조</option>
-                                    <option value="CSE231">객체지향 프로그래밍및실습</option>
-                                    <option value="CSE311">운영체제</option>
-                                    <option value="CSE332">데이터베이스</option>
-                                    <option value="CSE350">알고리즘</option>
-                                    <option value="DGMC474">창업현장실습1~2</option>
-                                    <option value="DGMD10">창의미디어</option>
-                                    <option value="DGMD121">발상과 시각화</option>
-                                    <option value="DGMD2110">3D캐릭터애니메이션</option>
-                                    <option value="DGMD22">스토리텔링</option>
-                                    <option value="DGMD23">미디어심리학</option>
-                                    <option value="DGMD25">비주얼커뮤니케이션 디자인</option>
-                                    <option value="DGMD30">미디어융합연구</option>
-                                    <option value="DGMD31">게임FX</option>
-                                    <option value="DGMD319">3D캐릭터리깅</option>
-                                    <option value="DGMD34">영상처리</option>
-                                    <option value="DGMD344">GPU프로그래밍</option>
-                                    <option value="DGMD43">기계학습및 데이터마이닝</option>
-                                    <option value="DGMD471">창업실습1~2</option>
-                                    <option value="DGMD491">해외인턴쉽1~2</option>
-                                    <option value="DKFE21">렌더링이론</option>
-                                    <option value="DMED100">디지털미디어</option>
-                                    <option value="DMED130">디자인기초</option>
-                                    <option value="DMED201">영상제작미학</option>
-                                    <option value="DMED202">디지털타이포그래피</option>
-                                    <option value="DMED204">미디어와창업2</option>
-                                    <option value="DMED205">미디어와창업</option>
-                                    <option value="DMED210">게임엔진프로그래밍</option>
-                                    <option value="DMED212">게임의이해</option>
-                                    <option value="DMED230">그래픽디자인</option>
-                                    <option value="DMED235">피지컬인터랙션디자인</option>
-                                    <option value="DMED240">3D그래픽디자인</option>
-                                    <option value="DMED242">게임애니메이션</option>
-                                    <option value="DMED244">크로키</option>
-                                    <option value="DMED256">영상미학</option>
-                                    <option value="DMED270">컴퓨터프로그래밍</option>
-                                    <option value="DMED310">게임기획이론</option>
-                                    <option value="DMED311">게임프로그래밍2</option>
-                                    <option value="DMED312">게임스토리텔링</option>
-                                    <option value="DMED316">게임기획개론</option>
-                                    <option value="DMED317">게임스토리텔링</option>
-                                    <option value="DMED323">앱프로젝트</option>
-                                    <option value="DMED324">디지털사운드기초</option>
-                                    <option value="DMED330">정보디자인</option>
-                                    <option value="DMED331">모션그래픽디자인</option>
-                                    <option value="DMED336">인포그래픽스</option>
-                                    <option value="DMED347">3D어셋크리에이션</option>
-                                    <option value="DMED348">VR스튜디오</option>
-                                    <option value="DMED350">영상연출</option>
-                                    <option value="DMED356">영상편집론</option>
-                                    <option value="DMED370">컴퓨터그래픽스</option>
-                                    <option value="DMED388">창의적콘텐츠디자인2</option>
-                                    <option value="DMED389">창의적콘텐츠디자인1</option>
-                                    <option value="DMED401">미디어집중교육1</option>
-                                    <option value="DMED402">미디어집중교육2</option>
-                                    <option value="DMED404"></option>
-                                    <option value="DMED413">게임상호작용디자인</option>
-                                    <option value="DMED420">영상사운드제작</option>
-                                    <option value="DMED421">영상사운드제작</option>
-                                    <option value="DMED422">공간음향제작</option>
-                                    <option value="DMED434">인터랙션디자인</option>
-                                    <option value="DMED437">UX디자인</option>
-                                    <option value="DMED438">뉴미디어와모션그래픽스</option>
-                                    <option value="DMED441">영상합성</option>
-                                    <option value="DMED462">미디어현장실습1~6</option>
-                                    <option value="DMED471">애니메이션이론</option>
-                                    <option value="DMED483">이머징미디어특론</option>
-                                    <option value="DMED484">인터내셔널세미나</option>
-                                    <option value="DMED485">창업실습1,2</option>
-                                    <option value="DMED486">미디어경영</option>
-                                    <option value="DMED4911">미디어산업혁명기획</option>
-                                    <option value="DMED493">미디어현장실습1~6</option>
-                                    <option value="DMED497">창업실습1~2</option>
-                                    <option value="DMED498">인터네셔널세미나</option>
-                                    <option value="DMED499">미디어프로젝트</option>
-                                    <option value="DMED666">수학1</option>
-                                    <option value="DMED788">확률및통계1</option>
-                                    <option value="DMEDO3312">인포그래픽스</option>
-                                    <option value="ENG111">영어1</option>
-                                    <option value="ENG112">영어2</option>
-                                    <option value="G066">선형대수</option>
-                                    <option value="INFO401">해외인턴쉽1</option>
-                                    <option value="INFO402">해외인턴쉽</option>
-                                    <option value="INFO403">해외봉사실천1~2</option>
-                                    <option value="INFO404">해외봉사실천2</option>
-                                    <option value="KOR101">글쓰기</option>
-                                    <option value="MATH102">수학1</option>
-                                    <option value="MATH251">확률과통계1</option>
-                                    <option value="MIBS101">소셜미디어</option>
-                                    <option value="MIBS131">미디어통계</option>
-                                    <option value="MIBS221">소셜미디어 프로그래밍</option>
-                                    <option value="MIBS231">미디어애널리틱스</option>
-                                    <option value="MIBS232">소셜미디어애널리틱스</option>
-                                    <option value="MIBS252">소셜미디어휴먼</option>
-                                    <option value="MIBS253">미디어조사방법론</option>
-                                    <option value="MIBS311">소셜미디어기획</option>
-                                    <option value="MIBS312">광고이론및제작</option>
-                                    <option value="MIBS321">모바일 프로그래밍2</option>
-                                    <option value="MIBS322">모바일프로그래밍</option>
-                                    <option value="MIBS323">웹앱프로그래밍</option>
-                                    <option value="MIBS324">소셜앱프로젝트</option>
-                                    <option value="MIBS325">소셜앱프로젝트</option>
-                                    <option value="MIBS331">애널리틱스프로젝트</option>
-                                    <option value="MIBS332">시리어스게임 애널리틱스</option>
-                                    <option value="MIBS351">미디어이론</option>
-                                    <option value="MIBS352">창의성과데이터</option>
-                                    <option value="MIBS353">사물인터넷 구축및활용</option>
-                                    <option value="MIBS354">
-                                        데이터와과학적 창의프로젝트
-                                    </option>
-                                    <option value="MIBS374">인지과학응용</option>
-                                    <option value="MIBS381">창업현장실습1</option>
-                                    <option value="MIBS382">창업현장실습2</option>
-                                    <option value="MIBS412">미디어및UCC</option>
-                                    <option value="MIBS421">데이터사이언스개론</option>
-                                    <option value="MIBS422">미디어융합기획</option>
-                                    <option value="MIBS431">데이터시각화</option>
-                                    <option value="MIBS432">데이터사이언스 이론과응용</option>
-                                    <option value="MIBS433">시리어스게임분석</option>
-                                    <option value="MIBS461">뉴미디어기획</option>
-                                    <option value="MIBS462">뉴미디어와 디지털방송</option>
-                                    <option value="MIBS463">데이터사이언스와 UX</option>
-                                    <option value="MIBS465">텍스트마이닝과 감정분석</option>
-                                    <option value="MIBS471">러닝사이언스</option>
-                                    <option value="MIBS483">
-                                        엔터테인먼트엔지니 어링디자인세미나
-                                    </option>
-                                    <option value="SCE431">컴퓨터비젼</option>
-                                    <option value="TEAT444">
-                                        크리에이티브미디어 프로그래밍
-                                    </option>
-                                    <option value="TEST555">몰입형미디어 프로그래밍</option>
-                                    <option value="TEST666">
-                                        미디어소프트웨어 엔지니어링
-                                    </option>
-                                    <option value="TEST777">기계학습</option>
-                                    <option value="TEST888">데이터마이닝</option>
-                                    <option value="TESTCODE01">데이터마이닝</option>
-                                    <option value="TMDD543">인디게임제작</option>
+                                    <c:forEach var="sl" items = "${subjectList}">
+                                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
+
                                 </select>
-                                <br />
-                                <!-- <textarea
-                                  class="mil_input"
-                                  name="mil_subject_relsubject"
-                                  rows="4"
-                                  cols="50"
-                                ></textarea> -->
+
                                 <div class="description_container">
                       <span class="description">
                         과목의 연계 과목을 선택해주세요</span>
                                 </div>
                             </td>
                         </tr>
-                    </table>
-                </div>
+                        <tr>
+                            <th>연계 과목 2</th>
+                            <td >
+                                <select
+                                        id="related_subject_select2"
+                                        class="mil_input_select"
+                                        name="mil_subject_relsubject_select"
+                                >
+                                    <option value="None">None</option>
+                                    <c:forEach var="sl" items = "${subjectList}">
+                                    <option value = "${sl.code}">${sl.name}</option></c:forEach>
 
+                                    </select>
+
+                                    <div class="description_container">
+                                    <span class="description">
+                                    과목의 연계 과목을 선택해주세요</span>
+                                    </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                        <th>연계 과목 3</th>
+                        <td >
+                            <select
+                                    id="related_subject_select3"
+                                    class="mil_input_select"
+                                    name="mil_subject_relsubject_select"
+                            >
+                                <option value="None">None</option>
+                                <c:forEach var="sl" items = "${subjectList}">
+                                <option value = "${sl.code}">${sl.name}</option></c:forEach>
+
+                                </select>
+
+                                <div class="description_container">
+                                <span class="description">
+                                            과목의 연계 과목을 선택해주세요</span>
+                                </div>
+                        </td>
+                    </tr>
+                        <tr>
+                            <th>동시개설 학과 1</th>
+                            <td>
+                                <input
+                                        class="mil_input"
+                                        name="mil_subject_keyword"
+                                        id = "joint1"
+                                        rows="1"
+                                        cols="50"
+                                        placeholder="과목이 동시 개설되는 학과를 입력해주세요"
+                                ></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>동시개설 학과 2</th>
+                            <td>
+                                <input
+                                        class="mil_input"
+                                        name="mil_subject_keyword"
+                                        id = "joint2"
+                                        rows="1"
+                                        cols="50"
+                                        placeholder="과목이 동시 개설되는 학과를 입력해주세요"
+                                ></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>동시개설 학과 2</th>
+                            <td>
+                                <input
+                                        class="mil_input"
+                                        name="mil_subject_keyword"
+                                        id = "joint3"
+                                        rows="1"
+                                        cols="50"
+                                        placeholder="과목이 동시 개설되는 학과를 입력해주세요"
+                                ></input>
+                            </td>
+                        </tr>
+                    </table>
                 <!-- button type="button" class="mil_btn mil_green_btn mil_create_subject_button">과목 생성</button -->
                 <button
                         type="button"
@@ -994,6 +433,7 @@
                     과목 완전 삭제
                 </button>
                 <br /><br />
+                </div>
             </form>
         </div>
     </div>
@@ -1006,8 +446,11 @@
 </body>
     <script src="${pageContext.request.contextPath}/resources/fil/js/admin/adminCurriculum.js"></script>
 <script>
-        $('.mil_btn get_subject_info_by_name_button').on('click',function(){
+        $('#info_btn').on('click',function(){
             getSubjectInfo( document.getElementById("subject_code").value);
+        });
+        $('#info_reset_btn').on('click',function(){
+            setSubjectInfoReset();
         });
 </script>
 </html>

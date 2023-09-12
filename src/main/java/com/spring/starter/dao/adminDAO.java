@@ -11,6 +11,14 @@ public interface adminDAO {
     public ArrayList<curriDTO> curriList();
     public void deleteCurriculum(int page_id);
 
+    public void addFeSubject(String code,String name,String detail, int semester,int is_mandatory, int original_language);
+    public void updateFeSubject(String code,String name,String detail, int semester,int is_mandatory, int original_language);
+
+    public void addFePosition(String code,int row_id, int col_id);
+    public void updateFePosition(String code,int row_id, int col_id);
+
+
+
     //멘토
     public ArrayList<mentorDTO> mentorList();
     public ArrayList<mentorDTO> mentorDetailList(int id);

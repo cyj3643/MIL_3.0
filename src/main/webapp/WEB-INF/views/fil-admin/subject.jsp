@@ -262,8 +262,8 @@
                                         name="mil_subject_presubject_select[]"
                                 >
                                     <option value="None">None</option>
-                                    <c:forEach var="sl" items = "${subjectList}">
-                                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                                    <c:forEach var="sl" items = "${subjectAllList}">
+                                        <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                 </select>
 
@@ -282,8 +282,8 @@
                                 name="mil_subject_presubject_select[]"
                         >
                             <option value="None">None</option>
-                            <c:forEach var="sl" items = "${subjectList}">
-                                <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                            <c:forEach var="sl" items = "${subjectAllList}">
+                                <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                 </select>
 
@@ -302,8 +302,8 @@
                         name="mil_subject_presubject_select[]"
                 >
                     <option value="None">None</option>
-                    <c:forEach var="sl" items = "${subjectList}">
-                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                    <c:forEach var="sl" items = "${subjectAllList}">
+                        <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                 </select>
 
@@ -322,8 +322,8 @@
                                         name="mil_subject_relsubject_select"
                                 >
                                     <option value="None">None</option>
-                                    <c:forEach var="sl" items = "${subjectList}">
-                                        <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                                    <c:forEach var="sl" items = "${subjectAllList}">
+                                        <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                 </select>
 
@@ -342,8 +342,8 @@
                                         name="mil_subject_relsubject_select"
                                 >
                                     <option value="None">None</option>
-                                    <c:forEach var="sl" items = "${subjectList}">
-                                    <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                                    <c:forEach var="sl" items = "${subjectAllList}">
+                                    <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                     </select>
 
@@ -362,8 +362,8 @@
                                     name="mil_subject_relsubject_select"
                             >
                                 <option value="None">None</option>
-                                <c:forEach var="sl" items = "${subjectList}">
-                                <option value = "${sl.code}">${sl.name}</option></c:forEach>
+                                <c:forEach var="sl" items = "${subjectAllList}">
+                                <option value = "${sl.code}">${sl.name} : ${sl.code}</option></c:forEach>
 
                                 </select>
 
@@ -417,19 +417,22 @@
                 <button
                         type="button"
                         class="mil_btn mil_blue_btn mil_modify_subject_button"
-                        onclick="SubmitInfo();"
+                        onclick="SubmitInfoButton();"
                 >
                     정보 저장
                 </button>
                 <button
                         type="button"
                         class="mil_btn mil_green_btn mil_delete_subject_at_curriculum_button"
+                        onclick="DeletePositionButton();"
+
                 >
                     커리큘럼에서 제외
                 </button>
                 <button
                         type="button"
                         class="mil_btn mil_red_btn mil_delete_subject_button"
+                        onclick="DeleteSubjectButton();"
                 >
                     과목 완전 삭제
                 </button>
@@ -452,6 +455,16 @@
         });
         $('#info_reset_btn').on('click',function(){
             setSubjectInfoReset();
+        });
+        $('#major').on('click',function(){
+            if(document.getElementById("major").checked == true) {
+                document.getElementById("major").value = "1";
+            }else{document.getElementById("major").value = "0";}
+        });
+        $('#origin').on('click',function(){
+            if(document.getElementById("origin").checked == true) {
+                document.getElementById("origin").value = "1";
+            }else{document.getElementById("origin").value = "0";}
         });
 </script>
 </html>

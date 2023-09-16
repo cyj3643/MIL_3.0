@@ -34,12 +34,9 @@
         UPDATE linka.fil_position SET row_id=#{row_id}, col_id=#{col_id} WHERE code=#{code}
     </update>
 
-    <select id="deleteFePosition">
-        delete from linka.fil_position
-        <where>
-            <if test="value != null">AND code=#{code} </if>
-        </where>
-    </select>
+    <delete id="deleteFePosition">
+        delete from linka.fil_position WHERE code=#{code}
+    </delete>
 
     <!--
     fe_subject
@@ -52,12 +49,9 @@
         UPDATE linka.fe_subject SET name=#{name}, detail=#{detail}, semester=#{semester},is_mandatory=#{is_mandatory},original_language=#{original_language} WHERE code=#{code}
     </update>
 
-    <select id="deleteFeSubject">
-        delete from linka.fe_subject
-        <where>
-            <if test="value != null">AND code=#{code} </if>
-        </where>
-    </select>
+    <delete id="deleteFeSubject">
+        delete from linka.fe_subject WHERE code=#{code}
+    </delete>
 
     <!--
     joint_departments

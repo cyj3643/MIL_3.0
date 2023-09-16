@@ -214,6 +214,7 @@ public class HomeController {
 
         try {
             model.addAttribute("subjectList", cao.subjectList());
+            model.addAttribute("subjectAllList",cao.subjectAllList());
             model.addAttribute("jobList", cao.jobList());
             //System.out.println("testtesttest");
         } catch (Exception e) {

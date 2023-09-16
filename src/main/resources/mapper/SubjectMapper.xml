@@ -5,16 +5,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.starter.dao.cilDAO">
 
-	<select id="subjectCoreList" resultType="com.spring.starter.model.cilDetailCoreDTO">
-		select cs.subject,cs.page_id
-		from mil_db.cil_position cp
-		inner join mil_db.cil_subjectcore cs
-		on cp.subject = cs.subject
-		where cs.page_id in ('129','130','131','132','133')
-		and cs.type != 'support' and cs.type != ''
-		<where>
-			<if test="value != null">AND cp.subject = #{subject} </if>
-		</where>
+	<select id="subjectAllList" resultType="com.spring.starter.model.adminSubjectDTO">
+		select *
+		from linka.fe_subject
 	</select>
 
 	<select id="subjectPreList" resultType="com.spring.starter.model.cilPreDTO" parameterType="map">

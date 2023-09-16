@@ -4,6 +4,7 @@ import com.spring.starter.model.filDTO;
 import com.spring.starter.model.jobDTO;
 import com.spring.starter.model.cilDetailDTO;
 import com.spring.starter.model.cilPositionDTO;
+import com.spring.starter.model.adminSubjectDTO;
 import com.spring.starter.model.cilTrackDTO;
 import com.spring.starter.model.cilPreDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public interface cilDAO {
     public ArrayList<filDTO> subjectList();
     public ArrayList<jobDTO> jobList();
+    public ArrayList<adminSubjectDTO>subjectAllList();
     public ArrayList<cilDetailDTO> subjectDetailList(String code);
     public ArrayList<cilPositionDTO> subjectPositionList(String code);
     public ArrayList<cilPreDTO> subjectPreList(String subject);

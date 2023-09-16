@@ -221,7 +221,7 @@
                                         id="major"
                                         type="checkbox"
                                         name="mil_subject_mandatory"
-                                        value="1"
+                                        value="0"
                                 />
                                 <label>
                                     필수 과목
@@ -240,7 +240,7 @@
                                         id="origin"
                                         type="checkbox"
                                         name="mil_subject_origin_language"
-                                        value="1"
+                                        value="0"
                                 />
                                 <label>
                                     원어 과목
@@ -417,6 +417,7 @@
                 <button
                         type="button"
                         class="mil_btn mil_blue_btn mil_modify_subject_button"
+                        onclick="SubmitInfo();"
                 >
                     정보 저장
                 </button>

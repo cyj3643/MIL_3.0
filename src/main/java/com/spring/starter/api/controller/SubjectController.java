@@ -61,8 +61,8 @@ public class SubjectController {
     }
 
     @GetMapping("/subject/{subjectId}")
-    public ResponseEntity<? extends BaseResponse> getDetails(@PathVariable Long subjectId) {
-        return ResponseEntity.status(200).body(new SubjectDetailsRes("과목 상세정보를 불러왔습니다.", 200, subjectService.getSubjectDetails(subjectId)));
+    public ResponseEntity<? extends BaseResponse> getDetails(@PathVariable String code) {
+        return ResponseEntity.status(200).body(new SubjectDetailsRes("과목 상세정보를 불러왔습니다.", 200, subjectService.getSubjectDetails(code)));
     }
 
     @RequestMapping("/test")

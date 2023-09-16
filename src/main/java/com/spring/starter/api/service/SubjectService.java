@@ -17,7 +17,7 @@ public class SubjectService {
         return subjectRepository.findAll();
     }
 
-    public FeSubject getSubjectDetails(Long subjectId) {
-        return subjectRepository.findById(subjectId).orElse(null);
+    public FeSubject getSubjectDetails(String code) {
+        return subjectRepository.findByCode(code).orElse(null);
     }
 }

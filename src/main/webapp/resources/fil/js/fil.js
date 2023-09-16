@@ -439,8 +439,6 @@ function vcJobsClick(core,support){
 /*
     area 클릭 이벤트
 */
-const home = document.getElementById("title");
-home.addEventListener("click", reset_color);
 
 /* 금융 TRACK
 const gi = document.getElementById("gi_but");

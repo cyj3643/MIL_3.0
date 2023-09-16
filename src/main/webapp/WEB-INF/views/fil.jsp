@@ -169,22 +169,5 @@
     $('.cd_wrap').on('click',function(){
         trackClick('fe_program');
     });
-
-    $(document).ready(function(){
-        /*$.ajax({ url: "/cil/subject",
-            context: document.body,
-            success: (data) => {console.log(data);}
-        });*/
-        $.ajax({
-            type:"get",
-            url:"subjects",
-            success:function(productList){
-                $("#listView").empty();
-                $.each(productList,function(i,product){
-                    $("#listView").append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>").css("background","pink");
-                });
-            }
-        });//ajax
-    });
 </script>
 </html>

@@ -23,74 +23,71 @@
 
 
     <!--
-    Update fe_position
+    fil_position
     -->
-    <insert id="addFePosition">
-        INSERT INTO fe_position( row_id,col_id,code) VALUES (#{row_id}, #{col_id}, #{code})
+
+    <insert id="addFePosition" >
+        INSERT INTO linka.fil_position( row_id,col_id,code) VALUES (#{row_id}, #{col_id}, #{code})
     </insert>
 
     <update id="updateFePosition" >
-        UPDATE fe_position SET row_id=#{row_id}, col_id=#{col_id} WHERE code=#{code}
+        UPDATE linka.fil_position SET row_id=#{row_id}, col_id=#{col_id} WHERE code=#{code}
     </update>
+
+    <select id="deleteFePosition">
+        delete from linka.fil_position
+        <where>
+            <if test="value != null">AND code=#{code} </if>
+        </where>
+    </select>
 
     <!--
     fe_subject
     -->
-    <insert id="addFeSubject">
-        INSERT INTO fe_subject(code, name, detail, semester,is_mandatory,original_language) VALUES (#{code}, #{name}, #{detail}, #{semester}, #{is_mandatory}, #{original_language})
+    <insert id="addFeSubject" >
+        INSERT INTO linka.fe_subject(code, name, detail, semester,is_mandatory,original_language) VALUES (#{code}, #{name}, #{detail}, #{semester}, #{is_mandatory}, #{original_language})
     </insert>
 
-    <update id="updateFeSubject" >
-        UPDATE fe_subject SET name=#{name}, detail=#{detail}, semester=#{semester},is_mandatory=#{is_mandatory},original_language=#{original_language}, WHERE code=#{code}
+    <update id="updateFeSubject">
+        UPDATE linka.fe_subject SET name=#{name}, detail=#{detail}, semester=#{semester},is_mandatory=#{is_mandatory},original_language=#{original_language} WHERE code=#{code}
     </update>
 
-
-
-
-
-
-    <!--
-    Mentor Mapper
-    -->
-    <select id="mentorList" resultType="com.spring.starter.model.mentorDTO">
-				select * from mentor order by id;
-	</select>
-
-    <select id="mentorDetailList" resultType="com.spring.starter.model.mentorDTO">
-				select * from mentor
+    <select id="deleteFeSubject">
+        delete from linka.fe_subject
         <where>
-            <if test="value != null">AND id = #{id} </if>
+            <if test="value != null">AND code=#{code} </if>
         </where>
     </select>
 
-    <insert id="addMentor">
-        INSERT INTO mentor (name, industry_name, email, area) VALUES (#{name}, #{industry_name}, #{email}, #{area})
-    </insert>
-
-    <update id="updateMentor" >
-		UPDATE mentor SET name=#{name}, industry_name=#{industry_name}, email=#{email}, area=#{area} WHERE id=#{id}
-	</update>
-
     <!--
-    Video Mapper
+    joint_departments
     -->
-    <select id="videoList" resultType="com.spring.starter.model.videoDTO">
-				select * from industry_video order by id;
-	</select>
-
-    <select id="videoDetailList" resultType="com.spring.starter.model.videoDTO">
-        select id,job_name,video_title,thumbnail_url,substr(video_link,-11) as video_link,jobs_id from industry_video
-        <where>
-            <if test="value != null">AND id = #{id} </if>
-        </where>
-    </select>
-
-    <insert id="addVideo">
-        INSERT INTO mentor (name, industry_name, email, area) VALUES (#{name}, #{industry_name}, #{email}, #{area})
+    <insert id="addJoint" >
+        INSERT INTO linka.joint_departments(code, joint_department) VALUES (#{code}, #{joint_department})
     </insert>
 
-    <update id="updateVideo" >
-		UPDATE mentor SET name=#{name}, industry_name=#{industry_name}, email=#{email}, area=#{area} WHERE id=#{id}
-	</update>
+    <update id="updateJoint">
+        UPDATE linka.joint_departments SET joint_department=#{joint_department} WHERE code=#{code}
+    </update>
+    <!--
+    relate_subjects
+    -->
+    <insert id="addRelate" >
+        INSERT INTO linka.relate_subjects(code, relate_subject_code) VALUES (#{code}, #{relate_subject_code})
+    </insert>
+
+    <update id="updateRelate">
+        UPDATE linka.relate_subjects SET relate_subject_code=#{relate_subject_code} WHERE code=#{code}
+    </update>
+    <!--
+    prerequisite_subjects
+    -->
+    <insert id="addPrerequisite" >
+        INSERT INTO linka.prerequisite_subjects(code, pre_subject_code) VALUES (#{code}, #{pre_subject_code})
+    </insert>
+
+    <update id="updatePrerequisite">
+        UPDATE linka.prerequisite_subjects SET pre_subject_code=#{pre_subject_code} WHERE code=#{code}
+    </update>
 
 </mapper>

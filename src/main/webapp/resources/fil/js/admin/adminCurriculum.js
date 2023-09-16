@@ -57,16 +57,20 @@ function getSubjectInfo(code){
                         document.getElementById("column").value = (data.subjectPositionList[0].col_id);
                         if (data.subjectDetailList[0].is_mandatory == 1) {
                             document.getElementById("major").checked = true;
+                            document.getElementById("major").value = "1";
                         }else{
                             if(document.getElementById("major").checked == true) {
                                 document.getElementById("major").checked = null;
+                                document.getElementById("major").value = "0";
                             }
                         }
                         if (data.subjectDetailList[0].original_language == 1) {
                             document.getElementById("origin").checked = true;
+                            document.getElementById("origin").value = "1";
                         }else{
                             if(document.getElementById("origin").checked == true) {
                                 document.getElementById("origin").checked = null;
+                                document.getElementById("origin").value = "0";
                             }
                         }
 
@@ -156,4 +160,112 @@ function setSubjectInfoReset(){
         document.getElementById(jt_list[k]).value = null;
 
     }
+}
+
+function SubmitInfo(){
+    $.ajax({
+        type: 'POST',
+        url: '/admin/subject/SubjectInfo',
+        async: true,
+        data: {"code": document.getElementById("subject_code").value},
+        success: function (data) {
+            if (data.subjectDetailList[0] != null) {
+                UpdateSubjectInfo();
+            }
+            else if (data.subjectDetailList[0] == null){
+                AddSubjectInfo();
+            }
+            if (data.subjectPositionList[0] != null){
+                if((data.subjectPositionList[0].col_id != document.getElementById("column").value) || (data.subjectPositionList[0].row_id != parseInt(Number(document.getElementById("row").value) +1))){
+                    UpdatePositionInfo();
+                }
+            }
+            else if (data.subjectPositionList[0] == null){
+                AddPositionInfo();
+            }
+        },
+        complete: function() {
+        },
+        error:function(request, status, error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+        }
+    });
+}
+function UpdateSubjectInfo(){
+    alert("과목 수정 : "+document.getElementById('subject_code').value);
+    var code = document.getElementById("subject_code").value;
+    $.ajax({
+        type: 'POST',
+        url: '/admin/subject/SubjectUpdate',
+        async: true,
+        data: {
+            "code": code,
+            "name":document.getElementById("subject_name").value,
+            "semester":document.getElementById("subject_semester").value,
+            "detail":document.getElementById("subject_detail").value,
+            "is_mandatory":document.getElementById("major").value,
+            "original_language":document.getElementById("origin").value
+
+        },
+        success: function (data) {
+            $("#mil_subject_table_wrap").load("/admin/subject #mil_subject_table_wrap");
+        }
+    });
+}
+function AddSubjectInfo(){
+    alert("과목 수정 : "+document.getElementById('subject_code').value);
+    var code = document.getElementById("subject_code").value;
+    $.ajax({
+        type: 'POST',
+        url: '/admin/subject/SubjectAdd',
+        async: true,
+        data: {
+            "code": code,
+            "name":document.getElementById("subject_name").value,
+            "semester":document.getElementById("subject_semester").value,
+            "detail":document.getElementById("subject_detail").value,
+            "is_mandatory":document.getElementById("major").value,
+            "original_language":document.getElementById("origin").value
+        },
+        success : function (data){
+            $("#mil_subject_table_wrap").load("/admin/subject #mil_subject_table_wrap");
+        }
+    });
+}
+
+function UpdatePositionInfo(){
+    alert("위치 수정 : "+document.getElementById('subject_code').value);
+    var code = document.getElementById("subject_code").value;
+    $.ajax({
+        type: 'POST',
+        url: '/admin/subject/PositionUpdate',
+        async: true,
+        data: {
+            "code" : code,
+            "row_id" : parseInt(Number(document.getElementById("row").value) +1),
+            "col_id" :document.getElementById("column").value
+        },
+        success : function (data){
+            $("#mil_subject_table_wrap").load("/admin/subject #mil_subject_table_wrap");
+        }
+    });
+}
+function AddPositionInfo(){
+    alert("위치 수정 : "+document.getElementById('subject_code').value);
+    var code = document.getElementById("subject_code").value;
+    $.ajax({
+        type: 'POST',
+        url: '/admin/subject/PositionAdd',
+        async: true,
+        data: {
+            "code" : code,
+            "row_id" : parseInt(Number(document.getElementById("row").value) +1),
+            "col_id" :document.getElementById("column").value
+        },
+        success : function (data){
+            $("#mil_subject_table_wrap").load("/admin/subject #mil_subject_table_wrap");
+        }
+    });
 }

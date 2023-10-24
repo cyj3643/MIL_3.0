@@ -21,13 +21,13 @@ public interface adminDAO {
 
     public void addJoint(@Param("code") String code,@Param("joint_department")String joint_department);
     public void updateJoint(@Param("code") String code,@Param("joint_department")String joint_department);
-
+    public void deleteJoint(@Param("code") String code ,@Param("joint_department")String joint_department);
 
     public void addRelate(@Param("code") String code,@Param("relate_subject_code")String relate_subject_code);
     public void updateRelate(@Param("code") String code,@Param("relate_subject_code")String relate_subject_code);
-
+    public void deleteRelate(@Param("code") String code ,@Param("relate_subject_code")String relate_subject_code);
     public void addPrerequisite(@Param("code") String code,@Param("pre_subject_code")String pre_subject_code);
     public void updatePrerequisite(@Param("code") String code,@Param("pre_subject_code")String pre_subject_code);
-
+    public void deletePrerequisite(@Param("code") String code ,@Param("pre_subject_code")String pre_subject_code);
 
 }

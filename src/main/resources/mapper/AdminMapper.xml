@@ -63,6 +63,10 @@
     <update id="updateJoint">
         UPDATE linka.joint_departments SET joint_department=#{joint_department} WHERE code=#{code}
     </update>
+
+    <delete id="deleteJoint">
+        delete from linka.joint_departments WHERE code=#{code} AND joint_department=#{joint_department}
+    </delete>
     <!--
     relate_subjects
     -->
@@ -73,6 +77,9 @@
     <update id="updateRelate">
         UPDATE linka.relate_subjects SET relate_subject_code=#{relate_subject_code} WHERE code=#{code}
     </update>
+    <delete id="deleteRelate">
+        delete from linka.relate_subjects WHERE code=#{code} AND relate_subject_code=#{relate_subject_code}
+    </delete>
     <!--
     prerequisite_subjects
     -->
@@ -83,5 +90,9 @@
     <update id="updatePrerequisite">
         UPDATE linka.prerequisite_subjects SET pre_subject_code=#{pre_subject_code} WHERE code=#{code}
     </update>
+
+    <delete id="deletePrerequisite">
+        delete from linka.Prerequisite WHERE code=#{code} AND pre_subject_code=#{pre_subject_code}
+    </delete>
 
 </mapper>

@@ -108,6 +108,20 @@ public class AdminController {
         dao.updateFePosition(code, row_id, col_id);
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/PositionAdd",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map addFePosition(Model model,  @RequestParam("code") String code, @RequestParam("row_id") Integer row_id, @RequestParam ("col_id") Integer col_id)
+    {
+        System.out.println("Position add in");
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        dao.addFePosition(code,row_id,col_id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        //result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
     @ResponseBody
     @RequestMapping(value="/admin/subject/PositionDelete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
     public Map deleteFePosition(Model model,@RequestParam("code") String code)
@@ -120,19 +134,6 @@ public class AdminController {
         result.put("subjectDetailList", cao.subjectDetailList(code));
         Map<String, Object> input = new HashMap<String, Object>();
         dao.deleteFePosition(code);
-        return result;
-    }
-
-    @ResponseBody
-    @RequestMapping(value="/admin/subject/PositionAdd",method=RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map addFePosition(Model model,  @RequestParam("code") String code, @RequestParam("row_id") Integer row_id, @RequestParam ("col_id") Integer col_id)
-    {
-        System.out.println("Position add in");
-        adminDAO dao = sqlSession.getMapper(adminDAO.class);
-        dao.addFePosition(code,row_id,col_id);
-        Map<String, Object> result = new HashMap<String, Object>();
-        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
-        //result.put("mentorDetailList", dao.mentorDetailList(id));
         return result;
     }
 
@@ -163,7 +164,20 @@ public class AdminController {
         //result.put("mentorDetailList", dao.mentorDetailList(id));
         return result;
     }
-
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/JointDelete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map deleteJoint(Model model,  @RequestParam("code") String code, @RequestParam("joint_department")  String joint_department)
+    {
+        System.out.println("Joint delete in"+code);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("subjectDetailList", cao.subjectDetailList(code));
+        Map<String, Object> input = new HashMap<String, Object>();
+        dao.deleteJoint(code,joint_department);
+        return result;
+    }
 
     @ResponseBody
     @RequestMapping(value="/admin/subject/RelateUpdate",method=RequestMethod.POST, produces="application/json; charset=utf-8")
@@ -192,7 +206,20 @@ public class AdminController {
         //result.put("mentorDetailList", dao.mentorDetailList(id));
         return result;
     }
-
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/RelateDelete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map deleteRelate(Model model,  @RequestParam("code") String code, @RequestParam("relate_subject_code")  String relate_subject_code)
+    {
+        System.out.println("Joint delete in"+code);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("subjectDetailList", cao.subjectDetailList(code));
+        Map<String, Object> input = new HashMap<String, Object>();
+        dao.deleteRelate(code,relate_subject_code);
+        return result;
+    }
 
     @ResponseBody
     @RequestMapping(value="/admin/subject/PrerequisiteUpdate",method=RequestMethod.POST, produces="application/json; charset=utf-8")
@@ -219,6 +246,21 @@ public class AdminController {
         Map<String, Object> result = new HashMap<String, Object>();
         //result.put("subjectTrackList",dao.subjectTrackList(page_id));
         //result.put("mentorDetailList", dao.mentorDetailList(id));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/admin/subject/PrerequisiteDelete",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map deletePrerequisite(Model model,  @RequestParam("code") String code, @RequestParam("pre_subject_code")  String pre_subject_code)
+    {
+        System.out.println("Joint delete in"+code);
+        adminDAO dao = sqlSession.getMapper(adminDAO.class);
+        cilDAO cao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(page_id));
+        result.put("subjectDetailList", cao.subjectDetailList(code));
+        Map<String, Object> input = new HashMap<String, Object>();
+        dao.deletePrerequisite(code,pre_subject_code);
         return result;
     }
 

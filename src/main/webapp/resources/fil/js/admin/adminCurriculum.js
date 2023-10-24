@@ -15,7 +15,7 @@ function getSubjectInfo(code){
             async: true,
             data: {"code": code},
             success: function (data) {
-                if( document.getElementById("subject_code").value != "") {
+                if( code != "") {
                     setSubjectInfoReset()
                     if (data.subjectDetailList[0] != null) {
                         document.getElementById("subject_code").value = (data.subjectDetailList[0].subject);
@@ -349,3 +349,4 @@ function DeleteSubjectButton() {
         }
     });
 }
+

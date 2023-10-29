@@ -175,6 +175,7 @@ public class HomeController {
         try {
             model.addAttribute("subjectList", dao.subjectList());
             model.addAttribute("jobList", dao.jobList());
+            model.addAttribute("majorList", dao.majorList());
             System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception

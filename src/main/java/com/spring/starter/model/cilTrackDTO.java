@@ -6,6 +6,9 @@ public class cilTrackDTO {
     private String type;
     private String carrer_path_id;
 
+    private String small_category;
+    private String category;
+
     public int getRow_id() {
         return row_id;
     }
@@ -30,11 +33,24 @@ public class cilTrackDTO {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getSmall_category() {
+        return small_category;
+    }
+    public void setSmall_category(String small_category) {this.small_category = small_category;}
+
     public String getPage_id() {
         return carrer_path_id;
     }
     public void setPage_id(String carrer_path_id) {
         this.carrer_path_id = carrer_path_id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

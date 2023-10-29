@@ -35,4 +35,7 @@ public class CarrerPathSubjects extends BaseEntity{
 
     String type;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    CarrerPath small_category;
 }

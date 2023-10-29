@@ -7,7 +7,7 @@
     <!-- DAO의 메서드가 될 것이다. -->
 
     <select id="curriList" resultType="com.spring.starter.model.curriDTO">
-				select cp.id, cp.small_category, ci.category
+				select cp.id, ci.carrer_path_id, cp.small_category, ci.category
 				from linka.carrer_path cp
                          inner join linka.carrer_id ci
                                     on cp.large_category = ci.large_category

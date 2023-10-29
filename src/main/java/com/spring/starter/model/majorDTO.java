@@ -1,12 +1,11 @@
 package com.spring.starter.model;
 
-public class jobDTO {
+public class majorDTO {
     private int id;
     private String small_category;
     private String carrer_path_id;
     private String core_color;
     private String support_color;
-
 
 
     public String getName()
@@ -19,11 +18,12 @@ public class jobDTO {
         this.small_category = name;
     }
 
-    public String getJob_id()
-    {
-        return carrer_path_id;
-    }
+    public String getMajor_id() {return carrer_path_id;}
 
+    public void setMajor_id(String major_id)
+    {
+        this.carrer_path_id = major_id;
+    }
     public void setJob_id(String job_id)
     {
         this.carrer_path_id = job_id;

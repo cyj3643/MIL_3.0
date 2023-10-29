@@ -20,12 +20,16 @@
 		</where>
 	</select>
 
-	<select id="subjectTrackList" resultType="com.spring.starter.model.cilTrackDTO" parameterType="map">
-		select fp.col_id ,fp.row_id ,fp.code, cps.carrer_path_id, cps.type
-		from linka.fil_position fp join linka.carrer_path_subjects cps
+	<select id="subjectTrackList" resultType="com.spring.starter.model.cilTrackDTO"  parameterType="map">
+		select fp.col_id ,fp.row_id ,fp.code, cps.carrer_path_id,cps.small_category, cps.type, ci.category
+		from linka.fil_position fp
+		    join linka.carrer_path_subjects cps
 		on fp.code = cps.subject_code
+			left join linka.carrer_id ci
+		on ci.carrer_path_id = cps.carrer_path_id
 		<where>
-			<if test="value != null">AND cps.carrer_path_id = #{carrer_path_id} </if>
+			<if test="carrer_path_id != null">AND cps.carrer_path_id = #{carrer_path_id}</if>
+			<if test="small_category != null">AND (cps.type = "core" OR (cps.type = "support" AND cps.small_category = #{small_category}))</if>
 		</where>
 	</select>
 
@@ -38,13 +42,24 @@
 	</select>
 
 	<select id="jobList" resultType="com.spring.starter.model.jobDTO">
-		select jobs.small_category, ci.carrer_path_id
+		select jobs.small_category, ci.carrer_path_id , ci.core_color, ci.support_color
 		from linka.carrer_path jobs
 			inner join linka.carrer_id ci
 				on jobs.large_category = ci.large_category
 		where ci.category = "job"
 		<where>
-			<if test="value != null">AND fp.job_id = #{jobs_id} </if>
+			<if test="value != null"></if>
+		</where>
+	</select>
+
+	<select id="majorList" resultType="com.spring.starter.model.majorDTO">
+		select majors.small_category, ci.carrer_path_id, ci.core_color, ci.support_color
+		from linka.carrer_path majors
+			inner join linka.carrer_id ci
+				on majors.large_category = ci.large_category
+		where ci.category = "major"
+		<where>
+			<if test="value != null"></if>
 		</where>
 	</select>
 

@@ -126,21 +126,10 @@ header{
     cursor:pointer;
 }
 
-.gi_jobs{
-    color:#AA87E6;
+.jobs{
+
 }
 
-.cd_jobs{
-    color:#E66E71;
-}
-
-.de_jobs{
-    color:#E68739;
-}
-
-.vc_jobs{
-    color:#71D3E6;
-}
 
 ::-webkit-scrollbar { width: 6px; height:6px;} /* 스크롤 바 */
 

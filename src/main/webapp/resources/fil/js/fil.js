@@ -9,6 +9,8 @@ var cdj_flag = 1;
 var dej_flag = 1;
 var vij_flag = 1;
 
+var flag = null;
+
 function getDetail(code){
     $.ajax({
         type: 'POST',
@@ -60,67 +62,56 @@ function getDetail(code){
     });
 }
 
-function trackClick(carrer_path_id){
+function trackClick(carrer_path_id, small_category,c_color,s_color){
     var ch_td;
     var core = new Array();
     var support = new Array();
     var page_id;
-
+    var core_c = c_color;
+    var support_c = s_color;
     reset_color();
 
     $.ajax({
         type: 'POST',
         url: '/track',
         async: true,
-        data: {"carrer_path_id" : carrer_path_id},
+        data: { "carrer_path_id" : carrer_path_id , "small_category" : small_category},
         dataType : 'json',
         success: function (data) {
-            for(var i=0; i<data.subjectTrackList.length; i++)
+            if(flag == small_category)
             {
-                if(data.subjectTrackList[i].type=='core')
-                {
-                    core.push('tr'+data.subjectTrackList[i].row_id+'td'+data.subjectTrackList[i].col_id);
-                }
-                if(data.subjectTrackList[i].type=='support')
-                {
-                    support.push('tr'+data.subjectTrackList[i].row_id+'td'+data.subjectTrackList[i].col_id);
-                }
+                flag = null;
+                reset_color();
             }
-            if (carrer_path_id == "gi_jobs"){
-                page_id = 133;
-            }else if(carrer_path_id == "cd_jobs"){
-                page_id = 130;
-            }else if(carrer_path_id == "de_jobs"){
-                page_id = 129;
-            }else if(carrer_path_id == "vc_jobs"){
-                page_id = 131;
-            }else if(carrer_path_id == "fe_program"){
-                page_id = 100;
-            }
-
-
-            switch(page_id)
-            {
-                /* 전공 */
-                case 100:
-                    cdClick(core,support);
-                    break;
-                /* 직업*/
-                case 129:
-                    deJobsClick(core,support);
-                    break;
-                case 130:
-                    cdJobsClick(core,support);
-                    break;
-                case 131:
-                    vcJobsClick(core,support);
-                    break;
-                case 132:
-                    mdClick(core,support);
-                    break;
-                case 133:
-                    giJobsClick(core,support);
-                    break;
+            else{
+                flag = small_category;
+                /*전공의 경우, 전필이 다 다름*/
+                if (data.subjectTrackList[0].category == 'major'){
+                    for(var i=0; i<data.subjectTrackList.length; i++)
+                    {
+                        if((data.subjectTrackList[i].type=='core') && (data.subjectTrackList[i].small_category==small_category))
+                        {
+                            core.push('tr'+data.subjectTrackList[i].row_id+'td'+data.subjectTrackList[i].col_id);
+                        }
+                        if(data.subjectTrackList[i].type=='support')
+                        {
+                            support.push('tr'+data.subjectTrackList[i].row_id+'td'+data.subjectTrackList[i].col_id);
+                        }
+                    }
+                    majorClick(core,support,core_c,support_c);
+                }
+                /*커리어 path의 경우, 분류별 핵심과목은 같음*/
+                if (data.subjectTrackList[0].category == 'job') {
+                    for (var i = 0; i < data.subjectTrackList.length; i++) {
+                        if (data.subjectTrackList[i].type == 'core') {
+                            core.push('tr' + data.subjectTrackList[i].row_id + 'td' + data.subjectTrackList[i].col_id);
+                        }
+                        if (data.subjectTrackList[i].type == 'support') {
+                            support.push('tr' + data.subjectTrackList[i].row_id + 'td' + data.subjectTrackList[i].col_id);
+                        }
+                    }
+                    jobClick(core,support,core_c,support_c);
+                }
             }
         },
         complete: function() {
@@ -142,8 +133,8 @@ function reset_color(){
     var s_mark = document.querySelector('.s_mark');
     c_mark.innerText = "C";
     s_mark.innerText = "S";
-    c_text.innerText = "Core";
-    s_text.innerText = "Support";
+    c_text.innerText = "핵심 과목";
+    s_text.innerText = "추천 과목";
 
     for(i=2;i<=16;i++)
     {
@@ -175,7 +166,7 @@ function reset_color(){
         }
     }
 }
-
+/*
 function cdClick(cd_core,cd_support){
 
     reset_color();
@@ -183,12 +174,12 @@ function cdClick(cd_core,cd_support){
     var s_text = document.querySelector('.s_text');
     var c_mark = document.querySelector('.c_mark');
     var s_mark = document.querySelector('.s_mark');
-    c_mark.style.background = "#00C7FF";
-    s_mark.style.background = "#9eeaff";
+    c_mark.style.background = core_color;
+    s_mark.style.background = support_color;
     c_mark.innerText = "R";
     s_mark.innerText = "E";
-    c_text.innerText = "Require";
-    s_text.innerText = "Eletive";
+    c_text.innerText = "필수 과목";
+    s_text.innerText = "선택 과목";
 
 
     var ch_td;
@@ -198,22 +189,22 @@ function cdClick(cd_core,cd_support){
         for(i=0;i<cd_core.length;i++)
         {
             ch_td = document.getElementById(cd_core[i]);
-            ch_td.style.background = "#00C7FF";
+            ch_td.style.background = core_color;
             var cs = document.querySelector('#cs_'.concat(cd_core[i]));
             var cs_text = document.querySelector('.cs_txt_'.concat(cd_core[i]));
             cs.classList.toggle('show');
-            cs.style.background = "#00C7FF";
+            cs.style.background = core_color;
             cs_text.innerText="R";
         }
 
         for(i=0;i<cd_support.length;i++)
         {
             ch_td = document.getElementById(cd_support[i]);
-            ch_td.style.background = "#9eeaff";
+            ch_td.style.background = support_color;
             var cs = document.querySelector('#cs_'.concat(cd_support[i]));
             var cs_text = document.querySelector('.cs_txt_'.concat(cd_support[i]));
             cs.classList.toggle('show');
-            cs.style.background = "#9eeaff";
+            cs.style.background = support_color;
             cs_text.innerText="E";
         }
     }
@@ -230,7 +221,81 @@ function cdClick(cd_core,cd_support){
     cdj_flag=1;
     vij_flag=1;
 }
+*/
+function majorClick(cd_core,cd_support,core_color,support_color){
 
+    reset_color();
+    var c_text = document.querySelector('.c_text');
+    var s_text = document.querySelector('.s_text');
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = core_color;
+    s_mark.style.background = support_color;
+    c_mark.innerText = "R";
+    s_mark.innerText = "E";
+    c_text.innerText = "필수 과목";
+    s_text.innerText = "선택 과목";
+
+
+    var ch_td;
+
+    for(i=0;i<cd_core.length;i++)
+    {
+        ch_td = document.getElementById(cd_core[i]);
+        ch_td.style.background = core_color;
+        var cs = document.querySelector('#cs_'.concat(cd_core[i]));
+        var cs_text = document.querySelector('.cs_txt_'.concat(cd_core[i]));
+        cs.classList.toggle('show');
+        cs.style.background = core_color;
+        cs_text.innerText="R";
+    }
+
+    for(i=0;i<cd_support.length;i++)
+    {
+        ch_td = document.getElementById(cd_support[i]);
+        ch_td.style.background = support_color;
+        var cs = document.querySelector('#cs_'.concat(cd_support[i]));
+        var cs_text = document.querySelector('.cs_txt_'.concat(cd_support[i]));
+        cs.classList.toggle('show');
+        cs.style.background = support_color;
+        cs_text.innerText="E";
+    }
+
+}
+
+function jobClick(core,support,core_color,support_color){
+    reset_color();
+
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = core_color;
+    s_mark.style.background = support_color;
+
+    var ch_td;
+
+    for(i=0;i<core.length;i++)
+    {
+        ch_td = document.getElementById(core[i]);
+        ch_td.style.background = core_color;
+        var cs = document.querySelector('#cs_'.concat(core[i]));
+        var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+        cs.classList.toggle('show');
+        cs.style.background = core_color;
+        cs_text.innerText="C";
+    }
+    for(i=0;i<support.length;i++)
+    {
+        ch_td = document.getElementById(support[i]);
+        ch_td.style.background = support_color;
+        var cs = document.querySelector('#cs_'.concat(support[i]));
+        var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+        cs.classList.toggle('show');
+        cs.style.background = support_color;
+        cs_text.innerText="S";
+    }
+
+}
+/*
 // 영업, 대체투자
 function giJobsClick(core,support){
     reset_color();
@@ -291,14 +356,14 @@ function cdJobsClick(core,support){
 
     var ch_td;
 
-    /*if(cdj_flag>0)
+    if(cdj_flag>0)
     {
         for(i=0;i<mandatory.length;i++)
         {
             ch_td = document.getElementById(mandatory[i]);
             ch_td.style.background = "#E66E71";
         }
-    }*/
+    }
 	if(cdj_flag>0)
     {
         for(i=0;i<core.length;i++)
@@ -436,6 +501,55 @@ function vcJobsClick(core,support){
 	cdj_flag=1;
 }
 
+
+function pfJobsClick(core,support){
+    reset_color();
+
+    var c_mark = document.querySelector('.c_mark');
+    var s_mark = document.querySelector('.s_mark');
+    c_mark.style.background = "#66CC00";
+    s_mark.style.background = "#CCFF99";
+
+    var ch_td;
+
+    if(dej_flag>0)
+    {
+        for(i=0;i<core.length;i++)
+        {
+            ch_td = document.getElementById(core[i]);
+            ch_td.style.background = "#66CC00";
+            var cs = document.querySelector('#cs_'.concat(core[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(core[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#66CC00";
+            cs_text.innerText="C";
+        }
+
+        for(i=0;i<support.length;i++)
+        {
+            ch_td = document.getElementById(support[i]);
+            ch_td.style.background = "#CCFF99";
+            var cs = document.querySelector('#cs_'.concat(support[i]));
+            var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
+            cs.classList.toggle('show');
+            cs.style.background = "#CCFF99";
+            cs_text.innerText="S";
+        }
+    }
+    if(dej_flag<0)
+    {
+        reset_color();
+    }
+    dej_flag*=-1;
+
+    cd_flag=1;
+    gi_flag=1;
+    de_flag=1;
+    gij_flag=1;
+    cdj_flag=1;
+    vij_flag=1;
+}
+*/
 /*
     area 클릭 이벤트
 */

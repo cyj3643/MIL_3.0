@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -27,5 +29,16 @@ public class CarrerPath extends BaseEntity{
     @JoinColumn
     CarrerId large_category;
     String small_category;
+
+
+    @OneToMany(mappedBy = "small_category", cascade = CascadeType.ALL)
+    List<CarrerPathSubjects> carrerPathSubjectsList;
+    public void addSmallCategory(CarrerPathSubjects CarrerPathSubject) {
+        if (this.carrerPathSubjectsList == null) {
+            this.carrerPathSubjectsList = new LinkedList<>();
+        }
+        this.carrerPathSubjectsList.add(CarrerPathSubject);
+        CarrerPathSubject.setSmall_category(this);
+    }
 
 }

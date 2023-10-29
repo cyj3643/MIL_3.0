@@ -38,9 +38,14 @@
                 </tr>
   --%>
                 <tr>
-                    <td class="cd_wrap">
+                    <c:set var="index" value="0"/>
+                    <c:forEach var="majorList" items="${majorList}">
+                    <td class="majors" style="color:${majorList.core_color}" onclick="trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}','${majorList.support_color}')">
                         <img id="cd_but" src="${pageContext.request.contextPath}/resources/fil/img/areaIcon_fprogram.png">
                     </td>
+                <c:set var="index" value="${index+1}"/>
+                </c:forEach>
+
                 </tr>
                 <tr><td></td></tr>
                 <tr><td></td></tr>
@@ -69,10 +74,10 @@
                     <c:set var="col" value="1"/>
                     <c:choose>
                             <c:when test="${row==16}">
-                                <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> Mandatory</a></a></td>
-                                <td id="mark_td"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> Core</a></a></td>
-                                <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> Support</a></a></td>
-                                <td id="mark_td"><a id="tr13td4"><a class="season"> 2023년 요람기준</a></a></td>
+                                <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> 전공 필수</a></a></td>
+                                <td id="mark_td"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> 핵심 과목</a></a></td>
+                                <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> 추천 과목</a></a></td>
+                                <td id="mark_td"><a id="tr13td4"><a class="season"> 2023년 금융공학과 전공 요람기준</a></a></td>
                                 <c:set var="col" value="5"/>
                                 <%for(int j=0; j<4; j++){ %>
                                 <td><div class="mandatory_cont">
@@ -137,7 +142,7 @@
                 <c:set var="index" value="0"/>
                 <c:forEach var="jobList" items="${jobList}">
                     <tr>
-                        <td class="${jobList.job_id}">
+                        <td class="jobs" style="color:${jobList.core_color}" onclick="trackClick('${jobList.job_id}','${jobList.name}','${jobList.core_color}','${jobList.support_color}')">
                             <p><c:out value="${jobList.name}"/></p>
                         </td>
                     </tr>
@@ -154,20 +159,5 @@
 <script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
 <script>
     includeHTML();
-    $('.gi_jobs').on('click',function(){
-        trackClick("gi_jobs");
-    });
-    $('.cd_jobs').on('click',function(){
-        trackClick('cd_jobs');
-    });
-    $('.de_jobs').on('click',function(){
-        trackClick('de_jobs');
-    });
-    $('.vc_jobs').on('click',function(){
-        trackClick('vc_jobs');
-    });
-    $('.cd_wrap').on('click',function(){
-        trackClick('fe_program');
-    });
 </script>
 </html>

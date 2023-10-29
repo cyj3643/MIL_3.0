@@ -35,7 +35,7 @@
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>카테고리</th>
                                     <th>페이지 이름</th>
                                     <th>항목</th>
                                     <th>Actions</th>
@@ -46,7 +46,7 @@
                                 <c:forEach var="curriList" items="${curriList}">
                                     <tr>
                                         <td class="menu_page_id">
-                                            <c:out value="${curriList.page_id}"/>
+                                            <c:out value="${curriList.carrer_path_id}"/>
                                         </td>
                                         <td class="menu_name">
                                             <c:out value="${curriList.name}"/>

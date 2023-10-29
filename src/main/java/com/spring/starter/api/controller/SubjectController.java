@@ -45,12 +45,12 @@ public class SubjectController {
     }
     @ResponseBody
     @RequestMapping(value="/track",method=RequestMethod.POST, produces="application/json; charset=utf-8")
-    public Map subjectTrackList(Model model, String carrer_path_id)
+    public Map subjectTrackList(Model model,@RequestParam("carrer_path_id") String carrer_path_id,@RequestParam("small_category") String small_category)
     {
         System.out.println("in"+carrer_path_id);
         cilDAO dao = sqlSession.getMapper(cilDAO.class);
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("subjectTrackList",dao.subjectTrackList(carrer_path_id));
+        result.put("subjectTrackList",dao.subjectTrackList(carrer_path_id, small_category));
         return result;
     }
 

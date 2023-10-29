@@ -127,7 +127,13 @@ header{
 }
 
 .jobs{
+    text-align : center;
+}
+.jobs p{
 
+}
+.jobs button{
+    background-color : #464646;
 }
 
 

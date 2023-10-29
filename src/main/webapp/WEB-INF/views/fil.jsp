@@ -142,8 +142,11 @@
                 <c:set var="index" value="0"/>
                 <c:forEach var="jobList" items="${jobList}">
                     <tr>
-                        <td class="jobs" style="color:${jobList.core_color}" onclick="trackClick('${jobList.job_id}','${jobList.name}','${jobList.core_color}','${jobList.support_color}')">
-                            <p><c:out value="${jobList.name}"/></p>
+                        <td class="jobs" style="color:${jobList.core_color}">
+                            <p onclick="trackClick('${jobList.job_id}','${jobList.name}','${jobList.core_color}','${jobList.support_color}')"><c:out value="${jobList.name}"/></p>
+                            <button type="button">
+                                <img src="${pageContext.request.contextPath}/resources/fil/img/search.png">
+                            </button>
                         </td>
                     </tr>
                     <c:set var="index" value="${index+1}"/>

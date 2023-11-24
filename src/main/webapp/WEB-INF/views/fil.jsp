@@ -37,16 +37,17 @@
                     </td>
                 </tr>
   --%>
-                <tr>
-                    <c:set var="index" value="0"/>
-                    <c:forEach var="majorList" items="${majorList}">
-                    <td class="majors" style="color:${majorList.core_color}" onclick="trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}','${majorList.support_color}')">
-                        <img id="cd_but" src="${pageContext.request.contextPath}/resources/fil/img/areaIcon_fprogram.png">
+                <c:set var="index" value="0"/>
+                <c:forEach var="majorList" items="${majorList}">
+                    <tr>
+                    <td class="majors" style="color:${majorList.core_color}">
+                        <p  onclick="trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}','${majorList.support_color}')"><c:out value="${majorList.name}"/></p>
                     </td>
+                    </tr>
                 <c:set var="index" value="${index+1}"/>
                 </c:forEach>
 
-                </tr>
+
                 <tr><td></td></tr>
                 <tr><td></td></tr>
             </table>

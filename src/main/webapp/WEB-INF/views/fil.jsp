@@ -24,6 +24,7 @@
 	<jsp:include page="./include/fil/header.jsp"/>
 </header>
     <section class="main_contents">
+
         <div class="area_section">
             <table class="area_table">
             
@@ -37,17 +38,18 @@
                     </td>
                 </tr>
   --%>
+                <%--마이크로전공 목록생심성
                 <c:set var="index" value="0"/>
                 <c:forEach var="majorList" items="${majorList}">
                     <tr>
                     <td class="majors" style="color:${majorList.core_color}">
-                        <p  onclick="trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}','${majorList.support_color}')"><c:out value="${majorList.name}"/></p>
+                        <p  onclick="trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}')"><c:out value="${majorList.name}"/></p>
                     </td>
                     </tr>
                 <c:set var="index" value="${index+1}"/>
                 </c:forEach>
 
-
+                --%>
                 <tr><td></td></tr>
                 <tr><td></td></tr>
             </table>
@@ -75,11 +77,18 @@
                     <c:set var="col" value="1"/>
                     <c:choose>
                             <c:when test="${row==16}">
-                                <td id="mark_td"><a id="tr13td1"><div class="m_mark">M</div><a class="m_text"> 전공 필수</a></a></td>
-                                <td id="mark_td"><a id="tr13td2"><div class="c_mark">C</div><a class="c_text"> 핵심 과목</a></a></td>
-                                <td id="mark_td"><a id="tr13td3"><div class="s_mark">S</div><a class="s_text"> 추천 과목</a></a></td>
-                                <td id="mark_td"><a id="tr13td4"><a class="season"> 2023년 금융공학과 전공 요람기준</a></a></td>
-                                <c:set var="col" value="5"/>
+                                <td id="mark_td"><a id="tr16td1"><div class="m_mark">M</div><a class="m_text"> 전공 필수</a></a></td>
+                                <td id="mark_td"><a id="tr16td2"><div class="c_mark">C</div><a class="c_text"> 핵심 과목</a></a></td>
+
+                                <td><div class="mandatory_micro">
+                                <span id=tr16td3 onclick="on_off(1)">금융 프로그래밍 마이크로전공
+                                </span></div></td>
+                                <td><div class="mandatory_math">
+                                <span id=tr16td4 onclick="on_off(2)">수학 과목
+                                </span></div></td>
+
+                                <td id="mark_td"><a id="tr13td5"><a class="season"> 2023년 금융공학과 전공 요람기준</a></a></td>
+                                <c:set var="col" value="6"/>
                                 <%for(int j=0; j<4; j++){ %>
                                 <td><div class="mandatory_cont">
                                     <c:if test = "${subjectList[index].row_id==16}">
@@ -144,7 +153,7 @@
                 <c:forEach var="jobList" items="${jobList}">
                     <tr>
                         <td class="jobs" style="color:${jobList.core_color}">
-                            <p onclick="trackClick('${jobList.job_id}','${jobList.name}','${jobList.core_color}','${jobList.support_color}')"><c:out value="${jobList.name}"/></p>
+                            <p onclick="trackClick('${jobList.job_id}','${jobList.name}','${jobList.core_color}')"><c:out value="${jobList.name}"/></p>
                             <button type="button">
                                 <img src="${pageContext.request.contextPath}/resources/fil/img/search.png">
                             </button>
@@ -162,6 +171,21 @@
 </body>
 <script src="${pageContext.request.contextPath}/resources/fil/js/fil.js"></script>
 <script>
+    window.onload=function(){
+        <c:set var="index" value="0"/>
+        <c:forEach var="majorList" items="${majorList}">
+            trackClick('${majorList.major_id}','${majorList.name}','${majorList.core_color}')
+        <c:set var="index" value="${index+1}"/>
+        </c:forEach>
+
+        <c:set var="index" value="0"/>
+        <c:forEach var="mathList" items="${mathList}">
+            mathListMaker('${mathList.row_id}','${mathList.col_id}','${mathList.code}','${mathList.name}')
+        <c:set var="index" value="${index+1}"/>
+        </c:forEach>
+        mathLine('#FFF600');
+
+    }
     includeHTML();
 </script>
 </html>

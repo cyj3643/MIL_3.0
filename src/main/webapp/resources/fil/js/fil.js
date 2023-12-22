@@ -1,13 +1,12 @@
-var gi_flag=1;
-var cd_flag=1;
-var de_flag=1;
-var vc_flag=1;
-var md_flag=1;
 
-var gij_flag = 1;
-var cdj_flag = 1;
-var dej_flag = 1;
-var vij_flag = 1;
+var major_flag = 0;
+var math_flag = 0;
+var major_list = [];
+var find_value = 0;
+
+var m_list =new Array();
+
+var mathList = [];
 
 var flag = null;
 
@@ -62,14 +61,12 @@ function getDetail(code){
     });
 }
 
-function trackClick(carrer_path_id, small_category,c_color,s_color){
+function trackClick(carrer_path_id, small_category,c_color){
     var ch_td;
     var core = new Array();
     var support = new Array();
     var page_id;
     var core_c = c_color;
-    var support_c = s_color;
-    reset_color();
 
     $.ajax({
         type: 'POST',
@@ -84,7 +81,6 @@ function trackClick(carrer_path_id, small_category,c_color,s_color){
                 reset_color();
             }
             else{
-                flag = small_category;
                 /*전공의 경우, 전필이 다 다름*/
                 if (data.subjectTrackList[0].category == 'major'){
                     for(var i=0; i<data.subjectTrackList.length; i++)
@@ -98,19 +94,42 @@ function trackClick(carrer_path_id, small_category,c_color,s_color){
                             support.push('tr'+data.subjectTrackList[i].row_id+'td'+data.subjectTrackList[i].col_id);
                         }
                     }
+                    /*
                     majorClick(core,support,core_c,support_c);
+                     */
+                    if (m_list.length == 0){
+                        m_list.push(...core);
+                        m_list.push(...support);
+                    }
+                    majorLine(core,support,core_c);
+                    major_flag = 1;
+
+                    for (var i = 0; i < major_list.length; i++) {
+                        if (major_list[i].CPI == carrer_path_id){
+                            find_value = 1;
+                        }
+                    }
+
+                    if (find_value == 0){
+                        var major_object = new Object();
+                        major_object.CPI = carrer_path_id;
+                        major_object.SC = small_category;
+                        major_object.CC = c_color;
+                        major_list.push(major_object);
+                    } else{
+                        find_value = 0;
+                    }
+
                 }
                 /*커리어 path의 경우, 분류별 핵심과목은 같음*/
                 if (data.subjectTrackList[0].category == 'job') {
+                    flag = small_category;
                     for (var i = 0; i < data.subjectTrackList.length; i++) {
                         if (data.subjectTrackList[i].type == 'core') {
                             core.push('tr' + data.subjectTrackList[i].row_id + 'td' + data.subjectTrackList[i].col_id);
                         }
-                        if (data.subjectTrackList[i].type == 'support') {
-                            support.push('tr' + data.subjectTrackList[i].row_id + 'td' + data.subjectTrackList[i].col_id);
-                        }
                     }
-                    jobClick(core,support,core_c,support_c);
+                    jobClick(core,support,core_c);
                 }
             }
         },
@@ -132,9 +151,7 @@ function reset_color(){
     var c_mark = document.querySelector('.c_mark');
     var s_mark = document.querySelector('.s_mark');
     c_mark.innerText = "C";
-    s_mark.innerText = "S";
     c_text.innerText = "핵심 과목";
-    s_text.innerText = "추천 과목";
 
     for(i=2;i<=16;i++)
     {
@@ -165,6 +182,53 @@ function reset_color(){
             }
         }
     }
+}
+
+function on_off(type){
+    /*type 1은 전공*/
+    if (type == 1){
+        if (major_flag == 0){
+            for (var i = 0; i < major_list.length; i++) {
+                trackClick(major_list[i].CPI, major_list[i].SC,major_list[i].CC);
+                major_flag = 1;
+            }
+        }else{
+            reset_border(type);
+            major_flag = 0;
+        }
+    }
+    else if(type == 2){
+        if (math_flag == 0){
+            for (var i = 0; i < mathList.length; i++) {
+                mathLine('#FFF600');
+                math_flag = 1;
+            }
+        }else{
+            reset_border(type);
+            math_flag = 0;
+        }
+    }
+    /*ype 2는 수학과목*/
+
+
+}
+function reset_border(type){
+    var ch_td;
+    if (type == 1){
+        for (var i = 0; i < m_list.length; i++) {
+            ch_td = document.getElementById(m_list[i]);
+            ch_td.style.border= "None";
+        }
+
+    }
+    else if(type == 2){
+        for(i=0;i<mathList.length;i++)
+        {
+            ch_td = document.getElementById(mathList[i]);
+            ch_td.style.border= "None";
+        }
+    }
+
 }
 /*
 function cdClick(cd_core,cd_support){
@@ -222,19 +286,15 @@ function cdClick(cd_core,cd_support){
     vij_flag=1;
 }
 */
-function majorClick(cd_core,cd_support,core_color,support_color){
+function majorClick(cd_core,cd_support,core_color){
 
     reset_color();
     var c_text = document.querySelector('.c_text');
-    var s_text = document.querySelector('.s_text');
     var c_mark = document.querySelector('.c_mark');
-    var s_mark = document.querySelector('.s_mark');
     c_mark.style.background = core_color;
-    s_mark.style.background = support_color;
     c_mark.innerText = "R";
-    s_mark.innerText = "E";
     c_text.innerText = "필수 과목";
-    s_text.innerText = "선택 과목";
+
 
 
     var ch_td;
@@ -257,19 +317,51 @@ function majorClick(cd_core,cd_support,core_color,support_color){
         var cs = document.querySelector('#cs_'.concat(cd_support[i]));
         var cs_text = document.querySelector('.cs_txt_'.concat(cd_support[i]));
         cs.classList.toggle('show');
-        cs.style.background = support_color;
+        cs.style.background = core_color;
         cs_text.innerText="E";
     }
 
 }
+function mathListMaker(row_id,col_id,code,name){
+    mathList.push('tr'+row_id+'td'+col_id);
+}
+function mathLine(color){
+    var ch_td;
 
-function jobClick(core,support,core_color,support_color){
+    var math_mark = document.getElementById('tr16td4');
+    math_mark.style.border = "solid 3px "+color;
+
+    for(i=0;i<mathList.length;i++)
+    {
+        ch_td = document.getElementById(mathList[i]);
+        ch_td.style.border= "solid 3px "+color;
+    }
+}
+
+
+function majorLine(cd_core,cd_support,core_color){
+    var ch_td;
+
+    var micro_mark = document.getElementById('tr16td3');
+    micro_mark.style.border = "solid 3px "+core_color;
+
+    for(i=0;i<cd_core.length;i++)
+    {
+        ch_td = document.getElementById(cd_core[i]);
+        ch_td.style.border= "solid 3px "+core_color;
+    }
+
+    for(i=0;i<cd_support.length;i++)
+    {
+        ch_td = document.getElementById(cd_support[i]);
+        ch_td.style.border= "solid 3px "+core_color;
+    }
+
+}
+function jobClick(core,support,core_color){
     reset_color();
-
     var c_mark = document.querySelector('.c_mark');
-    var s_mark = document.querySelector('.s_mark');
     c_mark.style.background = core_color;
-    s_mark.style.background = support_color;
 
     var ch_td;
 
@@ -283,17 +375,6 @@ function jobClick(core,support,core_color,support_color){
         cs.style.background = core_color;
         cs_text.innerText="C";
     }
-    for(i=0;i<support.length;i++)
-    {
-        ch_td = document.getElementById(support[i]);
-        ch_td.style.background = support_color;
-        var cs = document.querySelector('#cs_'.concat(support[i]));
-        var cs_text = document.querySelector('.cs_txt_'.concat(support[i]));
-        cs.classList.toggle('show');
-        cs.style.background = support_color;
-        cs_text.innerText="S";
-    }
-
 }
 /*
 // 영업, 대체투자

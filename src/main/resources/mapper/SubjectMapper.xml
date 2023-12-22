@@ -41,6 +41,15 @@
 		order by fp.row_id, fp.col_id;
 	</select>
 
+	<select id="mathList" resultType="com.spring.starter.model.mathDTO">
+		select fp.*,fs.name,fs.is_math
+		from linka.fil_position fp
+				 inner join linka.fe_subject fs
+							on fp.code = fs.code
+		where fs.is_math = 1
+		order by fp.row_id, fp.col_id;
+	</select>
+
 	<select id="jobList" resultType="com.spring.starter.model.jobDTO">
 		select jobs.small_category, ci.carrer_path_id , ci.core_color, ci.support_color
 		from linka.carrer_path jobs

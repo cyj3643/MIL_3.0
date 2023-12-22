@@ -8,6 +8,7 @@ import com.spring.starter.model.cilPositionDTO;
 import com.spring.starter.model.adminSubjectDTO;
 import com.spring.starter.model.cilTrackDTO;
 import com.spring.starter.model.cilPreDTO;
+import com.spring.starter.model.mathDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,6 +19,7 @@ public interface cilDAO {
     public ArrayList<filDTO> subjectList();
     public ArrayList<jobDTO> jobList();
     public ArrayList<majorDTO> majorList();
+    public ArrayList<mathDTO> mathList();
     public ArrayList<adminSubjectDTO>subjectAllList();
     public ArrayList<cilDetailDTO> subjectDetailList(String code);
     public ArrayList<cilPositionDTO> subjectPositionList(String code);

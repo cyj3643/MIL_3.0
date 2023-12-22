@@ -29,19 +29,15 @@ function getSubjectInfo(code){
                             document.getElementById("major").checked = true;
                             document.getElementById("major").value = "1";
                         } else {
-                            if (document.getElementById("major").checked == true) {
                                 document.getElementById("major").checked = null;
                                 document.getElementById("major").value = "0";
-                            }
                         }
                         if (data.subjectDetailList[0].original_language == 1) {
                             document.getElementById("origin").checked = true;
                             document.getElementById("origin").value = "1";
                         } else {
-                            if (document.getElementById("origin").checked == true) {
                                 document.getElementById("origin").checked = null;
                                 document.getElementById("origin").value = "0";
-                            }
                         }
 
                         var ps_list = ["presubject_select1", "presubject_select2", "presubject_select3"];

@@ -295,8 +295,6 @@ function majorClick(cd_core,cd_support,core_color){
     c_mark.innerText = "R";
     c_text.innerText = "필수 과목";
 
-
-
     var ch_td;
 
     for(i=0;i<cd_core.length;i++)

@@ -1,13 +1,9 @@
-
 var major_flag = 0;
 var math_flag = 0;
 var major_list = [];
 var find_value = 0;
-
 var m_list =new Array();
-
 var mathList = [];
-
 var flag = null;
 
 function getDetail(code){

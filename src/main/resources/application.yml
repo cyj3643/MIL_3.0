@@ -3,10 +3,10 @@ spring:
   datasource:
     #    TODO AWS RDS
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbc-url: ENC(bZfkkfKYs/OhxUfAAyjEhSe9JFFAoCEaVBsanY1qKcyV1M/C2V0jJCJAu9+8Me+wXmpdlnatY3g=)
+    jdbc-url: ENC(Q9sEbMsVBiltoov/Kivk1Jz3oiqLeUTHWkr7buGvMw73IYdr9qdMqGGWX9TDSb71)
     username: Ajou
 
-    password: ENC(RGnRbyTvVntQGIV/hWwOw8lxAkQjR+bw)
+    password: ENC(MrimxwDboKLrXIxQg05N0B3tQ4J08gw9n5/8oVgL9P4=)
     mapper-locations: classpath*:mapper/*.xml
   mvc:
     view:
